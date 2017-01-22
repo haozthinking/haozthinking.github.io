@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[hahah]]></title>
+      <url>%2F2017%2F01%2F22%2F%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[设计模式之抽象工厂模式]]></title>
       <url>%2F2017%2F01%2F17%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%2F</url>
       <content type="text"><![CDATA[抽象工厂模式抽象工厂模式概念简单工厂模式和工厂方法模式的本质是给入不同的属性，通过不同的属性调用不同的类从而得到不同的对象。而抽象工厂模式可以将一组具有同样主题的工厂封装起来，在简单工厂模式前加一层抽象的概念。即抽象工厂模式是一个父类工厂，通过该抽象工厂模式产生具体工厂。抽象工厂模式即为工厂的工厂。 抽象工厂模式有四种角色： 抽象工厂：担任这个角色的是工厂方法模式的核心，它是与应用系统商业逻辑无关的。 具体工厂：这个角色直接在客户端的调用下创建产品的实例。这个角色含有选择合适的产品对象的逻辑，而这个逻辑是与应用系统的商业逻辑紧密相关的。 抽象产品：担任这个角色的类是工厂方法模式所创建的对象的父类，或它们共同拥有的接口。 具体产品：这个角色用以代表具体的产品。 抽象工厂模式类图这里我们定义一个抽象工厂为”University”。通过这个抽象工厂生成两个具体工厂为”BUPT”和”BNU”。其中BUPT 中男生偏多且毕业生大都为工程师，所以从BUPT中生产的产品为”Boy”和”Engineer”。而BNU中女生偏多且很多毕业生做教师，于是从BNU这个工厂生产的产品为”Girl”和”Teacher”. 抽象工厂模式代码123456789101112131415161718192021222324252627282930313233343536373839404142434445public interface University&#123; public Sex getSex(); public Job getJob();&#125;public interface Sex&#123; public String getSexName(); &#125;public interface Job&#123; public String getJobName(); &#125;public class BUPT implements University&#123; public Sex getSex()&#123; return new Boy(); &#125; public Job getJob()&#123; return new Engineer(); &#125;&#125;public class Engineer implements Job&#123; public String getJobName()&#123; return "engineer"; &#125;&#125;public class Boy implements Sex&#123; public String getSexName()&#123; return "boy"; &#125;&#125;public class Student&#123; public void graduate(University s)&#123; System.out.println("A graduate student is a "+s.getSex().getSexName()+" and he/she get a job of "+s.getJob().getJobName(); &#125; public static void main(String[] args)&#123; Student s = new Student(); University u = new BUPT(); s.graduate(u); &#125;&#125; 产品等级结构和产品族产品等级结构产品等级结构即产品的继承结构。比如一个抽象类为球类运动，其子类有足球、篮球等；则球类运动和篮球、足球就构成了一个产品等级结构。其中抽象的球类运动为父类，具体的球类运动为子类。 产品族在抽象工厂模式中，产品族是由同一个工厂产生，但位于不同产品等级结构中的一组产品。比如说上面的例子，产品Boy和产品Engineer都是BUPT这个工厂生产出来的。但是Boy这个产品是和Sex这个抽象父类构成一个产品等级结构，Engineer这个产品是和Job这个抽象父类构成一个产品等级结构。Boy和Engineer组成了一个产品族。 由产品族和产品等级结构就可以唯一的确定一个产品。 抽象工厂模式和工厂方法模式的区别介绍完了产品等级结构和产品族后，抽象工厂模式和工厂方法模式的区别就很明显了。工厂方法模式针对的是一个产品等级，而抽象工厂模式是针对多个产品等级。当系统所提供的工厂生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构、属于不同类型的具体产品时就可以使用抽象工厂模式。]]></content>
