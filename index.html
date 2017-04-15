@@ -291,6 +291,115 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/15/SVM/" itemprop="url">
+                  SVM
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-15T11:48:57+08:00" content="2017-04-15">
+              2017-04-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/15/SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/15/SVM/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>支持向量机是一种很好的机器学习方法，在面试中多次被用到。</p>
+<p>其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
+<p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
+<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><p>线性可分支持向量机我们重点介绍，他是线性支持向量机和非线性支持向量机的基础。在样本空间中，划分超平面的方程的表示形式如下所示：</p>
+<p>​                                                           $$(1)w^Tx + b = 0                     $$ </p>
+<p>其中$w^T$ = ($w_1;w_2;w_3;….;w_d$)为法向量决定了该划分超平面的距离，而b为原点距决定了超平面与原点间的距离。由此可知，划分超平面可以由法向量 $w$ 和原点距位移 $b$所确定，所确定的超平面计为$(w,b)$,则样本空间内的一点$x$到$(w,b)$的距离可以写为</p>
+<p>​$$<br>(2)r=\frac{|w^Tx + b|}{||w||}<br>$$</p>
+<p>如果有一点可以被正确分类，那么不难知道如果他的x满足$ w^Tx_i + b &gt; 0 $时$ y_i = +1 $,$ w^Tx_i + b &lt; 0 $时$ y_i = -1 $</p>
+<p>而如果我们在这里把0的标准换位1和－1的标准，令以下成立：<br>$$<br>(3)w^Tx_i + b =&gt; 1  ;   y_i = +1 ;  w^Tx_i + b &lt;=  -1  ;   y_i = -1<br>$$</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/15/linux学习之：vi使用简介/" itemprop="url">
                   linux学习之：vi使用简介
                 </a>
@@ -673,7 +782,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
