@@ -84,28 +84,31 @@
 
 
 
-<meta name="description" content="介绍1
+<meta name="description" content="介绍$$
+(10)max\alpha \sum{i=1}^m\alphai - \frac{1}{2}\sum{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j
+$$
 支持向量机是一种很好的机器学习方法，在面试中多次被用到。
-其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
-支持向量机有三类，分别是线性支持向量">
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM">
 <meta property="og:url" content="http://yoursite.com/2017/04/16/SVM/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="介绍1
+<meta property="og:description" content="介绍$$
+(10)max\alpha \sum{i=1}^m\alphai - \frac{1}{2}\sum{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j
+$$
 支持向量机是一种很好的机器学习方法，在面试中多次被用到。
-其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
-支持向量机有三类，分别是线性支持向量">
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg">
-<meta property="og:updated_time" content="2017-04-18T16:13:48.000Z">
+<meta property="og:updated_time" content="2017-04-18T16:19:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
-<meta name="twitter:description" content="介绍1
+<meta name="twitter:description" content="介绍$$
+(10)max\alpha \sum{i=1}^m\alphai - \frac{1}{2}\sum{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j
+$$
 支持向量机是一种很好的机器学习方法，在面试中多次被用到。
-其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
-支持向量机有三类，分别是线性支持向量">
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就">
 <meta name="twitter:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
 
 
@@ -349,7 +352,9 @@
       
 
       
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>1</p>
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>$$</p>
+<p>(10)max<em>\alpha \sum</em>{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j</p>
+<p>$$</p>
 <p>支持向量机是一种很好的机器学习方法，在面试中多次被用到。</p>
 <p>其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
 <p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
@@ -366,9 +371,7 @@
 <h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha_i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：</p>
 <p>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))<br>$$</p>
 <p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum_{i=1}^m\alpha_iy_ix_i<br>$$</p>
-<p>$$<br>(9)0 = \sum_{j=1}^m\alpha_iy_i ;<br>$$</p>
-<p>$$<br>(10)max<em>\alpha \sum</em>{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j<br>$$</p>
-<p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
+<p>$$<br>(9)0 = \sum_{j=1}^m\alpha_iy<em>i ;<br>$$<br>$$<br>(10)max</em>\alpha \sum_{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j<br>$$<br>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
 <p>$$<br>(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
 <p>由以上约束可知，其满足KKT条件即：</p>
 <p>$$<br>(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0<br>$$</p>
