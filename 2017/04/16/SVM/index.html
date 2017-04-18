@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg">
-<meta property="og:updated_time" content="2017-04-18T16:01:42.000Z">
+<meta property="og:updated_time" content="2017-04-18T16:06:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="介绍支持向量机是一种很好的机器学习方法，在面试中多次被用到。
@@ -375,12 +375,21 @@
 <li>固定$\alpha_i$和$\alpha_j$外的其他参数，求解更新后的$\alpha_i$和$\alpha_j$；</li>
 </ul>
 <p>只要选取的$\alpha_i$和$\alpha_j$有一个不满足KKT条件，那么目标函数就会在迭代后变得更小。一般SMO选取为两个差别很大的变量，对他们进行变化会得到更好的效果。</p>
-<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:<br>$$<br>(14)\alpha_iy_i+\alpha_jy<em>j+c = 0 ; c=\sum</em>{k=0,k!=i,j}^m\alpha_ky_k<br>$$<br>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
-<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：<br>$$<br>(15)y<em>s(\sum</em>{i}\alpha_iy_ix_i^Tx<em>s+b)=1<br>$$<br>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:<br>$$<br>(16)b=\frac{1}{|S|}\sum</em>{s\epsilon S}(y<em>s-\sum</em>{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
+<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:</p>
+<p>$$<br>(14)\alpha_iy_i+\alpha_jy<em>j+c = 0 ; c=\sum</em>{k=0,k!=i,j}^m\alpha_ky_k<br>$$</p>
+<p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
+<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：</p>
+<p>$$<br>(15)y<em>s(\sum</em>{i}\alpha_iy_ix_i^Tx_s+b)=1<br>$$</p>
+<p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
+<p>$$<br>(16)b=\frac{1}{|S|}\sum_{s\epsilon S}(y<em>s-\sum</em>{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
 <h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
 <p>上面说过，线性支持向量机和线性可分支持向量机最大的区别在于线性可分支持向量机所用的为<strong>硬间隔</strong>,线性支持向量机采用的是<strong>软间隔</strong>。软间隔的表示如下图所示：</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg" alt=""></p>
-<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:<br>$$<br>y_i(w^Tx<em>i+b)\geq 1<br>$$<br>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：<br>$$<br>(17)\min</em>{w,b}\frac{1}{2}||w||^2+C\sum<em>{i=1}^ml</em>{0/1}(y_i(w^Tx<em>i+b)-1)<br>$$<br>其中$C&gt; 0$为一个常数，而$l</em>{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
+<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:</p>
+<p>$$<br>y_i(w^Tx_i+b)\geq 1<br>$$</p>
+<p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
+<p>$$<br>(17)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)<br>$$</p>
+<p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
 <p>由上面的式子可知，如果$C$的值过于大，那么他在每次犯错后所要付出的代价就会很大，而C很小时其每次所需的代价就比较小。于是我们极端来看不难得出当C为无限小为0时，他随便犯错都无所谓，这时候线性支持向量机的作用就失去了。而当$C$为无限大的时候，这时候犯一点错误就会受到很大的惩罚，这时候一点错误都不敢犯。因此当$C$为无限大时，线性支持向量机就变为了线性可分支持向量机。不难看出，线性可分支持向量机是线性支持向量机在$C$为无穷大时的一种特例。</p>
 <p>但是在实际的应用场景中，$l<em>{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：<br>$$<br>(18)l</em>{hinge}(z)=\max(0,1-z);<br>$$<br>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：<br>$$<br>(19)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\max(0,1-y_i(w^Tx_i))<br>$$</p>
 <p>$$<br>(20.1)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\xi_i<br>$$</p>
