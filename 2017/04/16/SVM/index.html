@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg">
 <meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg">
-<meta property="og:updated_time" content="2017-04-18T16:12:23.000Z">
+<meta property="og:updated_time" content="2017-04-18T16:13:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="介绍1
@@ -367,7 +367,7 @@
 <p>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))<br>$$</p>
 <p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum_{i=1}^m\alpha_iy_ix_i<br>$$</p>
 <p>$$<br>(9)0 = \sum_{j=1}^m\alpha_iy_i ;<br>$$</p>
-<p>$$<br>(10)max<em>\alpha \sum</em>{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j$$<br>$$</p>
+<p>$$<br>(10)max<em>\alpha \sum</em>{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j<br>$$</p>
 <p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
 <p>$$<br>(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
 <p>由以上约束可知，其满足KKT条件即：</p>
