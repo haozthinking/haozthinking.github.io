@@ -1,0 +1,894 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="介绍支持向量机是一种很好的机器学习方法，在面试中多次被用到。
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
+支持向量机有三类，分别是线性支持向量机，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM">
+<meta property="og:url" content="http://yoursite.com/2017/04/16/SVM/index.html">
+<meta property="og:site_name" content="好Q">
+<meta property="og:description" content="介绍支持向量机是一种很好的机器学习方法，在面试中多次被用到。
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
+支持向量机有三类，分别是线性支持向量机，">
+<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
+<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg">
+<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg">
+<meta property="og:updated_time" content="2017-04-19T07:45:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVM">
+<meta name="twitter:description" content="介绍支持向量机是一种很好的机器学习方法，在面试中多次被用到。
+其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是“最小的取最大”这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为支持向量。
+支持向量机有三类，分别是线性支持向量机，">
+<meta name="twitter:image" content="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/16/SVM/"/>
+
+  <title> SVM | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1ec74442b5ea3f7f3abcae724edb5f4a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">好Q</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SVM
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-16T11:48:57+08:00" content="2017-04-16">
+              2017-04-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/16/SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/16/SVM/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>支持向量机是一种很好的机器学习方法，在面试中多次被用到。</p>
+<p>其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
+<p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
+<h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机我们重点介绍，他是线性支持向量机和非线性支持向量机的基础。在样本空间中，划分超平面的方程的表示形式如下所示：</p>
+<p>​                                                           $$(1)w^Tx + b = 0                     $$ </p>
+<p>其中$w^T$ = ($w_1;w_2;w_3;….;w_d$)为法向量决定了该划分超平面的距离，而b为原点距决定了超平面与原点间的距离。由此可知，划分超平面可以由法向量 $w$ 和原点距位移 $b$所确定，所确定的超平面计为$(w,b)$,则样本空间内的一点$x$到$(w,b)$的距离可以写为</p>
+<p>​                                                                     $$(2)r=\frac{|w^Tx + b|}{||w||}$$</p>
+<p>如果有一点可以被正确分类，那么不难知道如果他的x满足$ w^Tx_i + b &gt; 0 $时$ y_i = +1 $,$ w^Tx_i + b &lt; 0 $时$ y_i = -1 $</p>
+<p>而如果我们在这里把0的标准换位1和－1的标准，令以下成立：<br>$$<br>(3)w^Tx_i + b =&gt; 1  ;   y_i = +1 ;  w^Tx_i + b &lt;=  -1  ;   y_i = -1<br>$$<br>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
+<p>线性可分支持向量机这里使用的是<strong>硬间隔</strong>，即在间隔中不允许存在分类点，而线性支持向量机使用的是<strong>软间隔</strong>这也是线性可分支持向量机和线性支持向量机的区别所在。</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg" alt="支持向量与间隔"></p>
+<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：<br>$$<br>(4)\max_{w,b}\frac{2}{||w||}<br>$$<br>$$<br>(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3……m.<br>$$</p>
+<p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：<br>$$<br>(6)\min_{w,b}\frac{1}{2}||w||^2\<br>$$<br>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
+<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha_i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：</p>
+<p>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))<br>$$</p>
+<p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum_{i=1}^m\alpha_iy_ix_i<br>$$</p>
+<p>$$<br>(9)0 = \sum_{j=1}^m\alpha_iy_i ;<br>$$</p>
+<p>$$<br>(10)max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j；<br>$$</p>
+<p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
+<p>$$<br>(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
+<p>由以上约束可知，其满足KKT条件即：</p>
+<p>$$<br>(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0<br>$$</p>
+<p>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
+<h4 id="求解方法——SMO算法"><a href="#求解方法——SMO算法" class="headerlink" title="求解方法——SMO算法"></a>求解方法——SMO算法</h4><h5 id="确定-alpha-方法"><a href="#确定-alpha-方法" class="headerlink" title="确定$\alpha$方法"></a>确定$\alpha$方法</h5><p>SMO方法的思想在于，除了两个变量$\alpha_i$和$\alpha_j$其余变量全部固定，然后重复下列两部获得更新后的$\alpha_i$和$\alpha_j$:</p>
+<ul>
+<li>选取两个需要更新的$\alpha_i$和$\alpha_j$；</li>
+<li>固定$\alpha_i$和$\alpha_j$外的其他参数，求解更新后的$\alpha_i$和$\alpha_j$；</li>
+</ul>
+<p>只要选取的$\alpha_i$和$\alpha_j$有一个不满足KKT条件，那么目标函数就会在迭代后变得更小。一般SMO选取为两个差别很大的变量，对他们进行变化会得到更好的效果。</p>
+<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:</p>
+<p>$$<br>(14)\alpha_iy_i+\alpha_jy_j+c = 0 ; c=\sum_{k=0,k!=i,j}^m\alpha_ky_k<br>$$</p>
+<p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
+<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：</p>
+<p>$$<br>(15)y_s(\sum_{i}\alpha_iy_ix_i^Tx_s+b)=1<br>$$</p>
+<p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
+<p>$$<br>(16)b=\frac{1}{|S|}\sum_{s\epsilon S}(y_s-\sum_{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
+<h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
+<p>上面说过，线性支持向量机和线性可分支持向量机最大的区别在于线性可分支持向量机所用的为<strong>硬间隔</strong>,线性支持向量机采用的是<strong>软间隔</strong>。软间隔的表示如下图所示：</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg" alt=""></p>
+<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:</p>
+<p>$$<br>y_i(w^Tx_i+b)\geq 1<br>$$</p>
+<p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
+<p>$$<br>(17)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)<br>$$</p>
+<p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
+<p>由上面的式子可知，如果$C$的值过于大，那么他在每次犯错后所要付出的代价就会很大，而C很小时其每次所需的代价就比较小。于是我们极端来看不难得出当C为无限小为0时，他随便犯错都无所谓，这时候线性支持向量机的作用就失去了。而当$C$为无限大的时候，这时候犯一点错误就会受到很大的惩罚，这时候一点错误都不敢犯。因此当$C$为无限大时，线性支持向量机就变为了线性可分支持向量机。不难看出，线性可分支持向量机是线性支持向量机在$C$为无穷大时的一种特例。</p>
+<p>但是在实际的应用场景中，$l<em>{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：<br>$$<br>(18)l</em>{hinge}(z)=\max(0,1-z);<br>$$<br>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：<br>$$<br>(19)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\max(0,1-y_i(w^Tx_i))<br>$$</p>
+<p>$$<br>(20.1)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\xi_i<br>$$</p>
+<p>$$<br>(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3…m.<br>$$</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<p>如上图所示，上图分别为hinge函数损失函数，指数损失函数和对率损失函数。这三种损失函数的发展趋势都是一样的，但是在支持向量机中中，由于只要是等于1就算支持向量，原则上在其等于1时不能有损失，而指数损失函数和对率损失函数在等于1甚至是大于1时都有损失。因此在线性支持向量机中使用最多的是hinge损失函数，在有的教材中hinge损失函数也叫做SVM损失函数。</p>
+<h4 id="公式求解-1"><a href="#公式求解-1" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：<br>$$<br>L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi<em>i+\sum</em>{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx<em>i+b))-\sum</em>{i=1}^m\mu_i\xi_i<br>$$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat_qcode.jpeg" alt="haoq wechat" style="width: 200px; max-width: 100%;"/>
+    <div>想看我的非技术文章，欢迎订阅我的微信公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持更鼓励我分享技术文章</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ojv0jka0j.bkt.clouddn.com/WechatIMG12.jpeg" alt="haoq WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/16/Linux学习之：定制shell提示符/" rel="next" title="Linux学习之：定制shell提示符">
+                <i class="fa fa-chevron-left"></i> Linux学习之：定制shell提示符
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/16/SVM/"
+           data-title="SVM" data-url="http://yoursite.com/2017/04/16/SVM/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpeg"
+               alt="haoq" />
+          <p class="site-author-name" itemprop="name">haoq</p>
+          <p class="site-description motion-element" itemprop="description">悟以往之不谏，知来者之可追：一只在路上的程序猿</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">2.</span> <span class="nav-text">线性可分支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想"><span class="nav-number">2.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式求解"><span class="nav-number">2.2.</span> <span class="nav-text">公式求解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解方法——SMO算法"><span class="nav-number">2.3.</span> <span class="nav-text">求解方法——SMO算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#确定-alpha-方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">确定$\alpha$方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求解-b-的方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">求解$b$的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">3.</span> <span class="nav-text">线性支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想-1"><span class="nav-number">3.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式求解-1"><span class="nav-number">3.2.</span> <span class="nav-text">公式求解</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">haoq</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haozthinking"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+</body>
+</html>
