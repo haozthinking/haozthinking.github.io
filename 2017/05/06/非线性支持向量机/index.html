@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -84,15 +84,21 @@
 
 
 
-<meta name="description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="好Q">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+<meta name="description" content="非线性支持向量机而现实生活远比理想复杂，样本空间很难是一个能被线性分割的超平面，对于很多情况来说仅仅依靠线性是不行的。而我们定义，如果不能靠线性平面分开，而可以通过一个超曲面将正负例正确分开的问题为非线性可分问题。
+核技巧非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持向量机-非线性支持向量机">
+<meta property="og:url" content="http://yoursite.com/2017/05/06/非线性支持向量机/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
+<meta property="og:description" content="非线性支持向量机而现实生活远比理想复杂，样本空间很难是一个能被线性分割的超平面，对于很多情况来说仅仅依靠线性是不行的。而我们定义，如果不能靠线性平面分开，而可以通过一个超曲面将正负例正确分开的问题为非线性可分问题。
+核技巧非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的">
+<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/%E6%A0%B8%E5%87%BD%E6%95%B0.jpeg">
+<meta property="og:updated_time" content="2017-05-06T08:45:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="好Q">
-<meta name="twitter:description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
+<meta name="twitter:title" content="支持向量机-非线性支持向量机">
+<meta name="twitter:description" content="非线性支持向量机而现实生活远比理想复杂，样本空间很难是一个能被线性分割的超平面，对于很多情况来说仅仅依靠线性是不行的。而我们定义，如果不能靠线性平面分开，而可以通过一个超曲面将正负例正确分开的问题为非线性可分问题。
+核技巧非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的">
+<meta name="twitter:image" content="http://ojv0jka0j.bkt.clouddn.com/%E6%A0%B8%E5%87%BD%E6%95%B0.jpeg">
 
 
 
@@ -113,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Java/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/06/非线性支持向量机/"/>
 
-  <title> 标签: Java | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 支持向量机-非线性支持向量机 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +152,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -267,74 +273,222 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Java
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/01/17/设计模式之抽象工厂模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式之抽象工厂模式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-17T21:57:18+08:00"
-              content="2017-01-17" >
-          01-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/01/16/设计模式之工厂模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式之工厂模式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-16T13:32:03+08:00"
-              content="2017-01-16" >
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                支持向量机-非线性支持向量机
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-06T12:23:30+08:00" content="2017-05-06">
+              2017-05-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/06/非线性支持向量机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/非线性支持向量机/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h3><p>而现实生活远比理想复杂，样本空间很难是一个能被线性分割的超平面，对于很多情况来说仅仅依靠线性是不行的。而我们定义，如果不能靠线性平面分开，而可以通过一个超曲面将正负例正确分开的问题为非线性可分问题。</p>
+<h4 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h4><p>非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的非线性问题变为了一个在三维平面的线性问题，如下图所示。</p>
+<p>因此，我们可以知道，用线性分类方法求解非线性分类方法分为两步，首先第一步是使用一个变换讲原数据映射到一个新的空间，从而将在原空间内的非线性问题转换成为一个在新空间内的线性问题。第二步即对新空间内的线性问题用线性分类学习的方法从训练数据中学习分类模型。其中核技巧就属于这种问题。</p>
+<h4 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h4><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E6%A0%B8%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<p>令$\phi(x)$表示将x高位映射后的向量，于是在特征空间中划分平面可以将模型可以分为:<br>$$<br>(1)f(x)=w^T\phi(x)+b<br>$$<br>其中$w$和$b$是两个模型参数有：</p>
+<p>$$<br>(2)\min_{w,b}\frac{1}{2}||w||^2,s.t.y_i(w^T\phi(x_i)+b)\ge1<br>$$</p>
+<p>其对偶问题为:</p>
+<p>$$<br>(3)\max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j,s.t.\sum_{i=1}^m\alpha_iy_i=0, 0\le\alpha_i\le C<br>$$</p>
+<p>不难看出，非线性支持向量机和线性支持向量机的区别在于求解x的维度不同，对于线性支持向量机为$x_i$而非线性支持向量机为x高维映射后的向量为$\phi(x_i)$.</p>
+<p>这里的困难是计算$\phi(x_i)^T\phi(x_i)$是相当困难的。所以在此引入一个函数,该函数即为核函数<br>$$<br>(4)\kappa(x_i,x_j)=&lt;\phi(x_i),\phi(x_j)&gt;=\phi(x_i)^T\phi(x_j)<br>$$<br>对(3)进行求解后可以得到:<br>$$<br>(5)f(x)=w^T\phi(x)+b=\sum_{i=1}^m\alpha_iy_i\phi(x_i)^T\phi(x_j)+b=\sum_{i=1}^m\alpha_iy_i\kappa(x_i,x_j)+b<br>$$</p>
+<h4 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h4><p>核函数的选择时非线性支持向量机中的一个很重要的问题，他和核函数最终的性能有很大的关系。下面显示了几种常用的核函数:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=x_i^Tx_j$</td>
+</tr>
+<tr>
+<td>多项式核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=(x_jx_i + 1)^q $</td>
+</tr>
+<tr>
+<td>高斯核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=\exp(-\frac{</td>
+<td></td>
+<td>w_i-w_j</td>
+<td></td>
+<td>^2}{2\sigma^2})$</td>
+</tr>
+<tr>
+<td>拉普拉斯核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=exp(-\frac{\</td>
+<td>\</td>
+<td>w_i-w_j\</td>
+<td>\</td>
+<td>}{\sigma})$</td>
+</tr>
+<tr>
+<td>Sigmoid核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=tanh(\beta x_i^Tx_j+\theta)$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="非线性支持向量机-1"><a href="#非线性支持向量机-1" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h4><p>将线性支持向量机扩展到非线性支持向量机，只需要将线性支持向量机中的对偶形式的内积换为核函数即可。<br>$$<br>f(x)= sign(\sum_{i=1}^N\alpha_i^*y_iK(x_i,x_j) + b<br>$$<br>上式为非线性支持向量机的分类决策函数$K(x,z)$为其正定核函数。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat_qcode.jpeg" alt="haoq wechat" style="width: 200px; max-width: 100%;"/>
+    <div>想看我的非技术文章，欢迎订阅我的微信公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持更鼓励我分享技术文章</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ojv0jka0j.bkt.clouddn.com/WechatIMG12.jpeg" alt="haoq WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/06/线性支持向量机/" rel="next" title="支持向量机-线性支持向量机">
+                <i class="fa fa-chevron-left"></i> 支持向量机-线性支持向量机
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -342,6 +496,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/06/非线性支持向量机/"
+           data-title="支持向量机-非线性支持向量机" data-url="http://yoursite.com/2017/05/06/非线性支持向量机/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -361,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -405,6 +576,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#非线性支持向量机"><span class="nav-number">1.</span> <span class="nav-text">非线性支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核技巧"><span class="nav-number">1.1.</span> <span class="nav-text">核技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核函数"><span class="nav-number">1.2.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用核函数"><span class="nav-number">1.3.</span> <span class="nav-text">常用核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非线性支持向量机-1"><span class="nav-number">1.4.</span> <span class="nav-text">非线性支持向量机</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -508,6 +690,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
