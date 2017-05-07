@@ -291,6 +291,121 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/16/Linux学习之：定制shell提示符/" itemprop="url">
+                  Linux学习之：定制shell提示符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-16T09:47:27+08:00" content="2017-04-16">
+              2017-04-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/16/Linux学习之：定制shell提示符/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/16/Linux学习之：定制shell提示符/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在系统初始化提示符的时候，提示符的样子如下:</p>
+<p><strong>haoz@linux:~$</strong></p>
+<p>通过以下命令可以查到PS1的值</p>
+<h3 id="修改命令提示行的样式"><a href="#修改命令提示行的样式" class="headerlink" title="修改命令提示行的样式"></a>修改命令提示行的样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $PS1</div></pre></td></tr></table></figure>
+<p>再通过下图所示的shell提示符中使用的转义字符即可对shell提示符进行自己想要的修改命令:</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/shell%E6%8F%90%E7%A4%BA%E7%AC%A6.jpeg" alt=""></p>
+<h3 id="修改命令提示行的颜色"><a href="#修改命令提示行的颜色" class="headerlink" title="修改命令提示行的颜色"></a>修改命令提示行的颜色</h3><p>除了自定义命令行的显示类型外，还可以定义命令行的现实颜色，具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[0;41m\]&lt;[\w]\u@\h$:&gt;\[\033[0m\]&quot;</div></pre></td></tr></table></figure>
+<p>此命令可以将命令行的背景换为红色 更改<strong>41m</strong>可以将其换位其他颜色。</p>
+<h3 id="修改命令提示行的光标位置"><a href="#修改命令提示行的光标位置" class="headerlink" title="修改命令提示行的光标位置"></a>修改命令提示行的光标位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]&lt;[\w]\u@\h$:&gt;&quot;</div></pre></td></tr></table></figure>
+<p>此命令行的作用在每输入一行时，屏幕上方会出现一个红色的横条，横条中用黄色显示文本的时间。</p>
+<p>下方命令对应光标移动转移序列的对应关系：</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/shell%E5%91%BD%E4%BB%A4%E8%A1%8C22.jpeg" alt=""></p>
+<h3 id="保存命令行"><a href="#保存命令行" class="headerlink" title="保存命令行"></a>保存命令行</h3><p>要想把修改好的命令行永久的保存起来，就得把他存在某个地方，这里就是要存在.bashrc文件中。即将下列命令行添加到文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]&lt;[\w]\u@\h$:&gt;&quot;</div><div class="line">export PS1</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/15/Linux学习之：vi使用简介/" itemprop="url">
                   Linux学习之：vi使用简介
                 </a>
@@ -677,7 +792,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

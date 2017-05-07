@@ -291,6 +291,124 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/07/LeetCode-13-E-Roman-to-Integer/" itemprop="url">
+                  LeetCode 13. (E)Roman to Integer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-07T10:46:59+08:00" content="2017-05-07">
+              2017-05-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/07/LeetCode-13-E-Roman-to-Integer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/07/LeetCode-13-E-Roman-to-Integer/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题目是要给出一个罗马数字，然后将该罗马数字变成整数的过程。由罗马数字的组成规则可以得知，阿拉伯数字｛1，5，10，50，100，500，1000｝分别对应于罗马数字的{‘I’,’V’,’X’,’L’,’C’,’D’,’M’}。</p>
+<p>并且观察到罗马数字和阿拉伯数字转换的小规律为:</p>
+<p>IIV = 5 - 1 - 1 = (-1) + (-1) + 5 = 3</p>
+<p>VII = 5 + 1 + 1 = 7</p>
+<p>I在V前面并且I比V小，因此I被解释为负数。</p>
+<p>I在V后面并且I比V小，因此I被解释为正数。</p>
+<p>因此算法可以这样设计，一次把所有字符串扫描一遍，从第一个字符开始到最后一个字符。一次比较当前字符a和下一个字符b,如果a\<b那么就解释为a+b。如果a\>b那么就解释为a+b。</b那么就解释为a+b。如果a\></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">     <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> s)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">char</span> char_arr[] = &#123;<span class="string">'I'</span>,<span class="string">'V'</span>,<span class="string">'X'</span>,<span class="string">'L'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'M'</span>&#125;;</div><div class="line">        <span class="keyword">int</span> int_arr[] = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">50</span>,<span class="number">100</span>,<span class="number">500</span>,<span class="number">1000</span>&#125;;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; roman_map;</div><div class="line">        <span class="keyword">int</span> man_len = <span class="keyword">sizeof</span>(char_arr) / <span class="keyword">sizeof</span>(<span class="keyword">char</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; man_len ;i++)&#123;</div><div class="line">            roman_map.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;(char_arr[i],int_arr[i]));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length() - <span class="number">1</span>;i++)&#123;</div><div class="line">            <span class="keyword">if</span> (roman_map[s[i]] &gt;= roman_map[s[i + <span class="number">1</span>]])&#123;</div><div class="line">                sum += roman_map[s[i]];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (roman_map[s[i]] &lt; roman_map[s[i+<span class="number">1</span>]])&#123;</div><div class="line">                sum -= roman_map[s[i]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        sum += roman_map[s[s.length() - <span class="number">1</span>]];</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="STL容器之map"><a href="#STL容器之map" class="headerlink" title="STL容器之map:"></a>STL容器之map:</h4><p>map是C++的STL提供的一个很常用的键值对容器。在一一对应的数据结构中map很常用。下面对map的基本操作进行说明。</p>
+<h5 id="1-头文件"><a href="#1-头文件" class="headerlink" title="1.头文件"></a>1.头文件</h5><h1 id="include"><a href="#include" class="headerlink" title="include "></a>include <map></map></h1><h5 id="2-定义"><a href="#2-定义" class="headerlink" title="2.定义"></a>2.定义</h5><p>map<string,int> my_Map;</string,int></p>
+<h5 id="3-插入数据"><a href="#3-插入数据" class="headerlink" title="3.插入数据"></a>3.插入数据</h5><p>1.my_Map[“a”] = 1;</p>
+<p>2.my_Map.insert(map\<string,int\>::value_type(“b”,2));</string,int\></p>
+<p>3.my_Map.insert(pair\<string,int\>)(“c”,3));</string,int\></p>
+<p>4.my_Map.insert(make_pair\<string,int\>)(“d”,4);</string,int\></p>
+<h5 id="4-查找数据"><a href="#4-查找数据" class="headerlink" title="4.查找数据"></a>4.查找数据</h5><p>int i = my_Map[“a”];</p>
+<h5 id="5-删除数据"><a href="#5-删除数据" class="headerlink" title="5.删除数据"></a>5.删除数据</h5><p>my_Map.erase(my_Itr);</p>
+<h5 id="6-返回元素数目"><a href="#6-返回元素数目" class="headerlink" title="6.返回元素数目"></a>6.返回元素数目</h5>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/06/非线性支持向量机/" itemprop="url">
                   支持向量机-非线性支持向量机
                 </a>
@@ -800,7 +918,7 @@
               
                 
                 <a class="post-title-link" href="/2017/05/06/LeetCode-7-Reverse-Integer/" itemprop="url">
-                  LeetCode 7. Reverse Integer
+                  LeetCode 7. [E]Reverse Integer
                 </a>
               
             
@@ -910,7 +1028,7 @@
               
                 
                 <a class="post-title-link" href="/2017/05/03/LeetCode2/" itemprop="url">
-                  LeetCode 2.Add Two Numbers
+                  LeetCode [M]2.Add Two Numbers
                 </a>
               
             
@@ -1447,121 +1565,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/16/Linux学习之：定制shell提示符/" itemprop="url">
-                  Linux学习之：定制shell提示符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-16T09:47:27+08:00" content="2017-04-16">
-              2017-04-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/16/Linux学习之：定制shell提示符/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/16/Linux学习之：定制shell提示符/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在系统初始化提示符的时候，提示符的样子如下:</p>
-<p><strong>haoz@linux:~$</strong></p>
-<p>通过以下命令可以查到PS1的值</p>
-<h3 id="修改命令提示行的样式"><a href="#修改命令提示行的样式" class="headerlink" title="修改命令提示行的样式"></a>修改命令提示行的样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $PS1</div></pre></td></tr></table></figure>
-<p>再通过下图所示的shell提示符中使用的转义字符即可对shell提示符进行自己想要的修改命令:</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/shell%E6%8F%90%E7%A4%BA%E7%AC%A6.jpeg" alt=""></p>
-<h3 id="修改命令提示行的颜色"><a href="#修改命令提示行的颜色" class="headerlink" title="修改命令提示行的颜色"></a>修改命令提示行的颜色</h3><p>除了自定义命令行的显示类型外，还可以定义命令行的现实颜色，具体代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[0;41m\]&lt;[\w]\u@\h$:&gt;\[\033[0m\]&quot;</div></pre></td></tr></table></figure>
-<p>此命令可以将命令行的背景换为红色 更改<strong>41m</strong>可以将其换位其他颜色。</p>
-<h3 id="修改命令提示行的光标位置"><a href="#修改命令提示行的光标位置" class="headerlink" title="修改命令提示行的光标位置"></a>修改命令提示行的光标位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]&lt;[\w]\u@\h$:&gt;&quot;</div></pre></td></tr></table></figure>
-<p>此命令行的作用在每输入一行时，屏幕上方会出现一个红色的横条，横条中用黄色显示文本的时间。</p>
-<p>下方命令对应光标移动转移序列的对应关系：</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/shell%E5%91%BD%E4%BB%A4%E8%A1%8C22.jpeg" alt=""></p>
-<h3 id="保存命令行"><a href="#保存命令行" class="headerlink" title="保存命令行"></a>保存命令行</h3><p>要想把修改好的命令行永久的保存起来，就得把他存在某个地方，这里就是要存在.bashrc文件中。即将下列命令行添加到文件中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PS1=&quot;\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]&lt;[\w]\u@\h$:&gt;&quot;</div><div class="line">export PS1</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1607,7 +1610,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
