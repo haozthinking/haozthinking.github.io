@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 14.[E]Longest Common Prefix]]></title>
+      <url>%2F2017%2F05%2F09%2FLeetCode-14-E-Longest-Common-Prefix%2F</url>
+      <content type="text"><![CDATA[题目描述Write a function to find the longest common prefix string amongst an array of strings. 算法描述这个题是要给出一个string类型的vector，这个string的vector中有很多个string，我们要找出这些string的最长前缀。具体算法既从第一个字母开始，将他和下面的每一个字符串的该位上的字母进行比较，如果下面所有的字符串的该位上面的数字都一样，那么这个字母就是一个公共前缀。如果找到一个字母，他不是其中一个字符串中的一个，那么他就不属于公共前缀，我们在此就结束遍历，输出公共前缀即可。 代码实现123456789101112131415161718192021222324252627class Solution &#123;public: string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123; int min = INT_MAX; if(strs.size() == 0) return ""; for(int i = 0;i &lt; strs.size() ;i++)&#123; if (strs[i].length() &lt; min) min = strs[i].length(); &#125; if (min == 0) &#123; return ""; &#125; string result; int count = 0; for (int i = 0; i &lt; min; i++) &#123; int j = 0; count = 0; for (j = 0; j &lt; strs.size(); j++) &#123; if (strs[0][i] == strs[j][i]) &#123; count++; &#125; &#125; if (count == j) result += strs[0][i]; if (count != j) break; &#125; return result;&#125;&#125;; 补充在做题时，要充分考虑输入的所有情况，对其中一些比如说输入为空或者输入为0的情况也要做充分的考虑。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[LeetCode 1.[E] Two Sum]]></title>
+      <url>%2F2017%2F05%2F08%2FLeetCode-1-E-Two-Sum%2F</url>
+      <content type="text"><![CDATA[题目描述Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. 算法描述这道题输入一个vector\形式的数组并且输入一个目标，然后输出vector中两者相加的值等于这个目标，然后输出vector的脚标。本文先找到数组的第一个元素，然后利用目标减去第一个元素的值得到一个要查找的值，如果查找的值在该vector\中，则输出两个值的脚标，从而用这种方法来完成任务。 代码实现12345678910111213141516171819class Solution &#123;public: vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums,int target)&#123; map&lt;int,int&gt; int_map; vector&lt;int&gt; result; for(int i = 0; i &lt; nums.size() ;i++)&#123; int_map(nums[i]) = i; &#125; for(int i = 0; i &lt; nums.size() ;i++)&#123; int search = target - nums[i]; if(int_map.find(search) != int_map.end() &amp;&amp; int_map.at(search) != i)&#123; result.push_back(i); result.push_back(int_map(search)); break; &#125; &#125; return result;&#125;&#125;; 补充vector是一个很常用的容器，下面列出vector中的基本操作 12345678910111213141516171819202122(1)头文件#include&lt;vector&gt;.(2)创建vector对象，vector&lt;int&gt; vec;(3)尾部插入数字：vec.push_back(a);(4)使用下标访问元素，cout&lt;&lt;vec[0]&lt;&lt;endl;记住下标是从0开始的。(5)使用迭代器访问元素.vector&lt;int&gt;::iterator it;for(it=vec.begin();it!=vec.end();it++) cout&lt;&lt;*it&lt;&lt;endl;(6)插入元素： vec.insert(vec.begin()+i,a);在第i+1个元素前面插入a;(7)删除元素： vec.erase(vec.begin()+2);删除第3个元素vec.erase(vec.begin()+i,vec.end()+j);删除区间[i,j-1];区间从0开始(8)向量大小:vec.size();(9)清空:vec.clear();]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[LeetCode 12.[M]Integer to Roman]]></title>
       <url>%2F2017%2F05%2F08%2FLeetCode-12-M-Integer-to-Roman%2F</url>
       <content type="text"><![CDATA[题目描述Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999. 算法描述本题目要给出一个范围在1-3999之间的整数，然后将这个整数变为罗马数字。解这道题的突破口就在于要找准罗马数字的表示之间的关系。 由LeetCode 13可知，罗马数字的表示规则是”左减右加”,因此IV为-1+5=4，IX为-1+10=9.当时看完这个后，我就在想那么8怎么表示呢？当时我在考虑8是VIII还是IIX。最后查询后发现8的表示法为Vlll。 因此： I(1),V(5),X(10)为1－10中可能用到的三个字母； X(10),L(50),C(100)为10-100中可能用到的三个字母; C(100),D(500),M(1000)为100-1000中用到的三个字母； 只有进位前的那一位数字是往左边降位的，其余都是在右边升位的。 比如给出1-10的罗马数字： I,II,III,IV,V,VI,VII,VIII,IX,X 因此，用1，4，9，10就可以表示罗马数字。 代码实现1234567891011121314class Solution &#123;public: string intToRoman(int num)&#123; int n[] = &#123;1000,900,500,400,100,90,50,40,10,9,5,4,1&#125;; string r[] = &#123;"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"&#125;; string s = ""; for(int i = 0;num &gt; 0;num = num % n[i],i++)&#123; for(int j = 0,k = num / n[i];j &lt; k;j++)&#123; s += r[i]; &#125; &#125; return s;&#125;&#125;; 补充对于for循环。for(int i = 1;i &lt; 10;i++)其中i++得到的是本次循环后的输出值，下一次循环的时候的输入值。]]></content>
