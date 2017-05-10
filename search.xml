@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[LeetCode 83.[E] Remove Duplicates from Sorted List]]></title>
+      <url>%2F2017%2F05%2F10%2FLeetCode-83-E-Remove-Duplicates-from-Sorted-List%2F</url>
+      <content type="text"><![CDATA[题目描述Given a sorted linked list, delete all duplicates such that each element appear only once. For example,Given 1-&gt;1-&gt;2, return 1-&gt;2.Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3. 算法描述该题目的目的是去除掉重复元素，这里对给出的链表进行遍历，如果现在的链表所指向的值和链表下一位所指向的值相同，那么就讲现在的链表指向下一个值的下一个，依此类推，最后可以得出所要求的答案。 代码实现12345678910111213141516171819202122232425262728/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* deleteDuplicates(ListNode* head)&#123; if(head == NULL) return head; ListNode* p_current; ListNode* p_next; p_current = head; p_next = head -&gt; next; while(p_current &amp;&amp; p_next)&#123; if(p_current -&gt; val == p_next -&gt; val) &#123; p_current-&gt;next = p_next-&gt;next; &#125; else&#123; p_current = p_current -&gt; next; &#125; p_next = p_next -&gt; next; &#125; return head;&#125;&#125;; 补充充分考虑所有情况，比如在开始前就想好是不是输入为空或者0时会对最终结果会有影响。如果这里处理不好容易出现runtime error的错误。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[LeetCode 14.[E]Longest Common Prefix]]></title>
       <url>%2F2017%2F05%2F09%2FLeetCode-14-E-Longest-Common-Prefix%2F</url>
       <content type="text"><![CDATA[题目描述Write a function to find the longest common prefix string amongst an array of strings. 算法描述这个题是要给出一个string类型的vector，这个string的vector中有很多个string，我们要找出这些string的最长前缀。具体算法既从第一个字母开始，将他和下面的每一个字符串的该位上的字母进行比较，如果下面所有的字符串的该位上面的数字都一样，那么这个字母就是一个公共前缀。如果找到一个字母，他不是其中一个字符串中的一个，那么他就不属于公共前缀，我们在此就结束遍历，输出公共前缀即可。 代码实现123456789101112131415161718192021222324252627class Solution &#123;public: string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123; int min = INT_MAX; if(strs.size() == 0) return ""; for(int i = 0;i &lt; strs.size() ;i++)&#123; if (strs[i].length() &lt; min) min = strs[i].length(); &#125; if (min == 0) &#123; return ""; &#125; string result; int count = 0; for (int i = 0; i &lt; min; i++) &#123; int j = 0; count = 0; for (j = 0; j &lt; strs.size(); j++) &#123; if (strs[0][i] == strs[j][i]) &#123; count++; &#125; &#125; if (count == j) result += strs[0][i]; if (count != j) break; &#125; return result;&#125;&#125;; 补充在做题时，要充分考虑输入的所有情况，对其中一些比如说输入为空或者输入为0的情况也要做充分的考虑。]]></content>
