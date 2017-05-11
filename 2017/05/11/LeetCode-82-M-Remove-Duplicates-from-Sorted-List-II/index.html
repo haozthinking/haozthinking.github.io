@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,算法,数字," />
+  <meta name="keywords" content="LeetCode,算法,链表," />
 
 
 
@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="题目描述Given a roman numeral, convert it to an integer.
-Input is guaranteed to be within the range from 1 to 3999.
-算法描述本题目是要给出一个罗马数字，然后将该罗马数字变成整数的过程。由罗马数字的组成规则可以得知，阿拉伯数字｛1，5，10，50，100，500，1000｝分别对应于罗马数字的">
+<meta name="description" content="题目描述Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5, return 1-&amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 13. [E]Roman to Integer">
-<meta property="og:url" content="http://yoursite.com/2017/05/07/LeetCode-13-E-Roman-to-Integer/index.html">
+<meta property="og:title" content="82.[M] Remove Duplicates from Sorted List II">
+<meta property="og:url" content="http://yoursite.com/2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="题目描述Given a roman numeral, convert it to an integer.
-Input is guaranteed to be within the range from 1 to 3999.
-算法描述本题目是要给出一个罗马数字，然后将该罗马数字变成整数的过程。由罗马数字的组成规则可以得知，阿拉伯数字｛1，5，10，50，100，500，1000｝分别对应于罗马数字的">
-<meta property="og:updated_time" content="2017-05-08T07:04:45.000Z">
+<meta property="og:description" content="题目描述Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5, return 1-&amp;g">
+<meta property="og:updated_time" content="2017-05-11T03:01:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 13. [E]Roman to Integer">
-<meta name="twitter:description" content="题目描述Given a roman numeral, convert it to an integer.
-Input is guaranteed to be within the range from 1 to 3999.
-算法描述本题目是要给出一个罗马数字，然后将该罗马数字变成整数的过程。由罗马数字的组成规则可以得知，阿拉伯数字｛1，5，10，50，100，500，1000｝分别对应于罗马数字的">
+<meta name="twitter:title" content="82.[M] Remove Duplicates from Sorted List II">
+<meta name="twitter:description" content="题目描述Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5, return 1-&amp;g">
 
 
 
@@ -120,9 +117,9 @@ Input is guaranteed to be within the range from 1 to 3999.
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/07/LeetCode-13-E-Roman-to-Integer/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/"/>
 
-  <title> LeetCode 13. [E]Roman to Integer | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 82.[M] Remove Duplicates from Sorted List II | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +292,7 @@ Input is guaranteed to be within the range from 1 to 3999.
             
             
               
-                LeetCode 13. [E]Roman to Integer
+                82.[M] Remove Duplicates from Sorted List II
               
             
           </h1>
@@ -307,8 +304,8 @@ Input is guaranteed to be within the range from 1 to 3999.
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-07T10:46:59+08:00" content="2017-05-07">
-              2017-05-07
+            <time itemprop="dateCreated" datetime="2017-05-11T09:27:16+08:00" content="2017-05-11">
+              2017-05-11
             </time>
           </span>
 
@@ -318,8 +315,8 @@ Input is guaranteed to be within the range from 1 to 3999.
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/07/LeetCode-13-E-Roman-to-Integer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/07/LeetCode-13-E-Roman-to-Integer/" itemprop="commentsCount"></span>
+                <a href="/2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,25 +339,15 @@ Input is guaranteed to be within the range from 1 to 3999.
       
 
       
-        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a roman numeral, convert it to an integer.</p>
-<p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题目是要给出一个罗马数字，然后将该罗马数字变成整数的过程。由罗马数字的组成规则可以得知，阿拉伯数字｛1，5，10，50，100，500，1000｝分别对应于罗马数字的{‘I’,’V’,’X’,’L’,’C’,’D’,’M’}。</p>
-<p>并且观察到罗马数字和阿拉伯数字转换的小规律为:</p>
-<p>IIV = 5 - 1 - 1 = (-1) + (-1) + 5 = 3</p>
-<p>VII = 5 + 1 + 1 = 7</p>
-<p>I在V前面并且I比V小，因此I被解释为负数。</p>
-<p>I在V后面并且I比V小，因此I被解释为正数。</p>
-<p>因此算法可以这样设计，一次把所有字符串扫描一遍，从第一个字符开始到最后一个字符。一次比较当前字符a和下一个字符b,如果a\<b那么就解释为a+b。如果a\>b那么就解释为a+b。</b那么就解释为a+b。如果a\></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">     <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> s)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">char</span> char_arr[] = &#123;<span class="string">'I'</span>,<span class="string">'V'</span>,<span class="string">'X'</span>,<span class="string">'L'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'M'</span>&#125;;</div><div class="line">        <span class="keyword">int</span> int_arr[] = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">50</span>,<span class="number">100</span>,<span class="number">500</span>,<span class="number">1000</span>&#125;;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; roman_map;</div><div class="line">        <span class="keyword">int</span> man_len = <span class="keyword">sizeof</span>(char_arr) / <span class="keyword">sizeof</span>(<span class="keyword">char</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; man_len ;i++)&#123;</div><div class="line">            roman_map.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;(char_arr[i],int_arr[i]));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length() - <span class="number">1</span>;i++)&#123;</div><div class="line">            <span class="keyword">if</span> (roman_map[s[i]] &gt;= roman_map[s[i + <span class="number">1</span>]])&#123;</div><div class="line">                sum += roman_map[s[i]];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (roman_map[s[i]] &lt; roman_map[s[i+<span class="number">1</span>]])&#123;</div><div class="line">                sum -= roman_map[s[i]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        sum += roman_map[s[s.length() - <span class="number">1</span>]];</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="STL容器之map"><a href="#STL容器之map" class="headerlink" title="STL容器之map:"></a>STL容器之map:</h4><p>map是C++的STL提供的一个很常用的键值对容器。在一一对应的数据结构中map很常用。下面对map的基本操作进行说明。</p>
-<h5 id="1-头文件"><a href="#1-头文件" class="headerlink" title="1.头文件"></a>1.头文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#include &lt;map&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-定义"><a href="#2-定义" class="headerlink" title="2.定义"></a>2.定义</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map&lt;string,int&gt; my_Map;</div></pre></td></tr></table></figure>
-<h5 id="3-插入数据"><a href="#3-插入数据" class="headerlink" title="3.插入数据"></a>3.插入数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1.my_Map[&quot;a&quot;] = 1;</div><div class="line"></div><div class="line">2.my_Map.insert(map\&lt;string,int\&gt;::value_type(&quot;b&quot;,2));</div><div class="line"></div><div class="line">3.my_Map.insert(pair\&lt;string,int\&gt;)(&quot;c&quot;,3));</div><div class="line"></div><div class="line">4.my_Map.insert(make_pair\&lt;string,int\&gt;)(&quot;d&quot;,4);</div></pre></td></tr></table></figure>
-<h5 id="4-查找数据"><a href="#4-查找数据" class="headerlink" title="4.查找数据"></a>4.查找数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int i = my_Map[&quot;a&quot;];</div></pre></td></tr></table></figure>
-<h5 id="5-删除数据"><a href="#5-删除数据" class="headerlink" title="5.删除数据"></a>5.删除数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_Map.erase(my_Itr);</div></pre></td></tr></table></figure>
-<h5 id="6-返回元素数目-6-返回元素数目"><a href="#6-返回元素数目-6-返回元素数目" class="headerlink" title="6.返回元素数目##### 6.返回元素数目"></a>6.返回元素数目##### 6.返回元素数目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_Map.size()</div></pre></td></tr></table></figure>
-<h5 id="7-判断是否为空"><a href="#7-判断是否为空" class="headerlink" title="7.判断是否为空"></a>7.判断是否为空</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_Map.empty()</div></pre></td></tr></table></figure>
-<h5 id="8-清空所有元素"><a href="#8-清空所有元素" class="headerlink" title="8.清空所有元素"></a>8.清空所有元素</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">my_Map.clear()</div></pre></td></tr></table></figure>
+        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only <em>distinct</em> numbers from the original list.</p>
+<p>For example,<br>Given <code>1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5</code>, return <code>1-&gt;2-&gt;5</code>.<br>Given <code>1-&gt;1-&gt;1-&gt;2-&gt;3</code>, return <code>2-&gt;3</code>.</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这道题和83题不一样，这道题不仅仅要删除重复的数字，而是只要是重复的数字都要被删去。</p>
+<p>下面用递归和非递归两种办法对该题目进行描述。(递归算法真的好奇妙！)</p>
+<h4 id="解法一非递归算法"><a href="#解法一非递归算法" class="headerlink" title="解法一非递归算法"></a>解法一非递归算法</h4><p>非递归解法除了除了next结点外,还要建立一个在现在结点前的结点last。遍历结点，如果现在结点的值和下一结点的值不相同，则前一结点的下一个值向下移动。如果现在结点的值和下一结点的不相同，则只移动现在结点和下一结点，直到遇到下次两结点值不相同的时候，再移动last结点。最后既可完成。</p>
+<h4 id="解法二递归算法"><a href="#解法二递归算法" class="headerlink" title="解法二递归算法"></a>解法二递归算法</h4><p>果第一个结点和第二个结点不一样，则第一个结点可以直接作为新链表的头结点，后面继续删除重复的过程；如果第一个结点和第二个结点相同，则需要继续遍历，直到找到第一个与第一个结点不同的结点作为新链表的头结点，如果找不到，说明链表所有结点元素都一样，新链表为NULL，否则从新的头结点出发，继续删除重复的过程。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="解法一非递归算法-1"><a href="#解法一非递归算法-1" class="headerlink" title="解法一非递归算法"></a>解法一非递归算法</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">    ListNode *p_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    p_head-&gt;next = head;</div><div class="line">    ListNode *p_last;</div><div class="line">    p_last = p_head;</div><div class="line">    ListNode *p_current;</div><div class="line">    ListNode *p_next;</div><div class="line">    p_current = p_last-&gt;next;</div><div class="line">    p_next = p_current-&gt;next;</div><div class="line">    <span class="keyword">while</span> (p_next) &#123;</div><div class="line">        <span class="keyword">if</span> (p_next-&gt;val != p_current-&gt;val) &#123;</div><div class="line">            <span class="keyword">if</span> (p_last-&gt;next == p_current) p_last = p_current;</div><div class="line">            <span class="keyword">else</span> p_last-&gt;next = p_current-&gt;next;</div><div class="line">        &#125;</div><div class="line">        p_current = p_current-&gt;next;</div><div class="line">        p_next = p_next-&gt;next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (p_last-&gt;next != p_current) p_last-&gt;next = p_current-&gt;next;</div><div class="line">    <span class="keyword">return</span> p_head -&gt; next;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="解法二递归算法-1"><a href="#解法二递归算法-1" class="headerlink" title="解法二递归算法"></a>解法二递归算法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head -&gt; next == <span class="literal">NULL</span>)&#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">    ListNode* p = head -&gt; next;</div><div class="line">    <span class="keyword">if</span> (p -&gt; val != head -&gt; val)&#123;</div><div class="line">        head -&gt; next = deleteDuplicates(p);</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">while</span> (p &amp;&amp; p-&gt;val == head-&gt;val) p = p-&gt;next;</div><div class="line">        <span class="keyword">return</span> deleteDuplicates(p);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -407,7 +394,7 @@ Input is guaranteed to be within the range from 1 to 3999.
           
             <a href="/tags/算法/" rel="tag">#算法</a>
           
-            <a href="/tags/数字/" rel="tag">#数字</a>
+            <a href="/tags/链表/" rel="tag">#链表</a>
           
         </div>
       
@@ -416,17 +403,13 @@ Input is guaranteed to be within the range from 1 to 3999.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/06/非线性支持向量机/" rel="next" title="支持向量机-非线性支持向量机">
-                <i class="fa fa-chevron-left"></i> 支持向量机-非线性支持向量机
+              <a href="/2017/05/10/LeetCode-83-E-Remove-Duplicates-from-Sorted-List/" rel="next" title="LeetCode 83.[E] Remove Duplicates from Sorted List">
+                <i class="fa fa-chevron-left"></i> LeetCode 83.[E] Remove Duplicates from Sorted List
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/08/LeetCode-12-M-Integer-to-Roman/" rel="prev" title="LeetCode 12.[M]Integer to Roman">
-                LeetCode 12.[M]Integer to Roman <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -475,8 +458,8 @@ Input is guaranteed to be within the range from 1 to 3999.
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/07/LeetCode-13-E-Roman-to-Integer/"
-           data-title="LeetCode 13. [E]Roman to Integer" data-url="http://yoursite.com/2017/05/07/LeetCode-13-E-Roman-to-Integer/">
+      <div class="ds-thread" data-thread-key="2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/"
+           data-title="82.[M] Remove Duplicates from Sorted List II" data-url="http://yoursite.com/2017/05/11/LeetCode-82-M-Remove-Duplicates-from-Sorted-List-II/">
       </div>
     
   </div>
@@ -560,7 +543,7 @@ Input is guaranteed to be within the range from 1 to 3999.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#STL容器之map"><span class="nav-number">4.1.</span> <span class="nav-text">STL容器之map:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-头文件"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.头文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-定义"><span class="nav-number">4.1.2.</span> <span class="nav-text">2.定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-插入数据"><span class="nav-number">4.1.3.</span> <span class="nav-text">3.插入数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-查找数据"><span class="nav-number">4.1.4.</span> <span class="nav-text">4.查找数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-删除数据"><span class="nav-number">4.1.5.</span> <span class="nav-text">5.删除数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-返回元素数目-6-返回元素数目"><span class="nav-number">4.1.6.</span> <span class="nav-text">6.返回元素数目##### 6.返回元素数目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-判断是否为空"><span class="nav-number">4.1.7.</span> <span class="nav-text">7.判断是否为空</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-清空所有元素"><span class="nav-number">4.1.8.</span> <span class="nav-text">8.清空所有元素</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法一非递归算法"><span class="nav-number">2.1.</span> <span class="nav-text">解法一非递归算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法二递归算法"><span class="nav-number">2.2.</span> <span class="nav-text">解法二递归算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法一非递归算法-1"><span class="nav-number">3.1.</span> <span class="nav-text">解法一非递归算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法二递归算法-1"><span class="nav-number">4.</span> <span class="nav-text">解法二递归算法</span></a></li></ol></div>
             
           </div>
         </section>
