@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,算法,链表," />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -84,22 +84,27 @@
 
 
 
-<meta name="description" content="题目描述Write a program to find the node at which the intersection of two singly linked lists begins.
-For example, the following two linked lists:
-12345A:          a1 → a2                   ↘">
+<meta name="description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:
+
+(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}
+(2)f(x)=F^{&apos;}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 160.[E] Intersection of Two Linked Lists">
-<meta property="og:url" content="http://yoursite.com/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/index.html">
+<meta property="og:title" content="Logistic回归">
+<meta property="og:url" content="http://yoursite.com/2017/05/14/Logistic回归/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="题目描述Write a program to find the node at which the intersection of two singly linked lists begins.
-For example, the following two linked lists:
-12345A:          a1 → a2                   ↘">
-<meta property="og:updated_time" content="2017-05-12T07:44:05.000Z">
+<meta property="og:description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:
+
+(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}
+(2)f(x)=F^{&apos;}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-">
+<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg">
+<meta property="og:updated_time" content="2017-05-14T13:39:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 160.[E] Intersection of Two Linked Lists">
-<meta name="twitter:description" content="题目描述Write a program to find the node at which the intersection of two singly linked lists begins.
-For example, the following two linked lists:
-12345A:          a1 → a2                   ↘">
+<meta name="twitter:title" content="Logistic回归">
+<meta name="twitter:description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:
+
+(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}
+(2)f(x)=F^{&apos;}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-">
+<meta name="twitter:image" content="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg">
 
 
 
@@ -120,9 +125,9 @@ For example, the following two linked lists:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/14/Logistic回归/"/>
 
-  <title> LeetCode 160.[E] Intersection of Two Linked Lists | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Logistic回归 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +300,7 @@ For example, the following two linked lists:
             
             
               
-                LeetCode 160.[E] Intersection of Two Linked Lists
+                Logistic回归
               
             
           </h1>
@@ -307,8 +312,8 @@ For example, the following two linked lists:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-12T13:51:47+08:00" content="2017-05-12">
-              2017-05-12
+            <time itemprop="dateCreated" datetime="2017-05-14T21:35:56+08:00" content="2017-05-14">
+              2017-05-14
             </time>
           </span>
 
@@ -318,8 +323,8 @@ For example, the following two linked lists:
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/" itemprop="commentsCount"></span>
+                <a href="/2017/05/14/Logistic回归/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/14/Logistic回归/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,21 +347,37 @@ For example, the following two linked lists:
       
 
       
-        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
-<p>For example, the following two linked lists:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A:          a1 → a2</div><div class="line">                   ↘</div><div class="line">                     c1 → c2 → c3</div><div class="line">                   ↗            </div><div class="line">B:     b1 → b2 → b3</div></pre></td></tr></table></figure>
-<p>begin to intersect at node c1.</p>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>If the two linked lists have no intersection at all, return <code>null</code>.</li>
-<li>The linked lists must retain their original structure after the function returns.</li>
-<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
-<li>Your code should preferably run in O(n) time and use only O(1) memory</li>
-</ul>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题目思路比较简单，先求出两个链表的长度，设为a_len和b_len我们这里认为长的为a_len(如果b更长，则交换a和b)然后先把长链表空转到和短链表一样的长度。然后等到他们的长度一样长了，然后分别比较其后的每一个结点。直到比较的两者相等，返回相等的结点。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(headA == <span class="literal">NULL</span> || headB == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    ListNode *p_a = headA;</div><div class="line">    ListNode *p_aa = headA;</div><div class="line">    ListNode *p_b = headB;</div><div class="line">    ListNode *p_bb = headB;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> a_len = <span class="number">0</span>,b_len = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(p_aa)&#123;</div><div class="line">        a_len++;</div><div class="line">        p_aa = p_aa -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(p_bb)&#123;</div><div class="line">        b_len++;</div><div class="line">        p_bb = p_bb -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(b_len &gt; a_len)&#123;</div><div class="line">        swap(p_a,p_b);</div><div class="line">        swap(a_len,b_len);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; a_len - b_len ;i++)&#123;</div><div class="line">        p_a = p_a -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(p_a)&#123;</div><div class="line">        <span class="keyword">if</span>(p_a == p_b) <span class="keyword">return</span> p_a;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            p_a = p_a -&gt; next;</div><div class="line">            p_b = p_b -&gt; next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>这里补充一下求取链表长度的方法，这种方法在不少的题目里面都能用到。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a_len = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(p_aa)&#123;</div><div class="line">        a_len++;</div><div class="line">        p_aa = p_aa -&gt; next;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+        <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:</p>
+<script type="math/tex; mode=display">
+(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}</script><script type="math/tex; mode=display">
+(2)f(x)=F^{'}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}</script><p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg" alt=""></p>
+<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:</p>
+<script type="math/tex; mode=display">
+(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}</script><script type="math/tex; mode=display">
+(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}</script><p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
+<p>对于给定的输入序列$x$ 按照上面两式可以求得$P(Y=1|x)$以及$P(Y=0|x)$,然后再比较两者的大小，比较之后就可以将$x$分到概率值较大的那个类，进而完成了分类操作。</p>
+<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:</p>
+<script type="math/tex; mode=display">
+(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}</script><script type="math/tex; mode=display">
+(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}</script><p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
+<script type="math/tex; mode=display">
+logit(p)=log\frac{p}{1-p}</script><p>对于logistic回归来说，其对数几率为：</p>
+<script type="math/tex; mode=display">
+\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x</script><p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设</p>
+<script type="math/tex; mode=display">
+P(Y=1|x)=\pi(x),</script><script type="math/tex; mode=display">
+P(Y=0|x)=1-\pi(x),</script><p>那么其似然函数为:</p>
+<script type="math/tex; mode=display">
+\prod\_{i=1}^N[\pi(x\_i)]^{y\_i}[1-\pi(x\_i)]^{1-y\_i}</script><p>其对数似然为:</p>
+<script type="math/tex; mode=display">
+L(w)=\sum\_{i=1}^N[y\_ilog\pi(x\_i)+(1-y\_i)log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
+=\sum\_{i=1}^N[y\_ilog\frac{\pi(x\_i)}{1-\pi(x\_i)}+log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
+=\sum\_{i=1}^N[y\_i(w\_i\cdot x\_i)-log(1+exp(w\cdot x\_i))]</script><p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
+<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:</p>
+<script type="math/tex; mode=display">
+P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script><p>二项logisitic回归的方法可以用于多项logisitic回归。</p>
 
       
     </div>
@@ -400,11 +421,7 @@ For example, the following two linked lists:
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
-          
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
-            <a href="/tags/链表/" rel="tag">#链表</a>
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
           
         </div>
       
@@ -413,17 +430,13 @@ For example, the following two linked lists:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/12/LeetCode-86-M-Partition-List/" rel="next" title="LeetCode 86.[M] Partition List">
-                <i class="fa fa-chevron-left"></i> LeetCode 86.[M] Partition List
+              <a href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" rel="next" title="LeetCode 5. Longest Palindromic Substring ">
+                <i class="fa fa-chevron-left"></i> LeetCode 5. Longest Palindromic Substring 
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/13/LeetCode-21-E-Merge-Two-Sorted-Lists/" rel="prev" title="LeetCode 21.[E] Merge Two Sorted Lists">
-                LeetCode 21.[E] Merge Two Sorted Lists <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,8 +485,8 @@ For example, the following two linked lists:
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/"
-           data-title="LeetCode 160.[E] Intersection of Two Linked Lists" data-url="http://yoursite.com/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/">
+      <div class="ds-thread" data-thread-key="2017/05/14/Logistic回归/"
+           data-title="Logistic回归" data-url="http://yoursite.com/2017/05/14/Logistic回归/">
       </div>
     
   </div>
@@ -557,7 +570,7 @@ For example, the following two linked lists:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic回归模型"><span class="nav-number">1.</span> <span class="nav-text">logistic回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#logistic回归分布"><span class="nav-number">1.1.</span> <span class="nav-text">logistic回归分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项logistic回归模型"><span class="nav-number">1.2.</span> <span class="nav-text">二项logistic回归模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.3.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项logistic回归"><span class="nav-number">1.4.</span> <span class="nav-text">多项logistic回归</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
