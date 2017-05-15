@@ -291,6 +291,307 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/03/LeetCode-2-[M]Add Two Numbers/" itemprop="url">
+                  LeetCode 2.[M]Add Two Numbers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-03T16:20:17+08:00" content="2017-05-03">
+              2017-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/03/LeetCode-2-[M]Add Two Numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/LeetCode-2-[M]Add Two Numbers/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Input:</strong> (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>Output:</strong> 7 -&gt; 0 -&gt; 8</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题目的意思是给出两个非空的链表，对两个链表进行相加，之后返回相加的值，值得注意的是这两个非空的链表为逆序的，其第一位表示个位。正如上面例子所给，即为342 + 465 ＝ 807。</p>
+<h4 id="C-版本1"><a href="#C-版本1" class="headerlink" title="C++版本1"></a>C++版本1</h4><p>C++ 版本1的代码即为最原始的思路，即把其分为四种情况，分别是L1和L2均不为空，L1为空L2不为空，L2为空L1不为空和进位不为。再对每种情况进行观察。最终得到的结果。</p>
+<h4 id="C-版本2"><a href="#C-版本2" class="headerlink" title="C++版本2"></a>C++版本2</h4><p>c++版本2的代码构建了一个while循环，在循环内部先测试L1,若L1不为空则将L1的值加入，加入后再指向下一个L1的值。L2同L1,经历一次后即可得到一个数位p -&gt; var。之后再将计算进位的值，进行下一轮。</p>
+<h3 id="完成代码"><a href="#完成代码" class="headerlink" title="完成代码"></a>完成代码</h3><h4 id="C-版本1-1"><a href="#C-版本1-1" class="headerlink" title="C++版本1"></a>C++版本1</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">class</span> Solution&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">addTwoNumbers</span><span class="params">(ListNode *l1,ListNode *l2)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(!l1) <span class="keyword">return</span> l2;</div><div class="line">        <span class="keyword">if</span>(!l2) <span class="keyword">return</span> l1;</div><div class="line">        </div><div class="line">        ListNode *head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode *ret = head;</div><div class="line">        ListNode *p = head;</div><div class="line">        <span class="keyword">int</span> nCarry = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l1 &amp;&amp; l2)&#123;</div><div class="line">            <span class="keyword">int</span> a = l1 -&gt; val;</div><div class="line">            <span class="keyword">int</span> b = l2 -&gt; val;</div><div class="line">            <span class="keyword">int</span> c = a + b + nCarry;</div><div class="line">            nCarry = c / <span class="number">10</span>;</div><div class="line">            p -&gt; next = <span class="keyword">new</span> ListNode(c % <span class="number">10</span>);</div><div class="line">            p = p -&gt; next;</div><div class="line">            l1 = l1 -&gt; next;</div><div class="line">            l2 = l2 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l1)&#123;</div><div class="line">            <span class="keyword">int</span> a = l1 -&gt; val;</div><div class="line">            <span class="keyword">int</span> b = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> c = a + b + nCarry;</div><div class="line">            nCarry = c / <span class="number">10</span>;</div><div class="line">            p -&gt; next = <span class="keyword">new</span> ListNode(c % <span class="number">10</span>);</div><div class="line">            p = p -&gt; next;</div><div class="line">            l1 = l1 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l2)&#123;</div><div class="line">            <span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> b = l2 -&gt; val;</div><div class="line">            <span class="keyword">int</span> c = b + nCarry;</div><div class="line">            nCarry = c / <span class="number">10</span>;</div><div class="line">            p -&gt; next = <span class="keyword">new</span> ListNode(c % <span class="number">10</span>);</div><div class="line">            p = p -&gt; next;</div><div class="line">            l2 = l2 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(nCarry)&#123;</div><div class="line">            p -&gt; next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">            nCarry = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ret = ret -&gt; next;</div><div class="line">        <span class="keyword">delete</span> head;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">        &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="C-版本2-1"><a href="#C-版本2-1" class="headerlink" title="C++版本2"></a>C++版本2</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">addTwoNumbers</span><span class="params">(ListNode *l1,ListNode *l2)</span></span>&#123;</div><div class="line">    ListNode *head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode *p = head;</div><div class="line">    <span class="keyword">int</span> nCarry = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(l1)&#123;</div><div class="line">            nCarry += l1 -&gt; val;</div><div class="line">            l1 = l1 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(l2)&#123;</div><div class="line">            nCarry += l2 -&gt; val;</div><div class="line">            l2 = l2 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        p -&gt; val = nCarry % <span class="number">10</span>;</div><div class="line">        nCarry /= <span class="number">10</span>;</div><div class="line">        <span class="keyword">if</span>(l1 != <span class="literal">NULL</span> || l2 != <span class="literal">NULL</span> || nCarry != <span class="number">0</span>)&#123;</div><div class="line">            p = (p -&gt; next = <span class="keyword">new</span> ListNode(<span class="number">0</span>));  </div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="Java版本"><a href="#Java版本" class="headerlink" title="Java版本"></a>Java版本</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(l1 == <span class="keyword">null</span> &amp;&amp; l2 == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">            </div><div class="line">        ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode point = head;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> &amp;&amp; l2!=<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">int</span> sum = carry + l1.val + l2.val;</div><div class="line">            point.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">            carry = sum / <span class="number">10</span>;</div><div class="line">            l1 = l1.next;</div><div class="line">            l2 = l2.next;</div><div class="line">            point = point.next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">int</span> sum =  carry + l1.val;</div><div class="line">            point.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">            carry = sum /<span class="number">10</span>;</div><div class="line">            l1 = l1.next;</div><div class="line">            point = point.next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l2 != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">int</span> sum =  carry + l2.val;</div><div class="line">            point.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</div><div class="line">            carry = sum /<span class="number">10</span>;</div><div class="line">            l2 = l2.next;</div><div class="line">            point = point.next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (carry != <span class="number">0</span>) &#123;</div><div class="line">            point.next = <span class="keyword">new</span> ListNode(carry);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="python版本"><a href="#python版本" class="headerlink" title="python版本"></a>python版本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1, l2)</span>:</span></div><div class="line">        head = ListNode(<span class="number">0</span>)</div><div class="line">        ptr = head</div><div class="line">        carry  = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">if</span> l1 != <span class="keyword">None</span>:</div><div class="line">                carry += l1.val</div><div class="line">                l1 = l1.next</div><div class="line">            <span class="keyword">if</span> l2 != <span class="keyword">None</span>:</div><div class="line">                carry += l2.val</div><div class="line">                l2 = l2.next</div><div class="line">            ptr.val = carry % <span class="number">10</span></div><div class="line">            carry /= <span class="number">10</span></div><div class="line">            <span class="keyword">if</span> l1 != <span class="keyword">None</span> <span class="keyword">or</span> l2 != <span class="keyword">None</span> <span class="keyword">or</span> carry != <span class="number">0</span>:</div><div class="line">                ptr.next = ListNode(<span class="number">0</span>)</div><div class="line">                ptr = ptr.next</div><div class="line">            <span class="keyword">else</span>: </div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">return</span> head</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/20/hello/" itemprop="url">
+                  Linux学习之软件包管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-20T17:29:27+08:00" content="2017-04-20">
+              2017-04-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/20/hello/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/hello/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="软件包系统"><a href="#软件包系统" class="headerlink" title="软件包系统"></a>软件包系统</h3><p>linux系统主流软件包系统类，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">软件包系统</th>
+<th style="text-align:center">发行版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian类(.deb技术)</td>
+<td style="text-align:center">Debian、Ubuntu等</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat类(.rpm技术)</td>
+<td style="text-align:center">Red Hat、CentOS等</td>
+</tr>
+<tr>
+<td style="text-align:center">其他</td>
+<td style="text-align:center">其他</td>
+</tr>
+</tbody>
+</table>
+<h3 id="软件包系统工具"><a href="#软件包系统工具" class="headerlink" title="软件包系统工具"></a>软件包系统工具</h3><p>低级下载工具和高级下载工具的区别，对于低级下载工具来说。他并不是从库源下载来的，所以他并不会处理依赖问题，当dpkg过程中发现缺少依赖包的情况，那么就会报错。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">发行版本</th>
+<th style="text-align:center">低级下载工具</th>
+<th style="text-align:center">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian类</td>
+<td style="text-align:center">dpkg</td>
+<td style="text-align:center">apt-get、aptitude</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat类</td>
+<td style="text-align:center">rpm</td>
+<td style="text-align:center">yum</td>
+</tr>
+</tbody>
+</table>
+<p>软件包常用命令(以Debian类为例，因为常使用的版本为ubuntu)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">查找软件包</td>
+<td style="text-align:center">apt-cache search search_string</td>
+</tr>
+<tr>
+<td style="text-align:center">安装软件包</td>
+<td style="text-align:center">apt-get install package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">安装软件包文件中的软件包</td>
+<td style="text-align:center">dpkg —install package_file</td>
+</tr>
+<tr>
+<td style="text-align:center">删除软件包</td>
+<td style="text-align:center">apt-get remove package_name;</td>
+</tr>
+<tr>
+<td style="text-align:center">移除软件包(比删除更加彻底)</td>
+<td style="text-align:center">apt-get purge package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">更新软件包</td>
+<td style="text-align:center">apt-get update(upgrade)</td>
+</tr>
+<tr>
+<td style="text-align:center">列出软件包命令</td>
+<td style="text-align:center">dpkg —list</td>
+</tr>
+<tr>
+<td style="text-align:center">判断是否安装命令</td>
+<td style="text-align:center">dpkg —status package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">显示安装包相关信息</td>
+<td style="text-align:center">apt-cache show package_name`</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/20/利用python把几个词语的某一位变为大写/" itemprop="url">
                   利用python把几个词语的某一位变为大写
                 </a>
@@ -1050,7 +1351,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

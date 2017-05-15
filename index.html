@@ -291,6 +291,211 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses-1/" itemprop="url">
+                  LeetCode 32.[H] Longest Valid Parentheses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-15T11:24:47+08:00" content="2017-05-15">
+              2017-05-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" itemprop="url">
+                  LeetCode 32.[H] Longest Valid Parentheses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-15T11:24:32+08:00" content="2017-05-15">
+              2017-05-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###题目描述</p>
+<p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, find the length of the longest valid (well-formed) parentheses substring.</p>
+<p>For <code>&quot;(()&quot;</code>, the longest valid parentheses substring is <code>&quot;()&quot;</code>, which has length = 2.</p>
+<p>Another example is <code>&quot;)()())&quot;</code>, where the longest valid parentheses substring is <code>&quot;()()&quot;</code>, which has length = 4.</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这是第一道用到栈这种数据结构。这道题很巧妙的用压栈压入序号数字的手段进行压栈,并对之后的所有符号进行遍历，如果右括号左边没有左括号的情况下就把该右括号当作开始值。而如果右括号左边还有左括号的情况下就用现在的值减去栈顶值最后就得到了想要的值。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> size = s.length();</div><div class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; a;</div><div class="line">    <span class="keyword">int</span> answer = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> start = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size ;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) a.push(i);</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(a.empty())&#123;</div><div class="line">                start = i;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                a.pop();</div><div class="line">                <span class="keyword">if</span>(a.empty()) answer = max(answer,i - start);</div><div class="line">                <span class="keyword">else</span> answer = max(answer,i - a.top());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> answer;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/14/Logistic回归/" itemprop="url">
                   Logistic回归
                 </a>
@@ -342,37 +547,28 @@
       
         
           
-            <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:</p>
-<script type="math/tex; mode=display">
-(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}</script><script type="math/tex; mode=display">
-(2)f(x)=F^{'}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}</script><p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
+            <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:<br>$$<br>(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}<br>$$</p>
+<p>$$<br>(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}<br>$$</p>
+<p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg" alt=""></p>
-<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:</p>
-<script type="math/tex; mode=display">
-(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}</script><script type="math/tex; mode=display">
-(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}</script><p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
+<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:<br>$$<br>(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}<br>$$</p>
+<p>$$<br>(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}<br>$$</p>
+<p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
 <p>对于给定的输入序列$x$ 按照上面两式可以求得$P(Y=1|x)$以及$P(Y=0|x)$,然后再比较两者的大小，比较之后就可以将$x$分到概率值较大的那个类，进而完成了分类操作。</p>
-<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:</p>
-<script type="math/tex; mode=display">
-(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}</script><script type="math/tex; mode=display">
-(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}</script><p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
-<script type="math/tex; mode=display">
-logit(p)=log\frac{p}{1-p}</script><p>对于logistic回归来说，其对数几率为：</p>
-<script type="math/tex; mode=display">
-\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x</script><p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
-<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设</p>
-<script type="math/tex; mode=display">
-P(Y=1|x)=\pi(x),</script><script type="math/tex; mode=display">
-P(Y=0|x)=1-\pi(x),</script><p>那么其似然函数为:</p>
-<script type="math/tex; mode=display">
-\prod\_{i=1}^N[\pi(x\_i)]^{y\_i}[1-\pi(x\_i)]^{1-y\_i}</script><p>其对数似然为:</p>
-<script type="math/tex; mode=display">
-L(w)=\sum\_{i=1}^N[y\_ilog\pi(x\_i)+(1-y\_i)log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
-=\sum\_{i=1}^N[y\_ilog\frac{\pi(x\_i)}{1-\pi(x\_i)}+log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
-=\sum\_{i=1}^N[y\_i(w\_i\cdot x\_i)-log(1+exp(w\cdot x\_i))]</script><p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
-<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:</p>
-<script type="math/tex; mode=display">
-P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script><p>二项logisitic回归的方法可以用于多项logisitic回归。</p>
+<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:<br>$$<br>(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}<br>$$</p>
+<p>$$<br>(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}<br>$$</p>
+<p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
+<p>$$<br>logit(p)=log\frac{p}{1-p}<br>$$</p>
+<p>对于logistic回归来说，其对数几率为：</p>
+<p>$$<br>\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x<br>$$</p>
+<p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设<br>$$<br>P(Y=1|x)=\pi(x),<br>$$</p>
+<p>$$<br>P(Y=0|x)=1-\pi(x),<br>$$</p>
+<p>那么其似然函数为:<br>$$<br>\prod_{i=1}^N[\pi(x_i)]^{y_i}[1-\pi(x_i)]^{1-y_i}<br>$$<br>其对数似然为:<br>$$<br>L(w)=\sum_{i=1}^N[y_ilog\pi(x_i)+(1-y_i)log(1-\pi(x_i))]<br>$$</p>
+<p>$$<br>=\sum_{i=1}^N[y_ilog\frac{\pi(x_i)}{1-\pi(x_i)}+log(1-\pi(x_i))]<br>$$</p>
+<p>$$<br>=\sum_{i=1}^N[y_i(w_i\cdot x_i)-log(1+exp(w\cdot x_i))]<br>$$</p>
+<p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
+<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:<br>$$<br>P(Y=k|x)=\frac{\exp(w_k\cdot x)}{1+\sum_{k=1}^{K-1}\exp(w_k\cdot x)}<br>$$<br>二项logisitic回归的方法可以用于多项logisitic回归。</p>
 
           
         
@@ -423,7 +619,7 @@ P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script>
               
                 
                 <a class="post-title-link" href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" itemprop="url">
-                  LeetCode 5. Longest Palindromic Substring 
+                  LeetCode 5.[M] Longest Palindromic Substring 
                 </a>
               
             
@@ -1192,215 +1388,6 @@ P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script>
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/10/LeetCode-83-E-Remove-Duplicates-from-Sorted-List/" itemprop="url">
-                  LeetCode 83.[E] Remove Duplicates from Sorted List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-10T17:17:26+08:00" content="2017-05-10">
-              2017-05-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/10/LeetCode-83-E-Remove-Duplicates-from-Sorted-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/10/LeetCode-83-E-Remove-Duplicates-from-Sorted-List/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a sorted linked list, delete all duplicates such that each element appear only <em>once</em>.</p>
-<p>For example,<br>Given <code>1-&gt;1-&gt;2</code>, return <code>1-&gt;2</code>.<br>Given <code>1-&gt;1-&gt;2-&gt;3-&gt;3</code>, return <code>1-&gt;2-&gt;3</code>.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>该题目的目的是去除掉重复元素，这里对给出的链表进行遍历，如果现在的链表所指向的值和链表下一位所指向的值相同，那么就讲现在的链表指向下一个值的下一个，依此类推，最后可以得出所要求的答案。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span>) <span class="keyword">return</span> head;</div><div class="line">    ListNode* p_current;</div><div class="line">    ListNode* p_next;</div><div class="line">    p_current = head;</div><div class="line">    p_next = head -&gt; next;</div><div class="line">    <span class="keyword">while</span>(p_current &amp;&amp; p_next)&#123;</div><div class="line">        <span class="keyword">if</span>(p_current -&gt; val == p_next -&gt; val) &#123;</div><div class="line">            p_current-&gt;next = p_next-&gt;next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            p_current = p_current -&gt; next;</div><div class="line">        &#125;</div><div class="line">        p_next = p_next -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>充分考虑所有情况，比如在开始前就想好是不是输入为空或者0时会对最终结果会有影响。如果这里处理不好容易出现runtime error的错误。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/09/LeetCode-14-E-Longest-Common-Prefix/" itemprop="url">
-                  LeetCode 14.[E]Longest Common Prefix 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-09T14:40:55+08:00" content="2017-05-09">
-              2017-05-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/09/LeetCode-14-E-Longest-Common-Prefix/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/LeetCode-14-E-Longest-Common-Prefix/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这个题是要给出一个string类型的vector，这个string的vector中有很多个string，我们要找出这些string的最长前缀。具体算法既从第一个字母开始，将他和下面的每一个字符串的该位上的字母进行比较，如果下面所有的字符串的该位上面的数字都一样，那么这个字母就是一个公共前缀。如果找到一个字母，他不是其中一个字符串中的一个，那么他就不属于公共前缀，我们在此就结束遍历，输出公共前缀即可。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> min = INT_MAX;</div><div class="line">    <span class="keyword">if</span>(strs.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.size() ;i++)&#123;</div><div class="line">        <span class="keyword">if</span> (strs[i].length() &lt; min)  min = strs[i].length();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (min == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">string</span> result;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; strs.size(); j++) &#123;</div><div class="line">            <span class="keyword">if</span> (strs[<span class="number">0</span>][i] == strs[j][i]) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (count == j) result += strs[<span class="number">0</span>][i];</div><div class="line">        <span class="keyword">if</span> (count != j) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>在做题时，要充分考虑输入的所有情况，对其中一些比如说输入为空或者输入为0的情况也要做充分的考虑。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1446,7 +1433,7 @@ P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
