@@ -345,27 +345,40 @@
         <h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
 <p>上面说过，线性支持向量机和线性可分支持向量机最大的区别在于线性可分支持向量机所用的为<strong>硬间隔</strong>,线性支持向量机采用的是<strong>软间隔</strong>。软间隔的表示如下图所示：</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg" alt=""></p>
-<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:<br>$$<br>y_i(w^Tx<em>i+b)\geq 1<br>$$<br>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：<br>$$<br>(17)\min</em>{w,b}\frac{1}{2}||w||^2+C\sum<em>{i=1}^ml</em>{0/1}(y_i(w^Tx<em>i+b)-1)<br>$$<br>其中$C&gt; 0$为一个常数，而$l</em>{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
+<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:</p>
+<script type="math/tex; mode=display">
+y_i(w^Tx_i+b)\geq 1</script><p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
+<script type="math/tex; mode=display">
+(17)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)</script><p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
 <p>由上面的式子可知，如果$C$的值过于大，那么他在每次犯错后所要付出的代价就会很大，而C很小时其每次所需的代价就比较小。于是我们极端来看不难得出当C为无限小为0时，他随便犯错都无所谓，这时候线性支持向量机的作用就失去了。而当$C$为无限大的时候，这时候犯一点错误就会受到很大的惩罚，这时候一点错误都不敢犯。因此当$C$为无限大时，线性支持向量机就变为了线性可分支持向量机。不难看出，线性可分支持向量机是线性支持向量机在$C$为无穷大时的一种特例。</p>
-<h4 id="hinge损失函数"><a href="#hinge损失函数" class="headerlink" title="hinge损失函数"></a>hinge损失函数</h4><p>但是在实际的应用场景中，$l<em>{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：<br>$$<br>(18)l</em>{hinge}(z)=\max(0,1-z);<br>$$<br>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：<br>$$<br>(19)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\max(0,1-y_i(w^Tx_i))<br>$$</p>
-<p>$$<br>(20.1)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\xi_i<br>$$</p>
-<p>$$<br>(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3…m.<br>$$</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<h4 id="hinge损失函数"><a href="#hinge损失函数" class="headerlink" title="hinge损失函数"></a>hinge损失函数</h4><p>但是在实际的应用场景中，$l_{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：</p>
+<script type="math/tex; mode=display">
+(18)l_{hinge}(z)=\max(0,1-z);</script><p>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：</p>
+<script type="math/tex; mode=display">
+(19)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\max(0,1-y_i(w^Tx_i))</script><script type="math/tex; mode=display">
+(20.1)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i</script><script type="math/tex; mode=display">
+(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3...m.</script><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
 <p>如上图所示，上图分别为hinge函数损失函数，指数损失函数和对率损失函数。这三种损失函数的发展趋势都是一样的，但是在支持向量机中中，由于只要是等于1就算支持向量，原则上在其等于1时不能有损失，而指数损失函数和对率损失函数在等于1甚至是大于1时都有损失。因此在线性支持向量机中使用最多的是hinge损失函数，在有的教材中hinge损失函数也叫做SVM损失函数。</p>
-<p>而将hinge损失函数融入到支持向量机中，那么支持向量机就有了另外一种解释，就是最小化以下的目标函数:<br>$$<br>\sum^N_{i=1}[1-y_i(w<em>i+b)]</em>+\lambda||w||^2<br>$$<br>其中第一项$1-y_i(w<em>i+b)</em>+$就为hinge损失函数</p>
-<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：<br>$$<br>(21)L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi<em>i+\sum</em>{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx<em>i+b))-\sum</em>{i=1}^m\mu_i\xi_i<br>$$</p>
-<p>其中$\alpha_i\geq0,\mu_i\geq0$为拉格朗日乘子。</p>
-<p>对$L(w,b,\alpha,\xi,\mu)​$中的$w​$,$b​$和$\xi​$求偏导得出下式：<br>$$<br>(22)w = \sum_{i=1}^m\alpha_iy_ix_i,<br>$$</p>
-<p>$$<br>(23)0=\sum_{i=1}^m\alpha_iy_i,<br>$$</p>
-<p>$$<br>(24)C=\alpha_i+\mu_i<br>$$</p>
-<p>将$(22)(23)(24)$带入$(21)$可以得到$(20)$的对偶问题：<br>$$<br>(25)\max<em>\alpha\sum</em>{i=1}^m\alpha<em>i-\frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j<br>$$</p>
-<p>$$<br>(26)s.t.\sum_{i=1}^m\alpha_iy_i=0, 0\le\alpha_i\le C<br>$$</p>
-<p>线性可分支持向量机和线性支持向量机两者的对偶问题进行比较可知，两者唯一的差别就是对偶函数的约束不同，对于线性可分支持向量机来说，约束条件为$0 \le \alpha_i$而线性支持向量机的约束条件为$0 \le \alpha_i \le C$。从这也可以看出，线性可分支持向量机是线性支持向量机在C区域正无穷的时候的值。</p>
-<p>类似之前的求解，对于线性支持向量机，其KKT条件要求如下：<br>$$<br>(27.1)\alpha_i\ge0,\mu\ge0,<br>$$</p>
-<p>$$<br>(27.2)y_if(x_i)\ge1-\xi_i<br>$$</p>
-<p>$$<br>(27.3)\alpha_i(y_if(x_i)-1+\xi_i)=0<br>$$</p>
-<p>$$<br>(27.4)\xi_i\ge0,u_i\xi_i=0<br>$$</p>
-<p>由(27.3)得，对于任意一个训练样本均有$\alpha_i=0$或者$y_if(x_i)-1+\xi=0$如果$\alpha_i=0$则该训练样本不会对结果造成影响。如果$\alpha_i&lt; C$则$\mu_i&gt;0$那么必有$\xi_i=0$那么此时就代表该向量为支持向量，就在可分边界上。如果$\alpha_i=C$那么$\mu_i=0$,此时若$\xi_i<1$则样本落在最大间隔内部，当$\xi_i>1$则被错误分类。</1$则样本落在最大间隔内部，当$\xi_i></p>
+<p>而将hinge损失函数融入到支持向量机中，那么支持向量机就有了另外一种解释，就是最小化以下的目标函数:</p>
+<script type="math/tex; mode=display">
+\sum^N_{i=1}[1-y_i(w_i+b)]_+\lambda||w||^2</script><p>其中第一项$1-y<em>i(w_i+b)</em>+$就为hinge损失函数</p>
+<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：</p>
+<script type="math/tex; mode=display">
+(21)L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i+\sum_{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx_i+b))-\sum_{i=1}^m\mu_i\xi_i</script><p>其中$\alpha_i\geq0,\mu_i\geq0$为拉格朗日乘子。</p>
+<p>对$L(w,b,\alpha,\xi,\mu)​$中的$w​$,$b​$和$\xi​$求偏导得出下式：</p>
+<script type="math/tex; mode=display">
+(22)w = \sum_{i=1}^m\alpha_iy_ix_i,</script><script type="math/tex; mode=display">
+(23)0=\sum_{i=1}^m\alpha_iy_i,</script><script type="math/tex; mode=display">
+(24)C=\alpha_i+\mu_i</script><p>将$(22)(23)(24)$带入$(21)$可以得到$(20)$的对偶问题：</p>
+<script type="math/tex; mode=display">
+(25)\max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j</script><script type="math/tex; mode=display">
+(26)s.t.\sum_{i=1}^m\alpha_iy_i=0, 0\le\alpha_i\le C</script><p>线性可分支持向量机和线性支持向量机两者的对偶问题进行比较可知，两者唯一的差别就是对偶函数的约束不同，对于线性可分支持向量机来说，约束条件为$0 \le \alpha_i$而线性支持向量机的约束条件为$0 \le \alpha_i \le C$。从这也可以看出，线性可分支持向量机是线性支持向量机在C区域正无穷的时候的值。</p>
+<p>类似之前的求解，对于线性支持向量机，其KKT条件要求如下：</p>
+<script type="math/tex; mode=display">
+(27.1)\alpha_i\ge0,\mu\ge0,</script><script type="math/tex; mode=display">
+(27.2)y_if(x_i)\ge1-\xi_i</script><script type="math/tex; mode=display">
+(27.3)\alpha_i(y_if(x_i)-1+\xi_i)=0</script><script type="math/tex; mode=display">
+(27.4)\xi_i\ge0,u_i\xi_i=0</script><p>由(27.3)得，对于任意一个训练样本均有$\alpha_i=0$或者$y_if(x_i)-1+\xi=0$如果$\alpha_i=0$则该训练样本不会对结果造成影响。如果$\alpha_i&lt; C$则$\mu_i&gt;0$那么必有$\xi_i=0$那么此时就代表该向量为支持向量，就在可分边界上。如果$\alpha_i=C$那么$\mu_i=0$,此时若$\xi_i<1$则样本落在最大间隔内部，当$\xi_i>1$则被错误分类。</1$则样本落在最大间隔内部，当$\xi_i></p>
 <p>这里的求解方法也和线性可分支持向量机类似，可以利用SMO对其进行求解。</p>
 
       
@@ -524,7 +537,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
