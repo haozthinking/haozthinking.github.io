@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
+<meta name="description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
+步骤如下：
+先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
+值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用python把几个词语的某一位变为大写">
-<meta property="og:url" content="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/index.html">
+<meta property="og:title" content="eratosthenes筛选法">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/eratosthenes筛选法/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
-<meta property="og:updated_time" content="2017-04-19T16:26:14.000Z">
+<meta property="og:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
+步骤如下：
+先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
+值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
+<meta property="og:updated_time" content="2017-06-12T01:34:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用python把几个词语的某一位变为大写">
-<meta name="twitter:description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
+<meta name="twitter:title" content="eratosthenes筛选法">
+<meta name="twitter:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
+步骤如下：
+先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
+值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
 
 
 
@@ -117,9 +123,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/eratosthenes筛选法/"/>
 
-  <title> 利用python把几个词语的某一位变为大写 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> eratosthenes筛选法 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +298,7 @@
             
             
               
-                利用python把几个词语的某一位变为大写
+                eratosthenes筛选法
               
             
           </h1>
@@ -304,8 +310,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-20T00:25:14+08:00" content="2017-04-20">
-              2017-04-20
+            <time itemprop="dateCreated" datetime="2017-06-12T09:34:14+08:00" content="2017-06-12">
+              2017-06-12
             </time>
           </span>
 
@@ -315,8 +321,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/20/利用python把几个词语的某一位变为大写/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/利用python把几个词语的某一位变为大写/" itemprop="commentsCount"></span>
+                <a href="/2017/06/12/eratosthenes筛选法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/eratosthenes筛选法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,13 +345,11 @@
       
 
       
-        <h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><p>晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在</p>
-<h3 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">LetterCapitalize</span><span class="params">(str)</span>:</span> </div><div class="line"><span class="comment">#先将输入的多个单词分成一个一个的小单词</span></div><div class="line">    wordlist=str.split()</div><div class="line"><span class="comment">#再定义一个新的字符串，该字符串用于存放修改好的多个单词</span></div><div class="line">    newstr=<span class="string">''</span></div><div class="line"><span class="comment">#对每个单词进行便利，并将首字母(word[0])被他的大写字母替代掉,最后再将替换好的字母连接起来返回</span></div><div class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> wordlist:</div><div class="line">        newword=word[<span class="number">0</span>].upper()+word[<span class="number">1</span>:]</div><div class="line">    <span class="keyword">return</span> <span class="string">" "</span>.newword</div><div class="line"><span class="keyword">print</span> LetterCapitalize(raw_input())</div></pre></td></tr></table></figure>
-<p>这个代码看似没有问题，但是当测试时有问题，比如我们输入”helloh worldwa”则输出就会变为”HelloH WorldWa”这与预计完全不符。这个的原因是因为在下面word[0]本质上已经被赋值成为了h这里这段代码的意思等价于：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">word=word.replace(h,h.upper())</div></pre></td></tr></table></figure>
-<p>因此这是主要问题所在。</p>
-<p>另外这个代码还有问题即为输出的前面总是多一个空格，因为刚开始相当于是””+” “的形式。</p>
-<h3 id="正确代码"><a href="#正确代码" class="headerlink" title="正确代码"></a>正确代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#正确代码如下，他将整个wordlist看成一个列表，列表中的每个单词为一个元素，并将元素分开处理。分为首部和去掉首部后的其他部分，和刚刚的改动之处为重新将1～len(word)的数据写了一遍这样就可以正确显示了。最终处理时，将首字母的第两个个空格略去，即可得到想要的结果</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">LetterCapitalize</span><span class="params">(str)</span>:</span></div><div class="line">wordlist = str.split()</div><div class="line">newword = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> word <span class="keyword">in</span> wordlist:</div><div class="line">newword = newword + <span class="string">" "</span> + word[<span class="number">0</span>].upper() + word[<span class="number">1</span>:]</div><div class="line">result = <span class="string">" "</span> + newword</div><div class="line"><span class="keyword">return</span> result[<span class="number">2</span>:]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">print</span> LetterCapitalize(raw_input())</div></pre></td></tr></table></figure>
+        <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选</p>
+<p>步骤如下：</p>
+<p>先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。</p>
+<p>值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉了。而且如果筛选的数字大于了$\sqrt p$那么就不用再筛了，比如我们要筛选100以内的素数，筛掉2,3,5,7后就不用再筛了。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">bool</span> a[<span class="number">1000</span>];</div><div class="line">    Eratosthenes(a,<span class="number">200</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">200</span>;i++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">'\t'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    a[<span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; n;i++)&#123;</div><div class="line">        a[i] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> p = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> k = p * p;</div><div class="line">    <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">        <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">            a[k] = <span class="literal">false</span>;</div><div class="line">            k = k + p;</div><div class="line">        &#125;</div><div class="line">        p++;</div><div class="line">        <span class="keyword">while</span>(!a[p])&#123;</div><div class="line">            p++;</div><div class="line">        &#125;</div><div class="line">        k = p * p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -389,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -398,17 +402,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/16/SVM/" rel="next" title="SVM">
-                <i class="fa fa-chevron-left"></i> SVM
+              <a href="/2017/05/30/LeetCode-47-M-Permutations-II/" rel="next" title="LeetCode 47.[M]Permutations II">
+                <i class="fa fa-chevron-left"></i> LeetCode 47.[M]Permutations II
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/20/hello/" rel="prev" title="Linux学习之软件包管理">
-                Linux学习之软件包管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +457,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/20/利用python把几个词语的某一位变为大写/"
-           data-title="利用python把几个词语的某一位变为大写" data-url="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/">
+      <div class="ds-thread" data-thread-key="2017/06/12/eratosthenes筛选法/"
+           data-title="eratosthenes筛选法" data-url="http://yoursite.com/2017/06/12/eratosthenes筛选法/">
       </div>
     
   </div>
@@ -542,7 +542,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码解释"><span class="nav-number">2.</span> <span class="nav-text">代码解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确代码"><span class="nav-number">3.</span> <span class="nav-text">正确代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
           </div>
         </section>

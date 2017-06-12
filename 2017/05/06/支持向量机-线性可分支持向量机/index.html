@@ -348,50 +348,29 @@
 <p>支持向量机本质上是一个二分类模型，其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
 <p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
 <h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机我们重点介绍，他是线性支持向量机和非线性支持向量机的基础。在样本空间中，划分超平面的方程的表示形式如下所示：</p>
-<p>​                                                           <script type="math/tex">(1)w^Tx + b = 0</script> </p>
+<p>​                                                           $$(1)w^Tx + b = 0                     $$ </p>
 <p>其中$w^T$ = ($w_1;w_2;w_3;….;w_d$)为法向量决定了该划分超平面的距离，而b为原点距决定了超平面与原点间的距离。由此可知，划分超平面可以由法向量 $w$ 和原点距位移 $b$所确定，所确定的超平面计为$(w,b)$,则样本空间内的一点$x$到$(w,b)$的距离可以写为</p>
-<p>​                                                                     <script type="math/tex">(2)r=\frac{|w^Tx + b|}{||w||}</script></p>
+<p>​                                                                     $$(2)r=\frac{|w^Tx + b|}{||w||}$$</p>
 <p>如果有一点可以被正确分类，那么不难知道如果他的x满足$ w^Tx_i + b &gt; 0 $时$ y_i = +1 $,$ w^Tx_i + b &lt; 0 $时$ y_i = -1 $</p>
-<p> 而如果我们在这里把0的标准换位1和－1的标准，令以下成立：</p>
-<script type="math/tex; mode=display">
-(3)w^Tx_i + b => 1  ;   y_i = +1 ;  w^Tx_i + b <=  -1  ;   y_i = -1</script><p>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
+<p> 而如果我们在这里把0的标准换位1和－1的标准，令以下成立：<br>$$<br>(3)w^Tx_i + b =&gt; 1  ;   y_i = +1 ;  w^Tx_i + b &lt;=  -1  ;   y_i = -1<br>$$<br>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
 <p>线性可分支持向量机这里使用的是<strong>硬间隔</strong>，即在间隔中不允许存在分类点，而线性支持向量机使用的是<strong>软间隔</strong>这也是线性可分支持向量机和线性支持向量机的区别所在。</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg" alt="支持向量与间隔"></p>
-<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：</p>
-<script type="math/tex; mode=display">
-(4)\max_{w,b}\frac{2}{||w||}</script><script type="math/tex; mode=display">
-(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3......m.</script><p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：</p>
-<script type="math/tex; mode=display">
-(6)\min_{w,b}\frac{1}{2}||w||^2\\</script><p>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
-<h4 id="凸优化问题"><a href="#凸优化问题" class="headerlink" title="凸优化问题"></a>凸优化问题</h4><p>上式为一个凸二次规划问题，凸优化问题是指约束最优化问题</p>
-<script type="math/tex; mode=display">
-\min_wf(w)</script><script type="math/tex; mode=display">
-s.t.g_i(w)\le0,i=1,2,3....k;h_i(w)=0,i=1,2,3...l</script><p>其中，目标函数$f(w)$和约束函数$g_i(w)$是$R^n$上连续的可微的凸函数，$h_i(w)$是R^n上的访射函数。当$f(w)$是二次函数且约束函数$g_i(w)$为访射函数时，上述凸优化问题就会变为凸二次规划问题。</p>
-<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha_i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：</p>
-<script type="math/tex; mode=display">
-(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))</script><p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：</p>
-<script type="math/tex; mode=display">
-(8)w = \sum_{i=1}^m\alpha_iy_ix_i\\
-(9)0 = \sum_{j=1}^m\alpha_iy_i ;\\
-(10)max_\alpha \sum_{i=1}^m\alpha_i - \frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j</script><p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
-<script type="math/tex; mode=display">
-(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b</script><p>由以上约束可知，其满足KKT条件即：</p>
-<script type="math/tex; mode=display">
-(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0</script><p>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
+<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：<br>$$<br>(4)\max_{w,b}\frac{2}{||w||}<br>$$<br>$$<br>(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3……m.<br>$$</p>
+<p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：<br>$$<br>(6)\min_{w,b}\frac{1}{2}||w||^2\<br>$$<br>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
+<h4 id="凸优化问题"><a href="#凸优化问题" class="headerlink" title="凸优化问题"></a>凸优化问题</h4><p>上式为一个凸二次规划问题，凸优化问题是指约束最优化问题<br>$$<br>\min_wf(w)<br>$$</p>
+<p>$$<br>s.t.g_i(w)\le0,i=1,2,3….k;h_i(w)=0,i=1,2,3…l<br>$$</p>
+<p>其中，目标函数$f(w)$和约束函数$g_i(w)$是$R^n$上连续的可微的凸函数，$h_i(w)$是R^n上的访射函数。当$f(w)$是二次函数且约束函数$g_i(w)$为访射函数时，上述凸优化问题就会变为凸二次规划问题。</p>
+<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha<em>i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：<br>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum</em>{i=1}^m\alpha_i(1-y_i(w^Tx<em>i+b))<br>$$<br>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum</em>{i=1}^m\alpha_iy_ix<em>i\<br>(9)0 = \sum</em>{j=1}^m\alpha_iy<em>i ;\<br>(10)max</em>\alpha \sum_{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx<em>j<br>$$<br>对$\alpha$求解后，即可求出$w$和$b$的模型：<br>$$<br>(12)f(x) = w^Tx + b = \sum</em>{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
+<p>由以上约束可知，其满足KKT条件即：<br>$$<br>(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0<br>$$<br>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
 <h4 id="求解方法——SMO算法"><a href="#求解方法——SMO算法" class="headerlink" title="求解方法——SMO算法"></a>求解方法——SMO算法</h4><h5 id="确定-alpha-方法"><a href="#确定-alpha-方法" class="headerlink" title="确定$\alpha$方法"></a>确定$\alpha$方法</h5><p>SMO方法的思想在于，除了两个变量$\alpha_i$和$\alpha_j$其余变量全部固定，然后重复下列两部获得更新后的$\alpha_i$和$\alpha_j$:</p>
 <ul>
 <li>选取两个需要更新的$\alpha_i$和$\alpha_j$；</li>
 <li>固定$\alpha_i$和$\alpha_j$外的其他参数，求解更新后的$\alpha_i$和$\alpha_j$；</li>
 </ul>
 <p>只要选取的$\alpha_i$和$\alpha_j$有一个不满足KKT条件，那么目标函数就会在迭代后变得更小。一般SMO选取为两个差别很大的变量，对他们进行变化会得到更好的效果。</p>
-<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:</p>
-<script type="math/tex; mode=display">
-(14)\alpha_iy_i+\alpha_jy_j+c = 0 ; c=\sum_{k=0,k!=i,j}^m\alpha_ky_k</script><p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
-<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：</p>
-<script type="math/tex; mode=display">
-(15)y_s(\sum_{i}\alpha_iy_ix_i^Tx_s+b)=1</script><p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
-<script type="math/tex; mode=display">
-(16)b=\frac{1}{|S|}\sum_{s\epsilon S}(y_s-\sum_{i\epsilon S}\alpha_iy_ix_i^Tx_i)</script>
+<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:<br>$$<br>(14)\alpha_iy_i+\alpha_jy<em>j+c = 0 ; c=\sum</em>{k=0,k!=i,j}^m\alpha_ky_k<br>$$<br>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
+<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：<br>$$<br>(15)y<em>s(\sum</em>{i}\alpha_iy_ix_i^Tx<em>s+b)=1<br>$$<br>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:<br>$$<br>(16)b=\frac{1}{|S|}\sum</em>{s\epsilon S}(y<em>s-\sum</em>{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
+
       
     </div>
 
@@ -548,7 +527,7 @@ s.t.g_i(w)\le0,i=1,2,3....k;h_i(w)=0,i=1,2,3...l</script><p>其中，目标函�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

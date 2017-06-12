@@ -291,6 +291,111 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/12/eratosthenes筛选法/" itemprop="url">
+                  eratosthenes筛选法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-12T09:34:14+08:00" content="2017-06-12">
+              2017-06-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/12/eratosthenes筛选法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/eratosthenes筛选法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选</p>
+<p>步骤如下：</p>
+<p>先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。</p>
+<p>值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉了。而且如果筛选的数字大于了$\sqrt p$那么就不用再筛了，比如我们要筛选100以内的素数，筛掉2,3,5,7后就不用再筛了。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">bool</span> a[<span class="number">1000</span>];</div><div class="line">    Eratosthenes(a,<span class="number">200</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">200</span>;i++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">'\t'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    a[<span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; n;i++)&#123;</div><div class="line">        a[i] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> p = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> k = p * p;</div><div class="line">    <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">        <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">            a[k] = <span class="literal">false</span>;</div><div class="line">            k = k + p;</div><div class="line">        &#125;</div><div class="line">        p++;</div><div class="line">        <span class="keyword">while</span>(!a[p])&#123;</div><div class="line">            p++;</div><div class="line">        &#125;</div><div class="line">        k = p * p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/30/LeetCode-47-M-Permutations-II/" itemprop="url">
                   LeetCode 47.[M]Permutations II
                 </a>
@@ -352,9 +457,9 @@
 <h4 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h4><p>46题的实现方法是一种递归的方法，其核心代码是一串递归代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(! IsDuplicate(nums,begin,i)) <span class="keyword">continue</span>;</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">            permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 <p>而我们在这里用非递归的算法实现46题目，用该非递归算法的方法不用考虑是否重复。</p>
-<p>对于一个数字组成的字符串，他有最小的一个组合，他也有最大的一个组合。那么我们就从他最小的组合开始遍历，寻求下一个比现在这个大的元素，最后遍历到最大的那个字符串停止。通过这个步骤就可以实现字符串的全排列问题。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>算法一实现:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; permuteUnique(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)&#123;</div><div class="line">    <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">    permuteMain(nums,<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">permuteMain</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> begin)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> size = nums.size();</div><div class="line">    <span class="keyword">if</span>(begin == size)&#123;</div><div class="line">        res.push_back(nums);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(! IsDuplicate(nums,begin,i)) <span class="keyword">continue</span>;</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">            permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> n,<span class="keyword">int</span> t)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(n &lt; t)&#123;</div><div class="line">        <span class="keyword">if</span>(nums[n] == nums[t])&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>对于一个数字组成的字符串，他有最小的一个组合，他也有最大的一个组合。那么我们就从他最小的组合开始遍历，寻求下一个比现在这个大的元素，最后遍历到最大的那个字符串停止。通过这个步骤就可以实现字符串的全排列问题。通过这种方式实现的全排列问题，不用考虑他是否是重复的，不管是否重复都可以使用这个代码。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="算法一实现"><a href="#算法一实现" class="headerlink" title="算法一实现:"></a>算法一实现:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; permuteUnique(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)&#123;</div><div class="line">    <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">    permuteMain(nums,<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">permuteMain</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> begin)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> size = nums.size();</div><div class="line">    <span class="keyword">if</span>(begin == size)&#123;</div><div class="line">        res.push_back(nums);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(! IsDuplicate(nums,begin,i)) <span class="keyword">continue</span>;</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">            permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> n,<span class="keyword">int</span> t)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(n &lt; t)&#123;</div><div class="line">        <span class="keyword">if</span>(nums[n] == nums[t])&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="算法二实现"><a href="#算法二实现" class="headerlink" title="算法二实现"></a>算法二实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GetNextPermutation</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(<span class="keyword">int</span> *from,<span class="keyword">int</span> * to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> size)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    Print(a,size);</div><div class="line">    <span class="keyword">while</span>(GetNextPermutation(a,size)) Print(a,size);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GetNextPermutation</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i = size - <span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span>((i &gt;= <span class="number">0</span>) &amp;&amp; (a[i] &gt;= a[i+<span class="number">1</span>])) i--;</div><div class="line">    <span class="keyword">if</span>(i &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> j = size - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(a[j] &lt;= a[i]) j--;</div><div class="line"></div><div class="line">    swap(a[i],a[j]);</div><div class="line">    Reverse(a+i+<span class="number">1</span>,a+size<span class="number">-1</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(<span class="keyword">int</span> *from,<span class="keyword">int</span> * to)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="keyword">while</span>(from &lt; to)&#123;</div><div class="line">        t = *from;</div><div class="line">        *from = *to;</div><div class="line">        *to = t;</div><div class="line">        from++;</div><div class="line">        to--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt; p[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div></pre></td></tr></table></figure>
 
           
         
@@ -789,7 +894,8 @@
       
         
           
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, find the length of the longest valid (well-formed) parentheses substring.</p>
+            <p>###题目描述</p>
+<p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, find the length of the longest valid (well-formed) parentheses substring.</p>
 <p>For <code>&quot;(()&quot;</code>, the longest valid parentheses substring is <code>&quot;()&quot;</code>, which has length = 2.</p>
 <p>Another example is <code>&quot;)()())&quot;</code>, where the longest valid parentheses substring is <code>&quot;()()&quot;</code>, which has length = 4.</p>
 <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这是第一道用到栈这种数据结构。这道题很巧妙的用压栈压入序号数字的手段进行压栈,并对之后的所有符号进行遍历，如果右括号左边没有左括号的情况下就把该右括号当作开始值。而如果右括号左边还有左括号的情况下就用现在的值减去栈顶值最后就得到了想要的值。</p>
@@ -893,37 +999,28 @@
       
         
           
-            <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:</p>
-<script type="math/tex; mode=display">
-(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}</script><script type="math/tex; mode=display">
-(2)f(x)=F^{'}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}</script><p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
+            <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:<br>$$<br>(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}<br>$$</p>
+<p>$$<br>(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}<br>$$</p>
+<p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg" alt=""></p>
-<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:</p>
-<script type="math/tex; mode=display">
-(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}</script><script type="math/tex; mode=display">
-(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}</script><p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
+<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:<br>$$<br>(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}<br>$$</p>
+<p>$$<br>(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}<br>$$</p>
+<p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
 <p>对于给定的输入序列$x$ 按照上面两式可以求得$P(Y=1|x)$以及$P(Y=0|x)$,然后再比较两者的大小，比较之后就可以将$x$分到概率值较大的那个类，进而完成了分类操作。</p>
-<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:</p>
-<script type="math/tex; mode=display">
-(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}</script><script type="math/tex; mode=display">
-(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}</script><p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
-<script type="math/tex; mode=display">
-logit(p)=log\frac{p}{1-p}</script><p>对于logistic回归来说，其对数几率为：</p>
-<script type="math/tex; mode=display">
-\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x</script><p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
-<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设</p>
-<script type="math/tex; mode=display">
-P(Y=1|x)=\pi(x),</script><script type="math/tex; mode=display">
-P(Y=0|x)=1-\pi(x),</script><p>那么其似然函数为:</p>
-<script type="math/tex; mode=display">
-\prod\_{i=1}^N[\pi(x\_i)]^{y\_i}[1-\pi(x\_i)]^{1-y\_i}</script><p>其对数似然为:</p>
-<script type="math/tex; mode=display">
-L(w)=\sum\_{i=1}^N[y\_ilog\pi(x\_i)+(1-y\_i)log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
-=\sum\_{i=1}^N[y\_ilog\frac{\pi(x\_i)}{1-\pi(x\_i)}+log(1-\pi(x\_i))]</script><script type="math/tex; mode=display">
-=\sum\_{i=1}^N[y\_i(w\_i\cdot x\_i)-log(1+exp(w\cdot x\_i))]</script><p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
-<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:</p>
-<script type="math/tex; mode=display">
-P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script><p>二项logisitic回归的方法可以用于多项logisitic回归。</p>
+<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:<br>$$<br>(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}<br>$$</p>
+<p>$$<br>(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}<br>$$</p>
+<p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
+<p>$$<br>logit(p)=log\frac{p}{1-p}<br>$$</p>
+<p>对于logistic回归来说，其对数几率为：</p>
+<p>$$<br>\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x<br>$$</p>
+<p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设<br>$$<br>P(Y=1|x)=\pi(x),<br>$$</p>
+<p>$$<br>P(Y=0|x)=1-\pi(x),<br>$$</p>
+<p>那么其似然函数为:<br>$$<br>\prod_{i=1}^N[\pi(x_i)]^{y_i}[1-\pi(x_i)]^{1-y_i}<br>$$<br>其对数似然为:<br>$$<br>L(w)=\sum_{i=1}^N[y_ilog\pi(x_i)+(1-y_i)log(1-\pi(x_i))]<br>$$</p>
+<p>$$<br>=\sum_{i=1}^N[y_ilog\frac{\pi(x_i)}{1-\pi(x_i)}+log(1-\pi(x_i))]<br>$$</p>
+<p>$$<br>=\sum_{i=1}^N[y_i(w_i\cdot x_i)-log(1+exp(w\cdot x_i))]<br>$$</p>
+<p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
+<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:<br>$$<br>P(Y=k|x)=\frac{\exp(w_k\cdot x)}{1+\sum_{k=1}^{K-1}\exp(w_k\cdot x)}<br>$$<br>二项logisitic回归的方法可以用于多项logisitic回归。</p>
 
           
         
@@ -1285,121 +1382,6 @@ P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script>
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/" itemprop="url">
-                  LeetCode 160.[E] Intersection of Two Linked Lists
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-12T13:51:47+08:00" content="2017-05-12">
-              2017-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
-<p>For example, the following two linked lists:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A:          a1 → a2</div><div class="line">                   ↘</div><div class="line">                     c1 → c2 → c3</div><div class="line">                   ↗            </div><div class="line">B:     b1 → b2 → b3</div></pre></td></tr></table></figure>
-<p>begin to intersect at node c1.</p>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>If the two linked lists have no intersection at all, return <code>null</code>.</li>
-<li>The linked lists must retain their original structure after the function returns.</li>
-<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
-<li>Your code should preferably run in O(n) time and use only O(1) memory</li>
-</ul>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题目思路比较简单，先求出两个链表的长度，设为a_len和b_len我们这里认为长的为a_len(如果b更长，则交换a和b)然后先把长链表空转到和短链表一样的长度。然后等到他们的长度一样长了，然后分别比较其后的每一个结点。直到比较的两者相等，返回相等的结点。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(headA == <span class="literal">NULL</span> || headB == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    ListNode *p_a = headA;</div><div class="line">    ListNode *p_aa = headA;</div><div class="line">    ListNode *p_b = headB;</div><div class="line">    ListNode *p_bb = headB;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> a_len = <span class="number">0</span>,b_len = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(p_aa)&#123;</div><div class="line">        a_len++;</div><div class="line">        p_aa = p_aa -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(p_bb)&#123;</div><div class="line">        b_len++;</div><div class="line">        p_bb = p_bb -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(b_len &gt; a_len)&#123;</div><div class="line">        swap(p_a,p_b);</div><div class="line">        swap(a_len,b_len);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; a_len - b_len ;i++)&#123;</div><div class="line">        p_a = p_a -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(p_a)&#123;</div><div class="line">        <span class="keyword">if</span>(p_a == p_b) <span class="keyword">return</span> p_a;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            p_a = p_a -&gt; next;</div><div class="line">            p_b = p_b -&gt; next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>这里补充一下求取链表长度的方法，这种方法在不少的题目里面都能用到。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a_len = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(p_aa)&#123;</div><div class="line">        a_len++;</div><div class="line">        p_aa = p_aa -&gt; next;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1445,7 +1427,7 @@ P(Y=k|x)=\frac{\exp(w\_k\cdot x)}{1+\sum\_{k=1}^{K-1}\exp(w\_k\cdot x)}</script>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
