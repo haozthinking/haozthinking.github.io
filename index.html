@@ -291,6 +291,117 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/16/汉诺塔问题/" itemprop="url">
+                  汉诺塔问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-16T10:13:46+08:00" content="2017-06-16">
+              2017-06-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/16/汉诺塔问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/16/汉诺塔问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。</p>
+<h3 id="问题思考"><a href="#问题思考" class="headerlink" title="问题思考"></a>问题思考</h3><p>汉诺塔是一个经典的用于理解递归调用的例子。</p>
+<p>可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前n-1个盘子移动到中转轴上面，然后再将最下面的盘子移动到目标轴上，之后再将n-1个盘子从中转轴上面移动到目标轴上面。最终完成移动。以上步骤可以通过递归完成。</p>
+<h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>通过以上分析可以利用数学推导知道要移动n个盘子需要$2^n-1$个步骤。<br>$$<br>T(n)=2T(n-1)+1<br>$$</p>
+<p>$$<br>T(n) + 1 = 2(T(n-1)+1)<br>$$</p>
+<p>$$<br>\frac{T(n)+1}{T(n-1)+1}=2<br>$$</p>
+<p>$$<br>T(n)=2^n - 1<br>$$</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    Move(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="number">4</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</div><div class="line">        MoveOne(from,to);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    Move(from,aux,to,n<span class="number">-1</span>);</div><div class="line">    MoveOne(from,to);</div><div class="line">    Move(aux,to,from,n<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; from &lt;&lt; <span class="string">"-&gt;"</span> &lt;&lt; to &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="进阶问题-汉诺塔的状态"><a href="#进阶问题-汉诺塔的状态" class="headerlink" title="进阶问题:汉诺塔的状态"></a>进阶问题:汉诺塔的状态</h3><p>给定从小到大的N个盘子，它们散乱的位于A,B,C柱上，问这一状态能否将这N个盘子从A借助B移动到C的必经状态？如果是，则返回是第几个状态，如果不是那么返回-1</p>
+<h3 id="问题思考-1"><a href="#问题思考-1" class="headerlink" title="问题思考"></a>问题思考</h3><p>根据以上思考可以知道我们将汉诺塔问题分为三步，那么通过了解最下面盘子的状态就可以知道现在在进行到了哪一步。如果最下面盘子在初始轴上，那么就是在第一步或第二步，如果在目标轴上，那么他就在第三步。在计算的基础上加上$2^n$就可以完成。如果他在中转轴上，则根本不可能是其中的步骤，返回-1.</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == aux) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == to)&#123;</div><div class="line">        <span class="keyword">int</span> n = Calc(str,size - <span class="number">1</span>,aux,to,from);</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">-1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; (size - <span class="number">1</span>)) + n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Calc(str,size - <span class="number">1</span>,from,aux,to);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">//    Move('A','B','C',4);</span></div><div class="line"><span class="comment">//    return 0;</span></div><div class="line">    <span class="keyword">char</span> str[] = <span class="string">"ABC"</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; Calc(str,<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'C'</span>,<span class="string">'B'</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/12/eratosthenes筛选法/" itemprop="url">
                   eratosthenes筛选法
                 </a>
@@ -1279,109 +1390,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/13/LeetCode-21-E-Merge-Two-Sorted-Lists/" itemprop="url">
-                  LeetCode 21.[E] Merge Two Sorted Lists
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-13T21:41:00+08:00" content="2017-05-13">
-              2017-05-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/13/LeetCode-21-E-Merge-Two-Sorted-Lists/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/13/LeetCode-21-E-Merge-Two-Sorted-Lists/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>该题输入的是两个排好序的链表，然后将它们两个链表再连成一个链表，让连好的链表的顺序也是按照从小到大的顺序来排列。具体算法是重新创建一个新的链表，然后遍历两个链表，因为输入的两个链表之前已经排好序，因此后续比较两个两个结点的大小即可。最后如果有一条链表还没有完成，那么让该链表完成空转即可完成该题目。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1,ListNode* l2)</span></span>&#123;</div><div class="line">    ListNode* head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode* tmp = head;</div><div class="line">    <span class="keyword">while</span>(l1 &amp;&amp; l2)&#123;</div><div class="line">        <span class="keyword">if</span>(l1 -&gt; val &lt; l2 -&gt; val)&#123;</div><div class="line">            tmp -&gt; next = l1;</div><div class="line">            l1 = l1 -&gt; next;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            tmp -&gt; next = l2;</div><div class="line">            l2 = l2 -&gt; next;</div><div class="line">        &#125;</div><div class="line">        tmp = tmp -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(l1)&#123;</div><div class="line">        tmp -&gt; next = l1;</div><div class="line">        l1 = l1 -&gt; next;</div><div class="line">        tmp = tmp -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(l2)&#123;</div><div class="line">        tmp -&gt; next = l2;</div><div class="line">        l2 = l2 -&gt; next;</div><div class="line">        tmp = tmp -&gt; next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head -&gt; next;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1427,7 +1435,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

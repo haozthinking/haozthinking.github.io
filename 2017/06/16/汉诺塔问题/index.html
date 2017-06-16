@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
+<meta name="description" content="算法描述有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。
+问题思考汉诺塔是一个经典的用于理解递归调用的例子。
+可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用python把几个词语的某一位变为大写">
-<meta property="og:url" content="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/index.html">
+<meta property="og:title" content="汉诺塔问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/16/汉诺塔问题/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
-<meta property="og:updated_time" content="2017-04-19T16:26:14.000Z">
+<meta property="og:description" content="算法描述有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。
+问题思考汉诺塔是一个经典的用于理解递归调用的例子。
+可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前">
+<meta property="og:updated_time" content="2017-06-16T02:14:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用python把几个词语的某一位变为大写">
-<meta name="twitter:description" content="缘起晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在
-代码解释1234567891011#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写def LetterCapitalize(str): #先将输入的多个单词分成一个">
+<meta name="twitter:title" content="汉诺塔问题">
+<meta name="twitter:description" content="算法描述有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。
+问题思考汉诺塔是一个经典的用于理解递归调用的例子。
+可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前">
 
 
 
@@ -117,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/16/汉诺塔问题/"/>
 
-  <title> 利用python把几个词语的某一位变为大写 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 汉诺塔问题 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +295,7 @@
             
             
               
-                利用python把几个词语的某一位变为大写
+                汉诺塔问题
               
             
           </h1>
@@ -304,8 +307,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-20T00:25:14+08:00" content="2017-04-20">
-              2017-04-20
+            <time itemprop="dateCreated" datetime="2017-06-16T10:13:46+08:00" content="2017-06-16">
+              2017-06-16
             </time>
           </span>
 
@@ -315,8 +318,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/04/20/利用python把几个词语的某一位变为大写/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/利用python把几个词语的某一位变为大写/" itemprop="commentsCount"></span>
+                <a href="/2017/06/16/汉诺塔问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/16/汉诺塔问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,13 +342,17 @@
       
 
       
-        <h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><p>晚上女票发给我一段她写的代码.该代码的作用是把字符串中的首字母从小写改为大写。结果产生了一定的问题，即它把所有和首字母一样的字母全部都变成了大写。代码乍一看没什么问题，但是仔细debug后发现了其中的问题所在</p>
-<h3 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#定义一个函数，该函数的功能为将输入多个单词的首位的字母由小写改为大写</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">LetterCapitalize</span><span class="params">(str)</span>:</span> </div><div class="line"><span class="comment">#先将输入的多个单词分成一个一个的小单词</span></div><div class="line">    wordlist=str.split()</div><div class="line"><span class="comment">#再定义一个新的字符串，该字符串用于存放修改好的多个单词</span></div><div class="line">    newstr=<span class="string">''</span></div><div class="line"><span class="comment">#对每个单词进行便利，并将首字母(word[0])被他的大写字母替代掉,最后再将替换好的字母连接起来返回</span></div><div class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> wordlist:</div><div class="line">        newword=word[<span class="number">0</span>].upper()+word[<span class="number">1</span>:]</div><div class="line">    <span class="keyword">return</span> <span class="string">" "</span>.newword</div><div class="line"><span class="keyword">print</span> LetterCapitalize(raw_input())</div></pre></td></tr></table></figure>
-<p>这个代码看似没有问题，但是当测试时有问题，比如我们输入”helloh worldwa”则输出就会变为”HelloH WorldWa”这与预计完全不符。这个的原因是因为在下面word[0]本质上已经被赋值成为了h这里这段代码的意思等价于：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">word=word.replace(h,h.upper())</div></pre></td></tr></table></figure>
-<p>因此这是主要问题所在。</p>
-<p>另外这个代码还有问题即为输出的前面总是多一个空格，因为刚开始相当于是””+” “的形式。</p>
-<h3 id="正确代码"><a href="#正确代码" class="headerlink" title="正确代码"></a>正确代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#正确代码如下，他将整个wordlist看成一个列表，列表中的每个单词为一个元素，并将元素分开处理。分为首部和去掉首部后的其他部分，和刚刚的改动之处为重新将1～len(word)的数据写了一遍这样就可以正确显示了。最终处理时，将首字母的第两个个空格略去，即可得到想要的结果</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">LetterCapitalize</span><span class="params">(str)</span>:</span></div><div class="line">wordlist = str.split()</div><div class="line">newword = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> word <span class="keyword">in</span> wordlist:</div><div class="line">newword = newword + <span class="string">" "</span> + word[<span class="number">0</span>].upper() + word[<span class="number">1</span>:]</div><div class="line">result = <span class="string">" "</span> + newword</div><div class="line"><span class="keyword">return</span> result[<span class="number">2</span>:]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">print</span> LetterCapitalize(raw_input())</div></pre></td></tr></table></figure>
+        <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。</p>
+<h3 id="问题思考"><a href="#问题思考" class="headerlink" title="问题思考"></a>问题思考</h3><p>汉诺塔是一个经典的用于理解递归调用的例子。</p>
+<p>可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前n-1个盘子移动到中转轴上面，然后再将最下面的盘子移动到目标轴上，之后再将n-1个盘子从中转轴上面移动到目标轴上面。最终完成移动。以上步骤可以通过递归完成。</p>
+<h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>通过以上分析可以利用数学推导知道要移动n个盘子需要$2^n-1$个步骤。<br>$$<br>T(n)=2T(n-1)+1<br>$$</p>
+<p>$$<br>T(n) + 1 = 2(T(n-1)+1)<br>$$</p>
+<p>$$<br>\frac{T(n)+1}{T(n-1)+1}=2<br>$$</p>
+<p>$$<br>T(n)=2^n - 1<br>$$</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    Move(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="number">4</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</div><div class="line">        MoveOne(from,to);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    Move(from,aux,to,n<span class="number">-1</span>);</div><div class="line">    MoveOne(from,to);</div><div class="line">    Move(aux,to,from,n<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; from &lt;&lt; <span class="string">"-&gt;"</span> &lt;&lt; to &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="进阶问题-汉诺塔的状态"><a href="#进阶问题-汉诺塔的状态" class="headerlink" title="进阶问题:汉诺塔的状态"></a>进阶问题:汉诺塔的状态</h3><p>给定从小到大的N个盘子，它们散乱的位于A,B,C柱上，问这一状态能否将这N个盘子从A借助B移动到C的必经状态？如果是，则返回是第几个状态，如果不是那么返回-1</p>
+<h3 id="问题思考-1"><a href="#问题思考-1" class="headerlink" title="问题思考"></a>问题思考</h3><p>根据以上思考可以知道我们将汉诺塔问题分为三步，那么通过了解最下面盘子的状态就可以知道现在在进行到了哪一步。如果最下面盘子在初始轴上，那么就是在第一步或第二步，如果在目标轴上，那么他就在第三步。在计算的基础上加上$2^n$就可以完成。如果他在中转轴上，则根本不可能是其中的步骤，返回-1.</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == aux) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == to)&#123;</div><div class="line">        <span class="keyword">int</span> n = Calc(str,size - <span class="number">1</span>,aux,to,from);</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">-1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; (size - <span class="number">1</span>)) + n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Calc(str,size - <span class="number">1</span>,from,aux,to);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">//    Move('A','B','C',4);</span></div><div class="line"><span class="comment">//    return 0;</span></div><div class="line">    <span class="keyword">char</span> str[] = <span class="string">"ABC"</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; Calc(str,<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'C'</span>,<span class="string">'B'</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -389,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -398,17 +405,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/16/SVM/" rel="next" title="SVM">
-                <i class="fa fa-chevron-left"></i> SVM
+              <a href="/2017/06/12/eratosthenes筛选法/" rel="next" title="eratosthenes筛选法">
+                <i class="fa fa-chevron-left"></i> eratosthenes筛选法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/20/hello/" rel="prev" title="Linux学习之软件包管理">
-                Linux学习之软件包管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +460,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/20/利用python把几个词语的某一位变为大写/"
-           data-title="利用python把几个词语的某一位变为大写" data-url="http://yoursite.com/2017/04/20/利用python把几个词语的某一位变为大写/">
+      <div class="ds-thread" data-thread-key="2017/06/16/汉诺塔问题/"
+           data-title="汉诺塔问题" data-url="http://yoursite.com/2017/06/16/汉诺塔问题/">
       </div>
     
   </div>
@@ -542,7 +545,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码解释"><span class="nav-number">2.</span> <span class="nav-text">代码解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确代码"><span class="nav-number">3.</span> <span class="nav-text">正确代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题思考"><span class="nav-number">2.</span> <span class="nav-text">问题思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导"><span class="nav-number">3.</span> <span class="nav-text">数学推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶问题-汉诺塔的状态"><span class="nav-number">5.</span> <span class="nav-text">进阶问题:汉诺塔的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题思考-1"><span class="nav-number">6.</span> <span class="nav-text">问题思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现-1"><span class="nav-number">7.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
           </div>
         </section>
