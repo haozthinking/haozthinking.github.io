@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title><![CDATA[寻找第一个缺失的整数]]></title>
+      <url>%2F2017%2F06%2F20%2F%E5%AF%BB%E6%89%BE%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B4%E6%95%B0%2F</url>
+      <content type="text"><![CDATA[题目描述给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。 算法描述这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个false的值输出。这种方法的时间复杂度为$O(N)$空间复杂度也为$O(N)$。 这里介绍一种使用循环不变式的方法来解决这个问题。使用的时间复杂度为$O(N)$，空间复杂度为$O(1)$。本题的思路是将找到的元素放到正确的位置上，如果最终发现某个元素一直没有被找到，那么这个元素就为所求元素。 循环不变式如果某命题初始为真，且每次更改后仍然保持该命题为真，那么若干次更改后命题仍然为真。之前我们所求的局部极大值的题目也是用的这个思路。 123456789101112131415161718192021222324#include &lt;iostream&gt;using namespace std;int FirstMissNum(int *a,int size);int main()&#123; int a[] = &#123;9,2,3,2,3,2,1,2,3,4,5,74,54,6,8,-1&#125;; int m = FirstMissNum(a, sizeof(a)/ sizeof(int)); cout &lt;&lt; m &lt;&lt; endl; return 0;&#125;int FirstMissNum(int *a,int size)&#123; a--; int i = 1; while(i &lt;= size) &#123; if (a[i] == i) i++; else if ((a[i] &lt; i) || (a[i] &gt; size) || a[i] == a[a[i]]) &#123; a[i] = a[size]; size--; //把该元素删除掉，删除的方法就是将最后一个元素值赋予给他，然后删掉最后一个元素 &#125; else &#123; swap(a[i], a[a[i]]); &#125; &#125; return i;&#125;;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[求局部最大值]]></title>
+      <url>%2F2017%2F06%2F18%2F%E6%B1%82%E5%B1%80%E9%83%A8%E6%9C%80%E5%A4%A7%E5%80%BC%2F</url>
+      <content type="text"><![CDATA[问题描述给定一个无重复元素的数组A[0…N-1],求找到一个该数组的局部最大值。规定在边界外的值无穷小，即A[0]&gt;A[-1],A[N-1]&gt;A[N]。一般可以遍历一遍可以得到全局最大值，显然是局部最大值。但是该方法的时间负责度为O(N),下面提供一种算法复杂度为O(logN)的算法。 算法描述定义A[from…to]满足： A[from] &gt; A[from - 1] A[to] &gt; A[to + 1] 则该数组我们称为”高原数组”。 算法步骤为下： 使用left和right分别指向数组首尾，该数组为高原数组。 求中点mid = (left + right) / 2 A[mid] &gt; A[mid+1]，则A[left…mid]为高原数组,丢弃后半段;若A[mid] &lt; A[mid + 1],则A[mid…right]为高原数组,丢弃前半段 递归直到left == right 本质上该算法的思想是折半查找，该算法的时间复杂度为O(logN),比直接查找的复杂度O(N)要好。 代码实现1234567891011121314151617181920#include &lt;iostream&gt;using namespace std;int FindMax(const int* a,int size);int main()&#123; int a[] = &#123;1,2,3,4,5,4,3,4,5,6,7,6,5,4,3,2,1&#125;; int size = sizeof(a)/ sizeof(int); int b = FindMax(a,size); cout &lt;&lt; b &lt;&lt; endl;&#125;int FindMax(const int* a,int size)&#123; int left = 0; int right = size; int mid; while(left &lt; right)&#123; mid = (left + right) / 2; if(a[mid] &gt; a[mid+1]) right = mid; else left = mid + 1; &#125; return a[left];&#125;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[找假币问题]]></title>
+      <url>%2F2017%2F06%2F18%2F%E6%89%BE%E5%81%87%E5%B8%81%E9%97%AE%E9%A2%98%2F</url>
+      <content type="text"><![CDATA[问题描述有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。 理论下界由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &gt; 24$所以理论上至少需要三次可以得到最终的结论。 相似问题本质上找假币问题就是一种三分类的折半查找问题。 二分类的折半查找问题的代码如下，基础要好好掌握: 1234567891011121314151617181920212223242526272829#include &lt;iostream&gt;using namespace std;int Find(const int* array,int size,int a);int main()&#123; int a[] = &#123;1,2,3,4,5,6,7,8,9&#125;; int size = sizeof(a)/sizeof(int); int b = Find(a,size,4); cout &lt;&lt; size &lt;&lt; b &lt;&lt; endl;&#125;int Find(const int* array,int size,int a)&#123; int nFrom = 0; int nTo = size - 1; int nIndex = 0; bool bFind = false; while(nFrom &lt;= nTo)&#123; nIndex = (nFrom + nTo) / 2; if(array[nIndex] == a)&#123; bFind = true; break; &#125; if(array[nIndex] &gt; a) nTo = nIndex - 1; else nFrom = nIndex + 1; &#125; if(bFind) return nIndex; return -1;&#125;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[绝对众数问题]]></title>
+      <url>%2F2017%2F06%2F18%2F%E7%BB%9D%E5%AF%B9%E4%BC%97%E6%95%B0%E9%97%AE%E9%A2%98%2F</url>
+      <content type="text"><![CDATA[问题描述定义：给定N个数，称出现次数最多的数为众数；若某众数出现的次数大于N/2，则称该众数位绝对众数。给定N个整数存在绝对众数，以最低的时空复杂度来计算该绝对众数。 算法思路算法思想：删除数组A中两个不同的数，绝对众数不变。 算法描述:记m位候选绝对众数，出现次数为c，初始次数为0。 遍历数组： 如果c == 0则m = A[i] 如果c != 0且m != A[i]，则同时删除A[i]和m 如果c != 0且m == A[i],则c++ 该算法的时间复杂度为O(N),空间复杂度为O(1) 实现代码123456789101112131415161718192021222324252627#include&lt;iostream&gt;using namespace std;int Mode(int *a,int size);int main()&#123; int a[] = &#123;8,1,8,2,8,3,8,4,8,5,8,8,1,1,1,1,1,1,1,8,8,8,8,8,8,8,8,8&#125;; int size = sizeof(a)/sizeof(int); int b = Mode( a ,size); cout &lt;&lt; b &lt;&lt; endl; return 0;&#125;int Mode(int *a,int size)&#123; int count = 0; int m = a[0]; for(int i = 0;i &lt; size;i++)&#123; if(count == 0)&#123; m = a[i]; count = 1; &#125; else if(m != a[i])&#123; count--; &#125; else&#123; count++; &#125; &#125; return m;&#125;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[汉诺塔问题]]></title>
       <url>%2F2017%2F06%2F16%2F%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%2F</url>
       <content type="text"><![CDATA[算法描述有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。 问题思考汉诺塔是一个经典的用于理解递归调用的例子。 可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前n-1个盘子移动到中转轴上面，然后再将最下面的盘子移动到目标轴上，之后再将n-1个盘子从中转轴上面移动到目标轴上面。最终完成移动。以上步骤可以通过递归完成。 数学推导通过以上分析可以利用数学推导知道要移动n个盘子需要$2^n-1$个步骤。$$T(n)=2T(n-1)+1$$ $$T(n) + 1 = 2(T(n-1)+1)$$ $$\frac{T(n)+1}{T(n-1)+1}=2$$ $$T(n)=2^n - 1$$ 代码实现1234567891011121314151617181920#include&lt;iostream&gt;using namespace std;void MoveOne(char from,char to);void Move(char from,char to,char aux,int n);int main()&#123; Move('A','B','C',4); return 0;&#125;void Move(char from,char to,char aux,int n)&#123; if(n == 1)&#123; MoveOne(from,to); return; &#125; Move(from,aux,to,n-1); MoveOne(from,to); Move(aux,to,from,n-1);&#125;void MoveOne(char from,char to)&#123; cout &lt;&lt; from &lt;&lt; "-&gt;" &lt;&lt; to &lt;&lt; endl;&#125; 进阶问题:汉诺塔的状态给定从小到大的N个盘子，它们散乱的位于A,B,C柱上，问这一状态能否将这N个盘子从A借助B移动到C的必经状态？如果是，则返回是第几个状态，如果不是那么返回-1 问题思考根据以上思考可以知道我们将汉诺塔问题分为三步，那么通过了解最下面盘子的状态就可以知道现在在进行到了哪一步。如果最下面盘子在初始轴上，那么就是在第一步或第二步，如果在目标轴上，那么他就在第三步。在计算的基础上加上$2^n$就可以完成。如果他在中转轴上，则根本不可能是其中的步骤，返回-1. 代码实现123456789101112131415161718192021#include&lt;iostream&gt;using namespace std;void MoveOne(char from,char to);void Move(char from,char to,char aux,int n);int Calc(const char* str,int size,char from,char to,char aux);int Calc(const char* str,int size,char from,char to,char aux)&#123; if(size == 0) return 0; if(str[size - 1] == aux) return -1; if(str[size - 1] == to)&#123; int n = Calc(str,size - 1,aux,to,from); if(n == -1) return -1; return (1 &lt;&lt; (size - 1)) + n; &#125; return Calc(str,size - 1,from,aux,to);&#125;int main()&#123;// Move('A','B','C',4);// return 0; char str[] = "ABC"; cout &lt;&lt; Calc(str,3,'A','C','B') &lt;&lt; endl;&#125;]]></content>

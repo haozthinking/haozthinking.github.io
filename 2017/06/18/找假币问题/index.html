@@ -84,25 +84,22 @@
 
 
 
-<meta name="description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
+<meta name="description" content="问题描述有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。
+理论下界由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &amp;gt; 24$所以理论上至少需要三次可以得到最终的结论。
+相似问题本质上找假币问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="eratosthenes筛选法">
-<meta property="og:url" content="http://yoursite.com/2017/06/12/eratosthenes筛选法/index.html">
+<meta property="og:title" content="找假币问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/找假币问题/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
-<meta property="og:updated_time" content="2017-06-12T01:34:59.000Z">
+<meta property="og:description" content="问题描述有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。
+理论下界由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &amp;gt; 24$所以理论上至少需要三次可以得到最终的结论。
+相似问题本质上找假币问">
+<meta property="og:updated_time" content="2017-06-18T07:56:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eratosthenes筛选法">
-<meta name="twitter:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
+<meta name="twitter:title" content="找假币问题">
+<meta name="twitter:description" content="问题描述有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。
+理论下界由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &amp;gt; 24$所以理论上至少需要三次可以得到最终的结论。
+相似问题本质上找假币问">
 
 
 
@@ -123,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/12/eratosthenes筛选法/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/18/找假币问题/"/>
 
-  <title> eratosthenes筛选法 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 找假币问题 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -298,7 +295,7 @@
             
             
               
-                eratosthenes筛选法
+                找假币问题
               
             
           </h1>
@@ -310,8 +307,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-12T09:34:14+08:00" content="2017-06-12">
-              2017-06-12
+            <time itemprop="dateCreated" datetime="2017-06-18T15:55:29+08:00" content="2017-06-18">
+              2017-06-18
             </time>
           </span>
 
@@ -321,8 +318,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/06/12/eratosthenes筛选法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/eratosthenes筛选法/" itemprop="commentsCount"></span>
+                <a href="/2017/06/18/找假币问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/找假币问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,11 +342,11 @@
       
 
       
-        <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选</p>
-<p>步骤如下：</p>
-<p>先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。</p>
-<p>值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉了。而且如果筛选的数字大于了$\sqrt p$那么就不用再筛了，比如我们要筛选100以内的素数，筛掉2,3,5,7后就不用再筛了。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">bool</span> a[<span class="number">1000</span>];</div><div class="line">    Eratosthenes(a,<span class="number">200</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">200</span>;i++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">'\t'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    a[<span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; n;i++)&#123;</div><div class="line">        a[i] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> p = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> k = p * p;</div><div class="line">    <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">        <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">            a[k] = <span class="literal">false</span>;</div><div class="line">            k = k + p;</div><div class="line">        &#125;</div><div class="line">        p++;</div><div class="line">        <span class="keyword">while</span>(!a[p])&#123;</div><div class="line">            p++;</div><div class="line">        &#125;</div><div class="line">        k = p * p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。</p>
+<h3 id="理论下界"><a href="#理论下界" class="headerlink" title="理论下界"></a>理论下界</h3><p>由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &gt; 24$所以理论上至少需要三次可以得到最终的结论。</p>
+<h3 id="相似问题"><a href="#相似问题" class="headerlink" title="相似问题"></a>相似问题</h3><p>本质上找假币问题就是一种三分类的折半查找问题。</p>
+<p>二分类的折半查找问题的代码如下，基础要好好掌握:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* <span class="built_in">array</span>,<span class="keyword">int</span> size,<span class="keyword">int</span> a)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">int</span> b = Find(a,size,<span class="number">4</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt;  size &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* <span class="built_in">array</span>,<span class="keyword">int</span> size,<span class="keyword">int</span> a)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> nFrom = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> nTo = size - <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> nIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">bool</span> bFind = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">while</span>(nFrom &lt;= nTo)&#123;</div><div class="line">        nIndex = (nFrom + nTo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>[nIndex] == a)&#123;</div><div class="line">            bFind = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>[nIndex] &gt; a)</div><div class="line">            nTo = nIndex - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            nFrom = nIndex + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(bFind)</div><div class="line">        <span class="keyword">return</span> nIndex;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -402,16 +399,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/30/LeetCode-47-M-Permutations-II/" rel="next" title="LeetCode 47.[M]Permutations II">
-                <i class="fa fa-chevron-left"></i> LeetCode 47.[M]Permutations II
+              <a href="/2017/06/18/绝对众数问题/" rel="next" title="绝对众数问题">
+                <i class="fa fa-chevron-left"></i> 绝对众数问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/16/汉诺塔问题/" rel="prev" title="汉诺塔问题">
-                汉诺塔问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/18/求局部最大值/" rel="prev" title="求局部最大值">
+                求局部最大值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,8 +458,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/06/12/eratosthenes筛选法/"
-           data-title="eratosthenes筛选法" data-url="http://yoursite.com/2017/06/12/eratosthenes筛选法/">
+      <div class="ds-thread" data-thread-key="2017/06/18/找假币问题/"
+           data-title="找假币问题" data-url="http://yoursite.com/2017/06/18/找假币问题/">
       </div>
     
   </div>
@@ -546,7 +543,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论下界"><span class="nav-number">2.</span> <span class="nav-text">理论下界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相似问题"><span class="nav-number">3.</span> <span class="nav-text">相似问题</span></a></li></ol></div>
             
           </div>
         </section>

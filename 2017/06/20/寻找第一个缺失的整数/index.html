@@ -84,25 +84,19 @@
 
 
 
-<meta name="description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
+<meta name="description" content="题目描述给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。
+算法描述这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N  \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个fal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="eratosthenes筛选法">
-<meta property="og:url" content="http://yoursite.com/2017/06/12/eratosthenes筛选法/index.html">
+<meta property="og:title" content="寻找第一个缺失的整数">
+<meta property="og:url" content="http://yoursite.com/2017/06/20/寻找第一个缺失的整数/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
-<meta property="og:updated_time" content="2017-06-12T01:34:59.000Z">
+<meta property="og:description" content="题目描述给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。
+算法描述这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N  \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个fal">
+<meta property="og:updated_time" content="2017-06-20T01:19:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eratosthenes筛选法">
-<meta name="twitter:description" content="算法描述eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选
-步骤如下：
-先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。
-值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉">
+<meta name="twitter:title" content="寻找第一个缺失的整数">
+<meta name="twitter:description" content="题目描述给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。
+算法描述这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N  \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个fal">
 
 
 
@@ -123,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/12/eratosthenes筛选法/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/20/寻找第一个缺失的整数/"/>
 
-  <title> eratosthenes筛选法 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 寻找第一个缺失的整数 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -298,7 +292,7 @@
             
             
               
-                eratosthenes筛选法
+                寻找第一个缺失的整数
               
             
           </h1>
@@ -310,8 +304,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-12T09:34:14+08:00" content="2017-06-12">
-              2017-06-12
+            <time itemprop="dateCreated" datetime="2017-06-20T09:17:40+08:00" content="2017-06-20">
+              2017-06-20
             </time>
           </span>
 
@@ -321,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/06/12/eratosthenes筛选法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/eratosthenes筛选法/" itemprop="commentsCount"></span>
+                <a href="/2017/06/20/寻找第一个缺失的整数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/20/寻找第一个缺失的整数/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,12 +339,11 @@
       
 
       
-        <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选</p>
-<p>步骤如下：</p>
-<p>先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。</p>
-<p>值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉了。而且如果筛选的数字大于了$\sqrt p$那么就不用再筛了，比如我们要筛选100以内的素数，筛掉2,3,5,7后就不用再筛了。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">bool</span> a[<span class="number">1000</span>];</div><div class="line">    Eratosthenes(a,<span class="number">200</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">200</span>;i++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">'\t'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    a[<span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; n;i++)&#123;</div><div class="line">        a[i] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> p = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> k = p * p;</div><div class="line">    <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">        <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">            a[k] = <span class="literal">false</span>;</div><div class="line">            k = k + p;</div><div class="line">        &#125;</div><div class="line">        p++;</div><div class="line">        <span class="keyword">while</span>(!a[p])&#123;</div><div class="line">            p++;</div><div class="line">        &#125;</div><div class="line">        k = p * p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N  \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个false的值输出。这种方法的时间复杂度为$O(N)$空间复杂度也为$O(N)$。</p>
+<p>这里介绍一种使用循环不变式的方法来解决这个问题。使用的时间复杂度为$O(N)$，空间复杂度为$O(1)$。本题的思路是将找到的元素放到正确的位置上，如果最终发现某个元素一直没有被找到，那么这个元素就为所求元素。</p>
+<h4 id="循环不变式"><a href="#循环不变式" class="headerlink" title="循环不变式"></a>循环不变式</h4><p>如果某命题初始为真，且每次更改后仍然保持该命题为真，那么若干次更改后命题仍然为真。之前我们所求的<strong>局部极大值</strong>的题目也是用的这个思路。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstMissNum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">74</span>,<span class="number">54</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">-1</span>&#125;;</div><div class="line">    <span class="keyword">int</span> m = FirstMissNum(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; m &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstMissNum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    a--;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(i &lt;= size) &#123;</div><div class="line">        <span class="keyword">if</span> (a[i] == i) i++;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((a[i] &lt; i) || (a[i] &gt; size) || a[i] == a[a[i]]) &#123;</div><div class="line">            a[i] = a[size];</div><div class="line">            size--; <span class="comment">//把该元素删除掉，删除的方法就是将最后一个元素值赋予给他，然后删掉最后一个元素</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            swap(a[i], a[a[i]]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -402,17 +395,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/30/LeetCode-47-M-Permutations-II/" rel="next" title="LeetCode 47.[M]Permutations II">
-                <i class="fa fa-chevron-left"></i> LeetCode 47.[M]Permutations II
+              <a href="/2017/06/18/求局部最大值/" rel="next" title="求局部最大值">
+                <i class="fa fa-chevron-left"></i> 求局部最大值
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/16/汉诺塔问题/" rel="prev" title="汉诺塔问题">
-                汉诺塔问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,8 +450,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/06/12/eratosthenes筛选法/"
-           data-title="eratosthenes筛选法" data-url="http://yoursite.com/2017/06/12/eratosthenes筛选法/">
+      <div class="ds-thread" data-thread-key="2017/06/20/寻找第一个缺失的整数/"
+           data-title="寻找第一个缺失的整数" data-url="http://yoursite.com/2017/06/20/寻找第一个缺失的整数/">
       </div>
     
   </div>
@@ -546,7 +535,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#循环不变式"><span class="nav-number">2.1.</span> <span class="nav-text">循环不变式</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
