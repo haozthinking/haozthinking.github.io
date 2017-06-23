@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[零子数组]]></title>
+      <url>%2F2017%2F06%2F23%2F%E9%9B%B6%E5%AD%90%E6%95%B0%E7%BB%84%2F</url>
+      <content type="text"><![CDATA[题目描述对于长度为N的数组A,求连续子数组的最接近0的值。 如: 数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。 算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复杂度为$O(N)$，排序的时间复杂度为$O(N\ logN)$，所以该算法的时间复杂度为$O(N\ logN)$。 代码实现123456789101112131415161718192021222324252627#include&lt;iostream&gt;using namespace std;int MinSubarray(const int* a,int size);int main()&#123; int a[] = &#123;1,-2,3,10,-4,7,2,-5&#125;; int b = MinSubarray(a, sizeof(a)/sizeof(int)); cout &lt;&lt; b &lt;&lt; endl; return 0;&#125;int MinSubarray(const int* a,int size)&#123; int* sum = new int[size + 1]; sum[0] = 0; int i; for(i = 0; i &lt; size ;i++)&#123; sum[i+1] = a[i] + sum[i]; &#125; int* b = new int[size + 1]; sort(sum,sum + size + 1); int different = abs(sum[1] - sum[0]); int result = different; for (i = 1;i &lt; size ;i++)&#123; different = abs(sum[i+1] - sum[i]); result = min(result,different); &#125; delete[] sum; return result; &#125; 算法外的所学创建一个新数组1int* sum = new int[size + 1]; 通过以上代码在算法中新创建一个新数组，这样会给他分配一部分内存。 将数组内的元素进行排序1sort(sum,sum + size + 1); 直接使用c++内自带的sort函数进行排序，注意第一个参数就为第一个开始的地方，这个地方为sum，最后一个位置就为结束的地方，这个地方为sum+size+1.]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[寻找第一个缺失的整数]]></title>
       <url>%2F2017%2F06%2F20%2F%E5%AF%BB%E6%89%BE%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B4%E6%95%B0%2F</url>
       <content type="text"><![CDATA[题目描述给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。 算法描述这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个false的值输出。这种方法的时间复杂度为$O(N)$空间复杂度也为$O(N)$。 这里介绍一种使用循环不变式的方法来解决这个问题。使用的时间复杂度为$O(N)$，空间复杂度为$O(1)$。本题的思路是将找到的元素放到正确的位置上，如果最终发现某个元素一直没有被找到，那么这个元素就为所求元素。 循环不变式如果某命题初始为真，且每次更改后仍然保持该命题为真，那么若干次更改后命题仍然为真。之前我们所求的局部极大值的题目也是用的这个思路。 123456789101112131415161718192021222324#include &lt;iostream&gt;using namespace std;int FirstMissNum(int *a,int size);int main()&#123; int a[] = &#123;9,2,3,2,3,2,1,2,3,4,5,74,54,6,8,-1&#125;; int m = FirstMissNum(a, sizeof(a)/ sizeof(int)); cout &lt;&lt; m &lt;&lt; endl; return 0;&#125;int FirstMissNum(int *a,int size)&#123; a--; int i = 1; while(i &lt;= size) &#123; if (a[i] == i) i++; else if ((a[i] &lt; i) || (a[i] &gt; size) || a[i] == a[a[i]]) &#123; a[i] = a[size]; size--; //把该元素删除掉，删除的方法就是将最后一个元素值赋予给他，然后删掉最后一个元素 &#125; else &#123; swap(a[i], a[a[i]]); &#125; &#125; return i;&#125;;]]></content>
