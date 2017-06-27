@@ -291,6 +291,119 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/30/LeetCode-47-M-Permutations-II/" itemprop="url">
+                  LeetCode 47.[M]Permutations II
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-30T16:29:45+08:00" content="2017-05-30">
+              2017-05-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/30/LeetCode-47-M-Permutations-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/30/LeetCode-47-M-Permutations-II/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
+<p>For example,<br><code>[1,1,2]</code> have the following unique permutations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,1,2],</div><div class="line">  [1,2,1],</div><div class="line">  [2,1,1]</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题相比于46题，改动只有一点点，在46题的时候输入的序列不允许出现重复。而47题的版本允许出现重复。算法一的代码就是在46题的代码基础上进行修改。</p>
+<h4 id="算法一"><a href="#算法一" class="headerlink" title="算法一:"></a>算法一:</h4><p>当其进行遍历的时候，我们如果之前和他有一个元素相同，那么我们就跳过这个元素，对下一个元素进行遍历。</p>
+<p>增加的代码如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> n,<span class="keyword">int</span> t)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(n &lt; t)&#123;</div><div class="line">        <span class="keyword">if</span>(nums[n] == nums[t])&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h4><p>46题的实现方法是一种递归的方法，其核心代码是一串递归代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(! IsDuplicate(nums,begin,i)) <span class="keyword">continue</span>;</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">            permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>而我们在这里用非递归的算法实现46题目，用该非递归算法的方法不用考虑是否重复。</p>
+<p>对于一个数字组成的字符串，他有最小的一个组合，他也有最大的一个组合。那么我们就从他最小的组合开始遍历，寻求下一个比现在这个大的元素，最后遍历到最大的那个字符串停止。通过这个步骤就可以实现字符串的全排列问题。通过这种方式实现的全排列问题，不用考虑他是否是重复的，不管是否重复都可以使用这个代码。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="算法一实现"><a href="#算法一实现" class="headerlink" title="算法一实现:"></a>算法一实现:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; permuteUnique(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)&#123;</div><div class="line">    <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">    permuteMain(nums,<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">permuteMain</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> begin)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> size = nums.size();</div><div class="line">    <span class="keyword">if</span>(begin == size)&#123;</div><div class="line">        res.push_back(nums);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(! IsDuplicate(nums,begin,i)) <span class="keyword">continue</span>;</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">            permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">            swap(nums[begin],nums[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> n,<span class="keyword">int</span> t)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(n &lt; t)&#123;</div><div class="line">        <span class="keyword">if</span>(nums[n] == nums[t])&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="算法二实现"><a href="#算法二实现" class="headerlink" title="算法二实现"></a>算法二实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GetNextPermutation</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(<span class="keyword">int</span> *from,<span class="keyword">int</span> * to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> size)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    Print(a,size);</div><div class="line">    <span class="keyword">while</span>(GetNextPermutation(a,size)) Print(a,size);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GetNextPermutation</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i = size - <span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span>((i &gt;= <span class="number">0</span>) &amp;&amp; (a[i] &gt;= a[i+<span class="number">1</span>])) i--;</div><div class="line">    <span class="keyword">if</span>(i &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> j = size - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(a[j] &lt;= a[i]) j--;</div><div class="line"></div><div class="line">    swap(a[i],a[j]);</div><div class="line">    Reverse(a+i+<span class="number">1</span>,a+size<span class="number">-1</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(<span class="keyword">int</span> *from,<span class="keyword">int</span> * to)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="keyword">while</span>(from &lt; to)&#123;</div><div class="line">        t = *from;</div><div class="line">        *from = *to;</div><div class="line">        *to = t;</div><div class="line">        from++;</div><div class="line">        to--;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt; p[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/25/LeetCode-46-M-Permutations/" itemprop="url">
                   LeetCode 46.[M]Permutations
                 </a>
@@ -1279,116 +1392,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/12/LeetCode-86-M-Partition-List/" itemprop="url">
-                  LeetCode 86.[M] Partition List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-12T10:59:18+08:00" content="2017-05-12">
-              2017-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/12/LeetCode-86-M-Partition-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/LeetCode-86-M-Partition-List/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a linked list and a value <em>x</em>, partition it such that all nodes less than <em>x</em> come before nodes greater than or equal to <em>x</em>.</p>
-<p>You should preserve the original relative order of the nodes in each of the two partitions.</p>
-<p>For example,<br>Given <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2</code> and <em>x</em> = 3,<br>return <code>1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</code>.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>该题目应用了快速排序的思想，在开始前建立两个链表。分别表示比给出值小和给出值大的链表。然后遍历一遍即可得到左右两个链表，之后再把右边链表链接在左边链表上，即可完成该算法。此算法的时间复杂度为o(n)</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* head, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span> || head -&gt; next == <span class="literal">NULL</span>)</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    ListNode* p_lefthead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode* left = p_lefthead;</div><div class="line">    ListNode* p_righthead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">    ListNode* right = p_righthead;</div><div class="line">    ListNode* ahead = head ;</div><div class="line">    <span class="keyword">while</span>(ahead)&#123;</div><div class="line">        <span class="keyword">if</span>(ahead -&gt; val &lt; x)&#123;</div><div class="line">            left -&gt; next = ahead;</div><div class="line">            left = ahead;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            right -&gt; next = ahead;</div><div class="line">            right = ahead;</div><div class="line">        &#125;</div><div class="line">        ahead = ahead -&gt; next;</div><div class="line">    &#125;</div><div class="line">    left -&gt; next = p_righthead -&gt; next;</div><div class="line">    right -&gt; next = <span class="literal">NULL</span>;</div><div class="line">    head  = p_lefthead -&gt; next ;</div><div class="line">    <span class="keyword">return</span> head ;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1429,7 +1437,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
