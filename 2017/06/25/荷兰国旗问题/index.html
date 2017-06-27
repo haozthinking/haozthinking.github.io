@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="机器学习," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,21 +84,28 @@
 
 
 
-<meta name="description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:$$(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}$$
-$$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
+<meta name="description" content="问题描述现有红、白、蓝三个不同颜色的小球，乱序排列在一起，请重新排列这些小球，使得红白蓝三色的同颜色的球在一起。
+即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。
+算法分析我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$
+
+如果A[cur] == 2，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logistic回归">
-<meta property="og:url" content="http://yoursite.com/2017/05/14/Logistic回归/index.html">
+<meta property="og:title" content="荷兰国旗问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/荷兰国旗问题/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:$$(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}$$
-$$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
-<meta property="og:image" content="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg">
-<meta property="og:updated_time" content="2017-05-14T13:39:11.000Z">
+<meta property="og:description" content="问题描述现有红、白、蓝三个不同颜色的小球，乱序排列在一起，请重新排列这些小球，使得红白蓝三色的同颜色的球在一起。
+即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。
+算法分析我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$
+
+如果A[cur] == 2，">
+<meta property="og:updated_time" content="2017-06-26T02:42:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Logistic回归">
-<meta name="twitter:description" content="logistic回归模型logistic回归分布设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:$$(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}$$
-$$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
-<meta name="twitter:image" content="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg">
+<meta name="twitter:title" content="荷兰国旗问题">
+<meta name="twitter:description" content="问题描述现有红、白、蓝三个不同颜色的小球，乱序排列在一起，请重新排列这些小球，使得红白蓝三色的同颜色的球在一起。
+即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。
+算法分析我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$
+
+如果A[cur] == 2，">
 
 
 
@@ -119,9 +126,9 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/14/Logistic回归/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/荷兰国旗问题/"/>
 
-  <title> Logistic回归 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 荷兰国旗问题 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +301,7 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
             
             
               
-                Logistic回归
+                荷兰国旗问题
               
             
           </h1>
@@ -306,8 +313,8 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-14T21:35:56+08:00" content="2017-05-14">
-              2017-05-14
+            <time itemprop="dateCreated" datetime="2017-06-25T21:05:43+08:00" content="2017-06-25">
+              2017-06-25
             </time>
           </span>
 
@@ -317,8 +324,8 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/14/Logistic回归/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/14/Logistic回归/" itemprop="commentsCount"></span>
+                <a href="/2017/06/25/荷兰国旗问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/荷兰国旗问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -341,28 +348,23 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
       
 
       
-        <h3 id="logistic回归模型"><a href="#logistic回归模型" class="headerlink" title="logistic回归模型"></a>logistic回归模型</h3><h4 id="logistic回归分布"><a href="#logistic回归分布" class="headerlink" title="logistic回归分布"></a>logistic回归分布</h4><p>设$X$是连续的随机变量，$X$服从logistic回归是指X具有以下分布函数和密度函数:<br>$$<br>(1)F(x)=P(X\le x)=\frac{1}{1+e^{\frac{-(x-\mu)}{\gamma}}}<br>$$</p>
-<p>$$<br>(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\frac{-(x-\mu)}{\gamma}})^2}<br>$$</p>
-<p>Logistic回归的密度函数$f(x)$和分布函数$F(x)$的图形如下图所示，分布函数属于Logsitic回归，其图像为一条S形曲线。</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/logistic.jpeg" alt=""></p>
-<h4 id="二项logistic回归模型"><a href="#二项logistic回归模型" class="headerlink" title="二项logistic回归模型"></a>二项logistic回归模型</h4><p>二项logisitic回归是一种分类模型，由条件概率$P(Y|X)$表示，形式为参数化的logistic分布。随着$X$取值为实数，随机变量取值为1/0，通过监督学习的方法来估计模型参数:<br>$$<br>(3)P(Y=1|X)=\frac{\exp(w\cdot x+b)}{1 + \exp(w\cdot x+b)}<br>$$</p>
-<p>$$<br>(4)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x+b)}<br>$$</p>
-<p>此处$x \in R^n$为输入，$Y\in{0,1}$为输出，$w \in R^n$和$b \in R$为参数，$w$称为权值向量，$b$称为偏置，$w*x$为其两者的内积。</p>
-<p>对于给定的输入序列$x$ 按照上面两式可以求得$P(Y=1|x)$以及$P(Y=0|x)$,然后再比较两者的大小，比较之后就可以将$x$分到概率值较大的那个类，进而完成了分类操作。</p>
-<p>而有时为了方便会扩充权值向量和输入向量，其仍然记做$w,x$，此时权值向量和输入向量就不为一维的而是多维的，此时$w=(w^1,w^2,w^3,…,w^n,b)^T$,x=(x^1,x^2,x^3,….,x^n,1)^T,此时其回归模型如下:<br>$$<br>(5)P(Y=1|X)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}<br>$$</p>
-<p>$$<br>(6)P(Y=0|X)=\frac{1}{1+\exp(w\cdot x)}<br>$$</p>
-<p>一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率为$p$那么该事件发生的几率为$\frac{p}{1-p}$,那么该事件发生的对数几率(logit函数)为：</p>
-<p>$$<br>logit(p)=log\frac{p}{1-p}<br>$$</p>
-<p>对于logistic回归来说，其对数几率为：</p>
-<p>$$<br>\log\frac{P(Y=1|x)}{1-P(Y=1|x)}=w\cdot x<br>$$</p>
-<p>在logistic回归中，输出$Y=1$的对数几率是输入$x$ 的线性函数，输出$Y=1$的对数几率是由输入$x$的线性函数构成的。线性函数的值越接近于正无穷，概率值就越接近1，越接近于负无穷，概率值就越接近0.</p>
-<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p>假设<br>$$<br>P(Y=1|x)=\pi(x),<br>$$</p>
-<p>$$<br>P(Y=0|x)=1-\pi(x),<br>$$</p>
-<p>那么其似然函数为:<br>$$<br>\prod_{i=1}^N[\pi(x_i)]^{y_i}[1-\pi(x_i)]^{1-y_i}<br>$$<br>其对数似然为:<br>$$<br>L(w)=\sum_{i=1}^N[y_ilog\pi(x_i)+(1-y_i)log(1-\pi(x_i))]<br>$$</p>
-<p>$$<br>=\sum_{i=1}^N[y_ilog\frac{\pi(x_i)}{1-\pi(x_i)}+log(1-\pi(x_i))]<br>$$</p>
-<p>$$<br>=\sum_{i=1}^N[y_i(w_i\cdot x_i)-log(1+exp(w\cdot x_i))]<br>$$</p>
-<p>这样，问题就变成了以对数似然作为目标函数的最优化问题，logistic回归中通常采用梯度下降法和拟牛顿法。利用这些方法可以轻松的求出题目所需的$w$。</p>
-<h4 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h4><p>上面介绍的logistic回归构成了二项分类模型，可以用于二类分类。如果将其推广为多项logistic回归，那么可以用于多类分类。假设离散型随机变量的Y的取值为{1,2,….,K}，那么该logistic回归的模型为:<br>$$<br>P(Y=k|x)=\frac{\exp(w_k\cdot x)}{1+\sum_{k=1}^{K-1}\exp(w_k\cdot x)}<br>$$<br>二项logisitic回归的方法可以用于多项logisitic回归。</p>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>现有红、白、蓝三个不同颜色的小球，乱序排列在一起，请重新排列这些小球，使得红白蓝三色的同颜色的球在一起。</p>
+<p>即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。</p>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$</p>
+<ul>
+<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end–，cur不变；</li>
+<li>如果A[cur] == 1，那么将cur++，begin不变，end不变</li>
+<li>如果A[cur] == 0，则：<ul>
+<li>如果begin == cur,那么begin++,cur++</li>
+<li>begin != cur，则A[cur]与A[begin]交换，begin++，cur不变</li>
+</ul>
+</li>
+</ul>
+<p>通过以上的代码就得到了第一版本的荷兰国旗问题。</p>
+<p>进一步考虑：</p>
+<p>可知在[begin,current]区间内一定没有2，因此A[begin]要么是0，要么是1；如果begin != current 那么A[begin]肯定是1，因此当A[current]为0时 将A[begin]和A[current]交换也可。交换后A[current] == 1，那么cur也可以++。于是就得到了第二版的荷兰国旗问题。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="实现版本第一版"><a href="#实现版本第一版" class="headerlink" title="实现版本第一版"></a>实现版本第一版</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    Holland1(a,length);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sssssssssss"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> end = length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(current &lt;= end)&#123;</div><div class="line">        <span class="keyword">if</span>(a[current] == <span class="number">2</span>)&#123;</div><div class="line">            swap(a[current],a[end]);</div><div class="line">            end--;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[current] == <span class="number">1</span>)&#123;</div><div class="line">            current++;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(current == begin)&#123;</div><div class="line">                begin++;</div><div class="line">                current++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                swap(a[current],a[begin]);</div><div class="line">                begin++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="实现版本第二版"><a href="#实现版本第二版" class="headerlink" title="实现版本第二版"></a>实现版本第二版</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    Holland1(a,length);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sssssssssss"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> end = length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(current &lt;= end)&#123;</div><div class="line">        <span class="keyword">if</span>(a[current] == <span class="number">2</span>)&#123;</div><div class="line">            swap(a[current],a[end]);</div><div class="line">            end--;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[current] == <span class="number">1</span>)&#123;</div><div class="line">            current++;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(current != begin) swap(a[current],a[begin]);</div><div class="line">            begin++;</div><div class="line">            current++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -406,7 +408,7 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -415,17 +417,13 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" rel="next" title="LeetCode 5.[M] Longest Palindromic Substring ">
-                <i class="fa fa-chevron-left"></i> LeetCode 5.[M] Longest Palindromic Substring 
+              <a href="/2017/06/25/最大子数组问题/" rel="next" title="最大连续子数组问题">
+                <i class="fa fa-chevron-left"></i> 最大连续子数组问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" rel="prev" title="LeetCode 32.[H] Longest Valid Parentheses">
-                LeetCode 32.[H] Longest Valid Parentheses <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,8 +472,8 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/14/Logistic回归/"
-           data-title="Logistic回归" data-url="http://yoursite.com/2017/05/14/Logistic回归/">
+      <div class="ds-thread" data-thread-key="2017/06/25/荷兰国旗问题/"
+           data-title="荷兰国旗问题" data-url="http://yoursite.com/2017/06/25/荷兰国旗问题/">
       </div>
     
   </div>
@@ -559,7 +557,7 @@ $$(2)f(x)=F^{‘}(x)=\frac{e^{\frac{-(x-\mu)}{\gamma}}}{\gamma(1+e^{\fr">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic回归模型"><span class="nav-number">1.</span> <span class="nav-text">logistic回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#logistic回归分布"><span class="nav-number">1.1.</span> <span class="nav-text">logistic回归分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项logistic回归模型"><span class="nav-number">1.2.</span> <span class="nav-text">二项logistic回归模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.3.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项logistic回归"><span class="nav-number">1.4.</span> <span class="nav-text">多项logistic回归</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">2.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现版本第一版"><span class="nav-number">3.1.</span> <span class="nav-text">实现版本第一版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现版本第二版"><span class="nav-number">3.2.</span> <span class="nav-text">实现版本第二版</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

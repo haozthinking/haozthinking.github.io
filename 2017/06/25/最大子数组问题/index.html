@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,15 +84,22 @@
 
 
 
-<meta name="description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="好Q">
-<meta property="og:url" content="http://yoursite.com/archives/2017/05/index.html">
+<meta name="description" content="问题描述给定一个数组A[0,1,…..,n-1],求A的连续子数组，使得该子数组的和最大。
+比如给定数组:{1,-2,3,10,-4,7,2,-5}。那么其最大子数组为{3,10,-4,7,2}。得到的最大子数组加和为18。
+算法描述记S[i]为以A[i]为结尾的数组中的最大子数组，那么S[i+1]=max(S[i]+A[i+1],A[i+1])，且S[0]=A[0]。该算法的时间复杂度为$O(n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大连续子数组问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/最大子数组问题/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
+<meta property="og:description" content="问题描述给定一个数组A[0,1,…..,n-1],求A的连续子数组，使得该子数组的和最大。
+比如给定数组:{1,-2,3,10,-4,7,2,-5}。那么其最大子数组为{3,10,-4,7,2}。得到的最大子数组加和为18。
+算法描述记S[i]为以A[i]为结尾的数组中的最大子数组，那么S[i+1]=max(S[i]+A[i+1],A[i+1])，且S[0]=A[0]。该算法的时间复杂度为$O(n">
+<meta property="og:updated_time" content="2017-06-25T02:55:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="好Q">
-<meta name="twitter:description" content="悟以往之不谏，知来者之可追：一只在路上的程序猿">
+<meta name="twitter:title" content="最大连续子数组问题">
+<meta name="twitter:description" content="问题描述给定一个数组A[0,1,…..,n-1],求A的连续子数组，使得该子数组的和最大。
+比如给定数组:{1,-2,3,10,-4,7,2,-5}。那么其最大子数组为{3,10,-4,7,2}。得到的最大子数组加和为18。
+算法描述记S[i]为以A[i]为结尾的数组中的最大子数组，那么S[i+1]=max(S[i]+A[i+1],A[i+1])，且S[0]=A[0]。该算法的时间复杂度为$O(n">
 
 
 
@@ -113,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/05/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/最大子数组问题/"/>
 
-  <title> 归档 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 最大连续子数组问题 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +153,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -267,402 +274,180 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 40 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                最大连续子数组问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-25T10:53:40+08:00" content="2017-06-25">
+              2017-06-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/25/最大子数组问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/最大子数组问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个数组A[0,1,…..,n-1],求A的连续子数组，使得该子数组的和最大。</p>
+<p>比如给定数组:{1,-2,3,10,-4,7,2,-5}。那么其最大子数组为{3,10,-4,7,2}。得到的最大子数组加和为18。</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>记S[i]为以A[i]为结尾的数组中的最大子数组，那么S[i+1]=max(S[i]+A[i+1],A[i+1])，且S[0]=A[0]。该算法的时间复杂度为$O(n)$。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MaxSubarray(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"b = "</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(!a || size &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> result = sum;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(sum &gt;= <span class="number">0</span>) sum = sum + a[i];</div><div class="line">        <span class="keyword">else</span> sum = a[i];</div><div class="line">        result = max(sum,result);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat_qcode.jpeg" alt="haoq wechat" style="width: 200px; max-width: 100%;"/>
+    <div>想看我的非技术文章，欢迎订阅我的微信公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持更鼓励我分享技术文章</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ojv0jka0j.bkt.clouddn.com/WechatIMG12.jpeg" alt="haoq WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/30/LeetCode-47-M-Permutations-II/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 47.[M]Permutations II</span>
-              
-            </a>
-        
-      </h1>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/零子数组/" rel="next" title="零子数组">
+                <i class="fa fa-chevron-left"></i> 零子数组
+              </a>
+            
+          </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-30T16:29:45+08:00"
-              content="2017-05-30" >
-          05-30
-        </time>
-      </div>
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/荷兰国旗问题/" rel="prev" title="荷兰国旗问题">
+                荷兰国旗问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/25/LeetCode-46-M-Permutations/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 46.[M]Permutations</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-25T10:18:01+08:00"
-              content="2017-05-25" >
-          05-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/19/LintCode 77-M-最长公共子序列/" itemprop="url">
-              
-                <span itemprop="name">LintCode 77 [M]最长公共子序列</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-19T10:59:11+08:00"
-              content="2017-05-19" >
-          05-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/16/LeetCode-150-M-Evaluate-Reverse-Polish-Notation/" itemprop="url">
-              
-                <span itemprop="name">LeetCode-150[M]-Evaluate-Reverse-Polish-Notation</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-16T16:56:59+08:00"
-              content="2017-05-16" >
-          05-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 32.[H] Longest Valid Parentheses</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-15T11:24:32+08:00"
-              content="2017-05-15" >
-          05-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/14/Logistic回归/" itemprop="url">
-              
-                <span itemprop="name">Logistic回归</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-14T21:35:56+08:00"
-              content="2017-05-14" >
-          05-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 5.[M] Longest Palindromic Substring </span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-14T10:46:51+08:00"
-              content="2017-05-14" >
-          05-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/13/LeetCode-3-[M]-Longest-Substring-Without-Repeating-Characters/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 3.[M] Longest Substring Without Repeating Characters</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-13T22:26:14+08:00"
-              content="2017-05-13" >
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/13/LeetCode-21-E-Merge-Two-Sorted-Lists/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 21.[E] Merge Two Sorted Lists</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-13T21:41:00+08:00"
-              content="2017-05-13" >
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/12/LeetCode-160-E-Intersection-of-Two-Linked-Lists/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 160.[E] Intersection of Two Linked Lists</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-12T13:51:47+08:00"
-              content="2017-05-12" >
-          05-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2017/05/page/2/">2</a><a class="page-number" href="/archives/2017/05/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/05/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -670,6 +455,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/25/最大子数组问题/"
+           data-title="最大连续子数组问题" data-url="http://yoursite.com/2017/06/25/最大子数组问题/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -689,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -733,6 +535,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -836,11 +649,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

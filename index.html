@@ -291,6 +291,227 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/25/荷兰国旗问题/" itemprop="url">
+                  荷兰国旗问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-25T21:05:43+08:00" content="2017-06-25">
+              2017-06-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/25/荷兰国旗问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/荷兰国旗问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>现有红、白、蓝三个不同颜色的小球，乱序排列在一起，请重新排列这些小球，使得红白蓝三色的同颜色的球在一起。</p>
+<p>即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。</p>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$</p>
+<ul>
+<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end–，cur不变；</li>
+<li>如果A[cur] == 1，那么将cur++，begin不变，end不变</li>
+<li>如果A[cur] == 0，则：<ul>
+<li>如果begin == cur,那么begin++,cur++</li>
+<li>begin != cur，则A[cur]与A[begin]交换，begin++，cur不变</li>
+</ul>
+</li>
+</ul>
+<p>通过以上的代码就得到了第一版本的荷兰国旗问题。</p>
+<p>进一步考虑：</p>
+<p>可知在[begin,current]区间内一定没有2，因此A[begin]要么是0，要么是1；如果begin != current 那么A[begin]肯定是1，因此当A[current]为0时 将A[begin]和A[current]交换也可。交换后A[current] == 1，那么cur也可以++。于是就得到了第二版的荷兰国旗问题。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="实现版本第一版"><a href="#实现版本第一版" class="headerlink" title="实现版本第一版"></a>实现版本第一版</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    Holland1(a,length);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sssssssssss"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> end = length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(current &lt;= end)&#123;</div><div class="line">        <span class="keyword">if</span>(a[current] == <span class="number">2</span>)&#123;</div><div class="line">            swap(a[current],a[end]);</div><div class="line">            end--;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[current] == <span class="number">1</span>)&#123;</div><div class="line">            current++;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(current == begin)&#123;</div><div class="line">                begin++;</div><div class="line">                current++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                swap(a[current],a[begin]);</div><div class="line">                begin++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="实现版本第二版"><a href="#实现版本第二版" class="headerlink" title="实现版本第二版"></a>实现版本第二版</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">int</span> length = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    Holland1(a,length);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"sssssssssss"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; length ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland1</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> current = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> end = length - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(current &lt;= end)&#123;</div><div class="line">        <span class="keyword">if</span>(a[current] == <span class="number">2</span>)&#123;</div><div class="line">            swap(a[current],a[end]);</div><div class="line">            end--;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[current] == <span class="number">1</span>)&#123;</div><div class="line">            current++;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(current != begin) swap(a[current],a[begin]);</div><div class="line">            begin++;</div><div class="line">            current++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/25/最大子数组问题/" itemprop="url">
+                  最大连续子数组问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-25T10:53:40+08:00" content="2017-06-25">
+              2017-06-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/25/最大子数组问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/最大子数组问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个数组A[0,1,…..,n-1],求A的连续子数组，使得该子数组的和最大。</p>
+<p>比如给定数组:{1,-2,3,10,-4,7,2,-5}。那么其最大子数组为{3,10,-4,7,2}。得到的最大子数组加和为18。</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>记S[i]为以A[i]为结尾的数组中的最大子数组，那么S[i+1]=max(S[i]+A[i+1],A[i+1])，且S[0]=A[0]。该算法的时间复杂度为$O(n)$。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MaxSubarray(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"b = "</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(!a || size &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> result = sum;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(sum &gt;= <span class="number">0</span>) sum = sum + a[i];</div><div class="line">        <span class="keyword">else</span> sum = a[i];</div><div class="line">        result = max(sum,result);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/23/零子数组/" itemprop="url">
                   零子数组
                 </a>
@@ -342,11 +563,11 @@
       
         
           
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于长度为N的数组A,求连续子数组的最接近0的值。</p>
+            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于长度为N的数组A,求连续子数组的和的绝对值最接近0的值。</p>
 <p>如:</p>
-<p>数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。</p>
+<p>数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的绝对值。</p>
 <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复杂度为$O(N)$，排序的时间复杂度为$O(N\ logN)$，所以该算法的时间复杂度为$O(N\ logN)$。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MinSubarray(a, <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span>* sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sum[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; size ;i++)&#123;</div><div class="line">        sum[i+<span class="number">1</span>] = a[i] + sum[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span>* b = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sort(sum,sum + size + <span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> different = <span class="built_in">abs</span>(sum[<span class="number">1</span>] - sum[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">int</span> result = different;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>;i &lt; size ;i++)&#123;</div><div class="line">        different = <span class="built_in">abs</span>(sum[i+<span class="number">1</span>] - sum[i]);</div><div class="line">        result = min(result,different);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span>[] sum;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MinSubarray(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"b = "</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> *sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sum[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">        sum[i + <span class="number">1</span>] = sum[i] + a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> different = sum[<span class="number">1</span>] - sum[<span class="number">0</span>];</div><div class="line">    sort(sum,sum + size + <span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> result = different;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; size;i++)&#123;</div><div class="line">        <span class="keyword">int</span> result_ = sum[i + <span class="number">1</span>] - sum[i];</div><div class="line">        different = <span class="built_in">abs</span>(sum[i + <span class="number">1</span>] - sum[i]);</div><div class="line">        <span class="keyword">int</span> index = <span class="built_in">abs</span>(result);</div><div class="line">        <span class="keyword">if</span>(different &lt; index)&#123;</div><div class="line">            result = result_;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span>[] sum;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="算法外的所学"><a href="#算法外的所学" class="headerlink" title="算法外的所学"></a>算法外的所学</h3><h4 id="创建一个新数组"><a href="#创建一个新数组" class="headerlink" title="创建一个新数组"></a>创建一个新数组</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>* sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div></pre></td></tr></table></figure>
 <p>通过以上代码在算法中新创建一个新数组，这样会给他分配一部分内存。</p>
 <h4 id="将数组内的元素进行排序"><a href="#将数组内的元素进行排序" class="headerlink" title="将数组内的元素进行排序"></a>将数组内的元素进行排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sort(sum,sum + size + <span class="number">1</span>);</div></pre></td></tr></table></figure>
@@ -1144,233 +1365,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/25/LeetCode-46-M-Permutations/" itemprop="url">
-                  LeetCode 46.[M]Permutations
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-25T10:18:01+08:00" content="2017-05-25">
-              2017-05-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/25/LeetCode-46-M-Permutations/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/25/LeetCode-46-M-Permutations/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a collection of <strong>distinct</strong> numbers, return all possible permutations.</p>
-<p>For example,<br><code>[1,2,3]</code> have the following permutations:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,2,3],</div><div class="line">  [1,3,2],</div><div class="line">  [2,1,3],</div><div class="line">  [2,3,1],</div><div class="line">  [3,1,2],</div><div class="line">  [3,2,1]</div><div class="line">]</div></pre></td></tr></table></figure>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这里采用的算法是交换元素的方法，采用的递归法实现该算法。</p>
-<p>遍历字符串，将当前遍历的字符和首字符进行交换，调用本函数处理首字符后的子字符串，然后执行完毕后再次调换回来。这样不需要刻意的复制字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for(i = start to end)循环</div><div class="line">1.swap</div><div class="line">2.递归调用(begin+1)</div><div class="line">3.swap back</div></pre></td></tr></table></figure>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; permute(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)&#123;</div><div class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</div><div class="line">        permuteMain(nums,<span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">permuteMain</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> begin)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> size = nums.size();</div><div class="line">        <span class="keyword">if</span>(begin == size)&#123;</div><div class="line">            res.push_back(nums);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt; size;i++)&#123;</div><div class="line">                swap(nums[begin],nums[i]);</div><div class="line">                permuteMain(nums,begin+<span class="number">1</span>);</div><div class="line">                swap(nums[begin],nums[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/19/LintCode 77-M-最长公共子序列/" itemprop="url">
-                  LintCode 77 [M]最长公共子序列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-19T10:59:11+08:00" content="2017-05-19">
-              2017-05-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/19/LintCode 77-M-最长公共子序列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/19/LintCode 77-M-最长公共子序列/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>最长公共子序列的定义：</p>
-<ul>
-<li>最长公共子序列问题是在一组序列（通常2个）中找到最长公共子序列（注意：不同于子串，LCS不需要是连续的子串）。该问题是典型的计算机科学问题，是文件差异比较程序的基础，在生物信息学中也有所应用。</li>
-<li><a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem" target="_blank" rel="external">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
-</ul>
-<p><strong>样例</strong>给出<strong>“ABCD”</strong> 和 <strong>“EDCA”</strong>，这个LCS是 <strong>“A”</strong> (或 D或C)，返回1给出<strong> “ABCD”</strong> 和 <strong>“EACB”</strong>，这个LCS是<strong>“AC”</strong>返回 2</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>本题是LCS问题。该问题是一个字符串中常常用到的问题，之前做过一道最长序列的题目，和这道题目看起来很像，不过难度比这道题低很多。因为那道题是连续的，只要发现一个不连续就将其删除就行。而这道题是不连续的。因此难度要大很多。</p>
-<p>该题目只要求实现返回最长子序列的长度。下面代码一给出这道题的解法。代码二给出改进版，可以输出最长子序列。</p>
-<p>这道题可以分为两步</p>
-<ul>
-<li>首先第一步是构造一个矩阵，矩阵构造好了以后就可以得到最长子序列的长度。</li>
-<li>第二步是遍历该矩阵，然后输出最长子序列。</li>
-</ul>
-<p>矩阵图如下所示：</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/WechatIMG322.jpeg" alt=""></p>
-<ul>
-<li>首先第一步是构造这个矩阵，如果横轴和纵轴的字符串字母相同，那么就把对角线左上角的值加1即可。如果横轴和纵轴的字符串字母不同，那么就挑选左边和上边的大者进行勾选。直至到达键盘的棋盘的右下角即可得到最长子序列的长度值。</li>
-<li>在得到这个矩阵后，在从右下角开始遍历，先看这个格子所对应的行和列是否相同，相同的话就输出此相同值同时指向左上角的值，如果不相同则选取左边或者上边的值进行指向。重复以上过程，最后就可以得出最长公共子序列的值。</li>
-</ul>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * @param A, B: Two strings.</div><div class="line">     * @return: The length of longest common subsequence of A and B.</div><div class="line">     */</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(<span class="built_in">string</span> A, <span class="built_in">string</span> B)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(A == <span class="string">""</span> || B == <span class="string">""</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> size1 = A.length();</div><div class="line">    <span class="keyword">int</span> size2 = B.length();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; chess(size1 + <span class="number">1</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(size2 + <span class="number">1</span>));</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= size1 ;i++)&#123;</div><div class="line">        chess[i][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= size2 ;j++)&#123;</div><div class="line">        chess[<span class="number">0</span>][j] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//    cout &lt;&lt; A[0] &lt;&lt; " " &lt;&lt; B[0];</span></div><div class="line"><span class="comment">//    return chess[size1-1][size2-1];</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= size1 ;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= size2  ;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(A[i - <span class="number">1</span>] == B[j - <span class="number">1</span>])</div><div class="line">                chess[i][j] = chess[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                chess[i][j] = max(chess[i][j<span class="number">-1</span>],chess[i<span class="number">-1</span>][j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> chess[size1][size2];</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * @param A, B: Two strings.</div><div class="line">     * @return: The length of longest common subsequence of A and B.</div><div class="line">     */</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestCommonSubsequence</span><span class="params">(<span class="built_in">string</span> A, <span class="built_in">string</span> B)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(A == <span class="string">""</span> || B == <span class="string">""</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> size1 = A.length();</div><div class="line">    <span class="keyword">int</span> size2 = B.length();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; chess(size1 + <span class="number">1</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(size2 + <span class="number">1</span>));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt;= size1 ;i++)&#123;</div><div class="line">        chess[i][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= size2 ;j++)&#123;</div><div class="line">        chess[<span class="number">0</span>][j] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//    cout &lt;&lt; A[0] &lt;&lt; " " &lt;&lt; B[0];</span></div><div class="line"><span class="comment">//    return chess[size1-1][size2-1];</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= size1 ;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= size2  ;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(A[i - <span class="number">1</span>] == B[j - <span class="number">1</span>])</div><div class="line">                chess[i][j] = chess[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                chess[i][j] = max(chess[i][j<span class="number">-1</span>],chess[i<span class="number">-1</span>][j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> i = size1;</div><div class="line">    <span class="keyword">int</span> j = size2;</div><div class="line">    <span class="built_in">string</span> a;</div><div class="line">    <span class="keyword">while</span>((i != <span class="number">0</span>) &amp;&amp; (j != <span class="number">0</span>))&#123;</div><div class="line">        <span class="keyword">if</span>(A[i+<span class="number">1</span>] == B[i+<span class="number">1</span>])&#123;</div><div class="line">            a.push_back(A[i<span class="number">-1</span>]);</div><div class="line">            i--;</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(chess[i][j<span class="number">-1</span>] &gt; chess[i<span class="number">-1</span>][j])</div><div class="line">                j--;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                i--;</div><div class="line">        &#125;</div><div class="line">        reverse(a.begin(),a.end());</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1416,7 +1410,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

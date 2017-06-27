@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="题目描述对于长度为N的数组A,求连续子数组的最接近0的值。
+<meta name="description" content="题目描述对于长度为N的数组A,求连续子数组的和的绝对值最接近0的值。
 如:
-数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。
-算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复">
+数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的绝对值。
+算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="零子数组">
 <meta property="og:url" content="http://yoursite.com/2017/06/23/零子数组/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="题目描述对于长度为N的数组A,求连续子数组的最接近0的值。
+<meta property="og:description" content="题目描述对于长度为N的数组A,求连续子数组的和的绝对值最接近0的值。
 如:
-数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。
-算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复">
-<meta property="og:updated_time" content="2017-06-23T01:47:48.000Z">
+数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的绝对值。
+算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素">
+<meta property="og:updated_time" content="2017-06-23T02:25:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零子数组">
-<meta name="twitter:description" content="题目描述对于长度为N的数组A,求连续子数组的最接近0的值。
+<meta name="twitter:description" content="题目描述对于长度为N的数组A,求连续子数组的和的绝对值最接近0的值。
 如:
-数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。
-算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复">
+数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的绝对值。
+算法描述计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素">
 
 
 
@@ -345,11 +345,11 @@
       
 
       
-        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于长度为N的数组A,求连续子数组的最接近0的值。</p>
+        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于长度为N的数组A,求连续子数组的和的绝对值最接近0的值。</p>
 <p>如:</p>
-<p>数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的值。</p>
+<p>数组A:[1,-2,3,10,-4,7,2,-5],求他所有子数组中,和最接近0的那些值。并返回最接近0的数组的和的绝对值。</p>
 <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>计算前n项和数组sum。然后再对sum[-1,0,…..N-1]进行排序,之后计算sum相邻元素差的绝对值,绝对值最小即位所求的数。此算法求sum的时间复杂度为$O(N)$，计算数组相邻元素的差值的时间复杂度为$O(N)$，排序的时间复杂度为$O(N\ logN)$，所以该算法的时间复杂度为$O(N\ logN)$。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MinSubarray(a, <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span>* sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sum[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; size ;i++)&#123;</div><div class="line">        sum[i+<span class="number">1</span>] = a[i] + sum[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span>* b = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sort(sum,sum + size + <span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> different = <span class="built_in">abs</span>(sum[<span class="number">1</span>] - sum[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">int</span> result = different;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>;i &lt; size ;i++)&#123;</div><div class="line">        different = <span class="built_in">abs</span>(sum[i+<span class="number">1</span>] - sum[i]);</div><div class="line">        result = min(result,different);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span>[] sum;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">-2</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">-5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> b = MinSubarray(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"b = "</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MinSubarray</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> *sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div><div class="line">    sum[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">        sum[i + <span class="number">1</span>] = sum[i] + a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> different = sum[<span class="number">1</span>] - sum[<span class="number">0</span>];</div><div class="line">    sort(sum,sum + size + <span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> result = different;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; size;i++)&#123;</div><div class="line">        <span class="keyword">int</span> result_ = sum[i + <span class="number">1</span>] - sum[i];</div><div class="line">        different = <span class="built_in">abs</span>(sum[i + <span class="number">1</span>] - sum[i]);</div><div class="line">        <span class="keyword">int</span> index = <span class="built_in">abs</span>(result);</div><div class="line">        <span class="keyword">if</span>(different &lt; index)&#123;</div><div class="line">            result = result_;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span>[] sum;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="算法外的所学"><a href="#算法外的所学" class="headerlink" title="算法外的所学"></a>算法外的所学</h3><h4 id="创建一个新数组"><a href="#创建一个新数组" class="headerlink" title="创建一个新数组"></a>创建一个新数组</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>* sum = <span class="keyword">new</span> <span class="keyword">int</span>[size + <span class="number">1</span>];</div></pre></td></tr></table></figure>
 <p>通过以上代码在算法中新创建一个新数组，这样会给他分配一部分内存。</p>
 <h4 id="将数组内的元素进行排序"><a href="#将数组内的元素进行排序" class="headerlink" title="将数组内的元素进行排序"></a>将数组内的元素进行排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sort(sum,sum + size + <span class="number">1</span>);</div></pre></td></tr></table></figure>
@@ -413,6 +413,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/最大子数组问题/" rel="prev" title="最大连续子数组问题">
+                最大连续子数组问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +511,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
