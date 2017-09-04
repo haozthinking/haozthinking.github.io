@@ -352,7 +352,7 @@
 <p>即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。</p>
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$</p>
 <ul>
-<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end—，cur不变；</li>
+<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end–，cur不变；</li>
 <li>如果A[cur] == 1，那么将cur++，begin不变，end不变</li>
 <li>如果A[cur] == 0，则：<ul>
 <li>如果begin == cur,那么begin++,cur++</li>
@@ -522,7 +522,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

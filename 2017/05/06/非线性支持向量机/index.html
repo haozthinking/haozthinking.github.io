@@ -345,19 +345,13 @@
 <h4 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h4><p>非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的非线性问题变为了一个在三维平面的线性问题，如下图所示。</p>
 <p>因此，我们可以知道，用线性分类方法求解非线性分类方法分为两步，首先第一步是使用一个变换讲原数据映射到一个新的空间，从而将在原空间内的非线性问题转换成为一个在新空间内的线性问题。第二步即对新空间内的线性问题用线性分类学习的方法从训练数据中学习分类模型。其中核技巧就属于这种问题。</p>
 <h4 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h4><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E6%A0%B8%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
-<p>令$\phi(x)$表示将x高位映射后的向量，于是在特征空间中划分平面可以将模型可以分为:</p>
-<script type="math/tex; mode=display">
-(1)f(x)=w^T\phi(x)+b</script><p>其中$w$和$b$是两个模型参数有：</p>
-<script type="math/tex; mode=display">
-(2)\min_{w,b}\frac{1}{2}||w||^2,s.t.y_i(w^T\phi(x_i)+b)\ge1</script><p>其对偶问题为:</p>
-<script type="math/tex; mode=display">
-(3)\max\_\alpha\sum\_{i=1}^m\alpha\_i-\frac{1}{2}\sum\_{i=1}^m\sum\_{j=1}^m\alpha\_i\alpha\_jy\_iy\_jx\_i^Tx\_j,s.t.\sum\_{i=1}^m\alpha\_iy\_i=0, 0\le\alpha\_i\le C</script><p>不难看出，非线性支持向量机和线性支持向量机的区别在于求解x的维度不同，对于线性支持向量机为$x_i$而非线性支持向量机为x高维映射后的向量为$\phi(x_i)$.</p>
-<p>这里的困难是计算$\phi(x_i)^T\phi(x_i)$是相当困难的。所以在此引入一个函数,该函数即为核函数</p>
-<script type="math/tex; mode=display">
-(4)\kappa(x\_i,x\_j)=<\phi(x\_i),\phi(x\_j)>=\phi(x\_i)^T\phi(x\_j)</script><p>对(3)进行求解后可以得到:</p>
-<script type="math/tex; mode=display">
-(5)f(x)=w^T\phi(x)+b=\sum\_{i=1}^m\alpha\_iy\_i\phi(x\_i)^T\phi(x\_j)+b=\sum\_{i=1}^m\alpha\_iy\_i\kappa(x\_i,x\_j)+b</script><h4 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h4><p>核函数的选择时非线性支持向量机中的一个很重要的问题，他和核函数最终的性能有很大的关系。下面显示了几种常用的核函数:</p>
-<div class="table-container">
+<p>令$\phi(x)$表示将x高位映射后的向量，于是在特征空间中划分平面可以将模型可以分为:<br>$$<br>(1)f(x)=w^T\phi(x)+b<br>$$<br>其中$w$和$b$是两个模型参数有：</p>
+<p>$$<br>(2)\min_{w,b}\frac{1}{2}||w||^2,s.t.y_i(w^T\phi(x_i)+b)\ge1<br>$$</p>
+<p>其对偶问题为:</p>
+<p>$$<br>(3)\max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j,s.t.\sum_{i=1}^m\alpha_iy_i=0, 0\le\alpha_i\le C<br>$$</p>
+<p>不难看出，非线性支持向量机和线性支持向量机的区别在于求解x的维度不同，对于线性支持向量机为$x_i$而非线性支持向量机为x高维映射后的向量为$\phi(x_i)$.</p>
+<p>这里的困难是计算$\phi(x_i)^T\phi(x_i)$是相当困难的。所以在此引入一个函数,该函数即为核函数<br>$$<br>(4)\kappa(x_i,x_j)=&lt;\phi(x_i),\phi(x_j)&gt;=\phi(x_i)^T\phi(x_j)<br>$$<br>对(3)进行求解后可以得到:<br>$$<br>(5)f(x)=w^T\phi(x)+b=\sum_{i=1}^m\alpha_iy_i\phi(x_i)^T\phi(x_j)+b=\sum_{i=1}^m\alpha_iy_i\kappa(x_i,x_j)+b<br>$$</p>
+<h4 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h4><p>核函数的选择时非线性支持向量机中的一个很重要的问题，他和核函数最终的性能有很大的关系。下面显示了几种常用的核函数:</p>
 <table>
 <thead>
 <tr>
@@ -396,10 +390,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h4 id="非线性支持向量机-1"><a href="#非线性支持向量机-1" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h4><p>将线性支持向量机扩展到非线性支持向量机，只需要将线性支持向量机中的对偶形式的内积换为核函数即可。</p>
-<script type="math/tex; mode=display">
-f(x)= sign(\sum\_{i=1}^N\alpha\_i^\*y\_iK(x\_i,x\_j) + b</script><p>上式为非线性支持向量机的分类决策函数$K(x,z)$为其正定核函数。</p>
+<h4 id="非线性支持向量机-1"><a href="#非线性支持向量机-1" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h4><p>将线性支持向量机扩展到非线性支持向量机，只需要将线性支持向量机中的对偶形式的内积换为核函数即可。<br>$$<br>f(x)= sign(\sum_{i=1}^N\alpha_i^*y_iK(x_i,x_j) + b<br>$$<br>上式为非线性支持向量机的分类决策函数$K(x,z)$为其正定核函数。</p>
 
       
     </div>
@@ -557,7 +548,7 @@ f(x)= sign(\sum\_{i=1}^N\alpha\_i^\*y\_iK(x\_i,x\_j) + b</script><p>上式为非
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
