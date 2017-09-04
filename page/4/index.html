@@ -291,6 +291,303 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/06/非线性支持向量机/" itemprop="url">
+                  支持向量机-非线性支持向量机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-06T12:23:30+08:00" content="2017-05-06">
+              2017-05-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/06/非线性支持向量机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/非线性支持向量机/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h3><p>而现实生活远比理想复杂，样本空间很难是一个能被线性分割的超平面，对于很多情况来说仅仅依靠线性是不行的。而我们定义，如果不能靠线性平面分开，而可以通过一个超曲面将正负例正确分开的问题为非线性可分问题。</p>
+<h4 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h4><p>非线性不好求解，希望通过线性分类问题来解决该类问题。我们所采用的方法即为对原非线性问题进行一个线性变换。通过求解该线性问题即可得出原非线性问题。如下方图所示，即将一个在二维平面的非线性问题变为了一个在三维平面的线性问题，如下图所示。</p>
+<p>因此，我们可以知道，用线性分类方法求解非线性分类方法分为两步，首先第一步是使用一个变换讲原数据映射到一个新的空间，从而将在原空间内的非线性问题转换成为一个在新空间内的线性问题。第二步即对新空间内的线性问题用线性分类学习的方法从训练数据中学习分类模型。其中核技巧就属于这种问题。</p>
+<h4 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h4><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E6%A0%B8%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<p>令$\phi(x)$表示将x高位映射后的向量，于是在特征空间中划分平面可以将模型可以分为:</p>
+<script type="math/tex; mode=display">
+(1)f(x)=w^T\phi(x)+b</script><p>其中$w$和$b$是两个模型参数有：</p>
+<script type="math/tex; mode=display">
+(2)\min_{w,b}\frac{1}{2}||w||^2,s.t.y_i(w^T\phi(x_i)+b)\ge1</script><p>其对偶问题为:</p>
+<script type="math/tex; mode=display">
+(3)\max\_\alpha\sum\_{i=1}^m\alpha\_i-\frac{1}{2}\sum\_{i=1}^m\sum\_{j=1}^m\alpha\_i\alpha\_jy\_iy\_jx\_i^Tx\_j,s.t.\sum\_{i=1}^m\alpha\_iy\_i=0, 0\le\alpha\_i\le C</script><p>不难看出，非线性支持向量机和线性支持向量机的区别在于求解x的维度不同，对于线性支持向量机为$x_i$而非线性支持向量机为x高维映射后的向量为$\phi(x_i)$.</p>
+<p>这里的困难是计算$\phi(x_i)^T\phi(x_i)$是相当困难的。所以在此引入一个函数,该函数即为核函数</p>
+<script type="math/tex; mode=display">
+(4)\kappa(x\_i,x\_j)=<\phi(x\_i),\phi(x\_j)>=\phi(x\_i)^T\phi(x\_j)</script><p>对(3)进行求解后可以得到:</p>
+<script type="math/tex; mode=display">
+(5)f(x)=w^T\phi(x)+b=\sum\_{i=1}^m\alpha\_iy\_i\phi(x\_i)^T\phi(x\_j)+b=\sum\_{i=1}^m\alpha\_iy\_i\kappa(x\_i,x\_j)+b</script><h4 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h4><p>核函数的选择时非线性支持向量机中的一个很重要的问题，他和核函数最终的性能有很大的关系。下面显示了几种常用的核函数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=x_i^Tx_j$</td>
+</tr>
+<tr>
+<td>多项式核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=(x_jx_i + 1)^q $</td>
+</tr>
+<tr>
+<td>高斯核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=\exp(-\frac{</td>
+<td></td>
+<td>w_i-w_j</td>
+<td></td>
+<td>^2}{2\sigma^2})$</td>
+</tr>
+<tr>
+<td>拉普拉斯核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=exp(-\frac{\</td>
+<td>\</td>
+<td>w_i-w_j\</td>
+<td>\</td>
+<td>}{\sigma})$</td>
+</tr>
+<tr>
+<td>Sigmoid核</td>
+<td style="text-align:center">$\kappa(x_i,x_j)=tanh(\beta x_i^Tx_j+\theta)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="非线性支持向量机-1"><a href="#非线性支持向量机-1" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h4><p>将线性支持向量机扩展到非线性支持向量机，只需要将线性支持向量机中的对偶形式的内积换为核函数即可。</p>
+<script type="math/tex; mode=display">
+f(x)= sign(\sum\_{i=1}^N\alpha\_i^\*y\_iK(x\_i,x\_j) + b</script><p>上式为非线性支持向量机的分类决策函数$K(x,z)$为其正定核函数。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/06/线性支持向量机/" itemprop="url">
+                  支持向量机-线性支持向量机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-06T12:22:44+08:00" content="2017-05-06">
+              2017-05-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/06/线性支持向量机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/线性支持向量机/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
+<p>上面说过，线性支持向量机和线性可分支持向量机最大的区别在于线性可分支持向量机所用的为<strong>硬间隔</strong>,线性支持向量机采用的是<strong>软间隔</strong>。软间隔的表示如下图所示：</p>
+<p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg" alt=""></p>
+<p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:</p>
+<script type="math/tex; mode=display">
+y_i(w^Tx_i+b)\geq 1</script><p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
+<script type="math/tex; mode=display">
+(17)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)</script><p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
+<p>由上面的式子可知，如果$C$的值过于大，那么他在每次犯错后所要付出的代价就会很大，而C很小时其每次所需的代价就比较小。于是我们极端来看不难得出当C为无限小为0时，他随便犯错都无所谓，这时候线性支持向量机的作用就失去了。而当$C$为无限大的时候，这时候犯一点错误就会受到很大的惩罚，这时候一点错误都不敢犯。因此当$C$为无限大时，线性支持向量机就变为了线性可分支持向量机。不难看出，线性可分支持向量机是线性支持向量机在$C$为无穷大时的一种特例。</p>
+<h4 id="hinge损失函数"><a href="#hinge损失函数" class="headerlink" title="hinge损失函数"></a>hinge损失函数</h4><p>但是在实际的应用场景中，$l_{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：</p>
+<script type="math/tex; mode=display">
+(18)l_{hinge}(z)=\max(0,1-z);</script><p>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：</p>
+<script type="math/tex; mode=display">
+(19)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\max(0,1-y_i(w^Tx_i))</script><script type="math/tex; mode=display">
+(20.1)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i</script><script type="math/tex; mode=display">
+(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3...m.</script><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<p>如上图所示，上图分别为hinge函数损失函数，指数损失函数和对率损失函数。这三种损失函数的发展趋势都是一样的，但是在支持向量机中中，由于只要是等于1就算支持向量，原则上在其等于1时不能有损失，而指数损失函数和对率损失函数在等于1甚至是大于1时都有损失。因此在线性支持向量机中使用最多的是hinge损失函数，在有的教材中hinge损失函数也叫做SVM损失函数。</p>
+<p>而将hinge损失函数融入到支持向量机中，那么支持向量机就有了另外一种解释，就是最小化以下的目标函数:</p>
+<script type="math/tex; mode=display">
+\sum^N_{i=1}[1-y_i(w_i+b)]_+\lambda||w||^2</script><p>其中第一项$1-y<em>i(w_i+b)</em>+$就为hinge损失函数</p>
+<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：</p>
+<script type="math/tex; mode=display">
+(21)L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i+\sum_{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx_i+b))-\sum_{i=1}^m\mu_i\xi_i</script><p>其中$\alpha_i\geq0,\mu_i\geq0$为拉格朗日乘子。</p>
+<p>对$L(w,b,\alpha,\xi,\mu)​$中的$w​$,$b​$和$\xi​$求偏导得出下式：</p>
+<script type="math/tex; mode=display">
+(22)w = \sum_{i=1}^m\alpha_iy_ix_i,</script><script type="math/tex; mode=display">
+(23)0=\sum_{i=1}^m\alpha_iy_i,</script><script type="math/tex; mode=display">
+(24)C=\alpha_i+\mu_i</script><p>将$(22)(23)(24)$带入$(21)$可以得到$(20)$的对偶问题：</p>
+<script type="math/tex; mode=display">
+(25)\max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j</script><script type="math/tex; mode=display">
+(26)s.t.\sum_{i=1}^m\alpha_iy_i=0, 0\le\alpha_i\le C</script><p>线性可分支持向量机和线性支持向量机两者的对偶问题进行比较可知，两者唯一的差别就是对偶函数的约束不同，对于线性可分支持向量机来说，约束条件为$0 \le \alpha_i$而线性支持向量机的约束条件为$0 \le \alpha_i \le C$。从这也可以看出，线性可分支持向量机是线性支持向量机在C区域正无穷的时候的值。</p>
+<p>类似之前的求解，对于线性支持向量机，其KKT条件要求如下：</p>
+<script type="math/tex; mode=display">
+(27.1)\alpha_i\ge0,\mu\ge0,</script><script type="math/tex; mode=display">
+(27.2)y_if(x_i)\ge1-\xi_i</script><script type="math/tex; mode=display">
+(27.3)\alpha_i(y_if(x_i)-1+\xi_i)=0</script><script type="math/tex; mode=display">
+(27.4)\xi_i\ge0,u_i\xi_i=0</script><p>由(27.3)得，对于任意一个训练样本均有$\alpha_i=0$或者$y_if(x_i)-1+\xi=0$如果$\alpha_i=0$则该训练样本不会对结果造成影响。如果$\alpha_i&lt; C$则$\mu_i&gt;0$那么必有$\xi_i=0$那么此时就代表该向量为支持向量，就在可分边界上。如果$\alpha_i=C$那么$\mu_i=0$,此时若$\xi_i<1$则样本落在最大间隔内部，当$\xi_i>1$则被错误分类。</1$则样本落在最大间隔内部，当$\xi_i></p>
+<p>这里的求解方法也和线性可分支持向量机类似，可以利用SMO对其进行求解。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/06/支持向量机-线性可分支持向量机/" itemprop="url">
                   支持向量机-线性可分支持向量机
                 </a>
@@ -346,29 +643,50 @@
 <p>支持向量机本质上是一个二分类模型，其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
 <p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
 <h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机我们重点介绍，他是线性支持向量机和非线性支持向量机的基础。在样本空间中，划分超平面的方程的表示形式如下所示：</p>
-<p>​                                                           $$(1)w^Tx + b = 0                     $$ </p>
+<p>​                                                           <script type="math/tex">(1)w^Tx + b = 0</script> </p>
 <p>其中$w^T$ = ($w_1;w_2;w_3;….;w_d$)为法向量决定了该划分超平面的距离，而b为原点距决定了超平面与原点间的距离。由此可知，划分超平面可以由法向量 $w$ 和原点距位移 $b$所确定，所确定的超平面计为$(w,b)$,则样本空间内的一点$x$到$(w,b)$的距离可以写为</p>
-<p>​                                                                     $$(2)r=\frac{|w^Tx + b|}{||w||}$$</p>
+<p>​                                                                     <script type="math/tex">(2)r=\frac{|w^Tx + b|}{||w||}</script></p>
 <p>如果有一点可以被正确分类，那么不难知道如果他的x满足$ w^Tx_i + b &gt; 0 $时$ y_i = +1 $,$ w^Tx_i + b &lt; 0 $时$ y_i = -1 $</p>
-<p> 而如果我们在这里把0的标准换位1和－1的标准，令以下成立：<br>$$<br>(3)w^Tx_i + b =&gt; 1  ;   y_i = +1 ;  w^Tx_i + b &lt;=  -1  ;   y_i = -1<br>$$<br>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
+<p> 而如果我们在这里把0的标准换位1和－1的标准，令以下成立：</p>
+<script type="math/tex; mode=display">
+(3)w^Tx_i + b => 1  ;   y_i = +1 ;  w^Tx_i + b <=  -1  ;   y_i = -1</script><p>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
 <p>线性可分支持向量机这里使用的是<strong>硬间隔</strong>，即在间隔中不允许存在分类点，而线性支持向量机使用的是<strong>软间隔</strong>这也是线性可分支持向量机和线性支持向量机的区别所在。</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg" alt="支持向量与间隔"></p>
-<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：<br>$$<br>(4)\max_{w,b}\frac{2}{||w||}<br>$$<br>$$<br>(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3……m.<br>$$</p>
-<p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：<br>$$<br>(6)\min_{w,b}\frac{1}{2}||w||^2\<br>$$<br>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
-<h4 id="凸优化问题"><a href="#凸优化问题" class="headerlink" title="凸优化问题"></a>凸优化问题</h4><p>上式为一个凸二次规划问题，凸优化问题是指约束最优化问题<br>$$<br>\min_wf(w)<br>$$</p>
-<p>$$<br>s.t.g_i(w)\le0,i=1,2,3….k;h_i(w)=0,i=1,2,3…l<br>$$</p>
-<p>其中，目标函数$f(w)$和约束函数$g_i(w)$是$R^n$上连续的可微的凸函数，$h_i(w)$是R^n上的访射函数。当$f(w)$是二次函数且约束函数$g_i(w)$为访射函数时，上述凸优化问题就会变为凸二次规划问题。</p>
-<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha<em>i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：<br>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum</em>{i=1}^m\alpha_i(1-y_i(w^Tx<em>i+b))<br>$$<br>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum</em>{i=1}^m\alpha_iy_ix<em>i\<br>(9)0 = \sum</em>{j=1}^m\alpha_iy<em>i ;\<br>(10)max</em>\alpha \sum_{i=1}^m\alpha<em>i - \frac{1}{2}\sum</em>{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx<em>j<br>$$<br>对$\alpha$求解后，即可求出$w$和$b$的模型：<br>$$<br>(12)f(x) = w^Tx + b = \sum</em>{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
-<p>由以上约束可知，其满足KKT条件即：<br>$$<br>(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0<br>$$<br>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
+<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：</p>
+<script type="math/tex; mode=display">
+(4)\max_{w,b}\frac{2}{||w||}</script><script type="math/tex; mode=display">
+(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3......m.</script><p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：</p>
+<script type="math/tex; mode=display">
+(6)\min_{w,b}\frac{1}{2}||w||^2\\</script><p>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
+<h4 id="凸优化问题"><a href="#凸优化问题" class="headerlink" title="凸优化问题"></a>凸优化问题</h4><p>上式为一个凸二次规划问题，凸优化问题是指约束最优化问题</p>
+<script type="math/tex; mode=display">
+\min_wf(w)</script><script type="math/tex; mode=display">
+s.t.g_i(w)\le0,i=1,2,3....k;h_i(w)=0,i=1,2,3...l</script><p>其中，目标函数$f(w)$和约束函数$g_i(w)$是$R^n$上连续的可微的凸函数，$h_i(w)$是R^n上的访射函数。当$f(w)$是二次函数且约束函数$g_i(w)$为访射函数时，上述凸优化问题就会变为凸二次规划问题。</p>
+<h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha_i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：</p>
+<script type="math/tex; mode=display">
+(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))</script><p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：</p>
+<script type="math/tex; mode=display">
+(8)w = \sum_{i=1}^m\alpha_iy_ix_i\\
+(9)0 = \sum_{j=1}^m\alpha_iy_i ;\\
+(10)max_\alpha \sum_{i=1}^m\alpha_i - \frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j</script><p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
+<script type="math/tex; mode=display">
+(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b</script><p>由以上约束可知，其满足KKT条件即：</p>
+<script type="math/tex; mode=display">
+(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0</script><p>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
 <h4 id="求解方法——SMO算法"><a href="#求解方法——SMO算法" class="headerlink" title="求解方法——SMO算法"></a>求解方法——SMO算法</h4><h5 id="确定-alpha-方法"><a href="#确定-alpha-方法" class="headerlink" title="确定$\alpha$方法"></a>确定$\alpha$方法</h5><p>SMO方法的思想在于，除了两个变量$\alpha_i$和$\alpha_j$其余变量全部固定，然后重复下列两部获得更新后的$\alpha_i$和$\alpha_j$:</p>
 <ul>
 <li>选取两个需要更新的$\alpha_i$和$\alpha_j$；</li>
 <li>固定$\alpha_i$和$\alpha_j$外的其他参数，求解更新后的$\alpha_i$和$\alpha_j$；</li>
 </ul>
 <p>只要选取的$\alpha_i$和$\alpha_j$有一个不满足KKT条件，那么目标函数就会在迭代后变得更小。一般SMO选取为两个差别很大的变量，对他们进行变化会得到更好的效果。</p>
-<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:<br>$$<br>(14)\alpha_iy_i+\alpha_jy<em>j+c = 0 ; c=\sum</em>{k=0,k!=i,j}^m\alpha_ky_k<br>$$<br>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
-<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：<br>$$<br>(15)y<em>s(\sum</em>{i}\alpha_iy_ix_i^Tx<em>s+b)=1<br>$$<br>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:<br>$$<br>(16)b=\frac{1}{|S|}\sum</em>{s\epsilon S}(y<em>s-\sum</em>{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
-
+<p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:</p>
+<script type="math/tex; mode=display">
+(14)\alpha_iy_i+\alpha_jy_j+c = 0 ; c=\sum_{k=0,k!=i,j}^m\alpha_ky_k</script><p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
+<h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：</p>
+<script type="math/tex; mode=display">
+(15)y_s(\sum_{i}\alpha_iy_ix_i^Tx_s+b)=1</script><p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
+<script type="math/tex; mode=display">
+(16)b=\frac{1}{|S|}\sum_{s\epsilon S}(y_s-\sum_{i\epsilon S}\alpha_iy_ix_i^Tx_i)</script>
           
         
       
@@ -795,6 +1113,7 @@
         
           
             <h3 id="软件包系统"><a href="#软件包系统" class="headerlink" title="软件包系统"></a>软件包系统</h3><p>linux系统主流软件包系统类，</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -817,7 +1136,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="软件包系统工具"><a href="#软件包系统工具" class="headerlink" title="软件包系统工具"></a>软件包系统工具</h3><p>低级下载工具和高级下载工具的区别，对于低级下载工具来说。他并不是从库源下载来的，所以他并不会处理依赖问题，当dpkg过程中发现缺少依赖包的情况，那么就会报错。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -839,7 +1160,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>软件包常用命令(以Debian类为例，因为常使用的版本为ubuntu)</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -886,6 +1209,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
           
         
@@ -1097,25 +1421,32 @@
 <p>其基本问题为在训练集D在样本空间找到一个超平面，使得这个超平面起到最好的分类效果。可是何谓最好呢？在支持向量机里面最好的定义就是<strong>“最小的取最大”</strong>这里的最小即为两种分类到分界面的距离最小，而最优的份界面的选择就是要使得这里的到分界面距离最小的值取取最大的支持向量。而到中间距离最小的点即为<strong>支持向量</strong>。</p>
 <p>支持向量机有三类，分别是线性支持向量机，线性可分支持向量机和非线性支持向量机。</p>
 <h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机我们重点介绍，他是线性支持向量机和非线性支持向量机的基础。在样本空间中，划分超平面的方程的表示形式如下所示：</p>
-<p>​                                                           $$(1)w^Tx + b = 0                     $$ </p>
+<p>​                                                           <script type="math/tex">(1)w^Tx + b = 0</script> </p>
 <p>其中$w^T$ = ($w_1;w_2;w_3;….;w_d$)为法向量决定了该划分超平面的距离，而b为原点距决定了超平面与原点间的距离。由此可知，划分超平面可以由法向量 $w$ 和原点距位移 $b$所确定，所确定的超平面计为$(w,b)$,则样本空间内的一点$x$到$(w,b)$的距离可以写为</p>
-<p>​                                                                     $$(2)r=\frac{|w^Tx + b|}{||w||}$$</p>
+<p>​                                                                     <script type="math/tex">(2)r=\frac{|w^Tx + b|}{||w||}</script></p>
 <p>如果有一点可以被正确分类，那么不难知道如果他的x满足$ w^Tx_i + b &gt; 0 $时$ y_i = +1 $,$ w^Tx_i + b &lt; 0 $时$ y_i = -1 $</p>
-<p>而如果我们在这里把0的标准换位1和－1的标准，令以下成立：<br>$$<br>(3)w^Tx_i + b =&gt; 1  ;   y_i = +1 ;  w^Tx_i + b &lt;=  -1  ;   y_i = -1<br>$$<br>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
+<p>而如果我们在这里把0的标准换位1和－1的标准，令以下成立：</p>
+<script type="math/tex; mode=display">
+(3)w^Tx_i + b => 1  ;   y_i = +1 ;  w^Tx_i + b <=  -1  ;   y_i = -1</script><p>在使这里的大于等于和小于等于号为等号时满足的条件为支持向量。</p>
 <p>线性可分支持向量机这里使用的是<strong>硬间隔</strong>，即在间隔中不允许存在分类点，而线性支持向量机使用的是<strong>软间隔</strong>这也是线性可分支持向量机和线性支持向量机的区别所在。</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/svm1.jpeg" alt="支持向量与间隔"></p>
-<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：<br>$$<br>(4)\max_{w,b}\frac{2}{||w||}<br>$$<br>$$<br>(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3……m.<br>$$</p>
-<p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：<br>$$<br>(6)\min_{w,b}\frac{1}{2}||w||^2\<br>$$<br>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
+<p>由上面知道，如果当等号成立时取支持向量。那么当他取支持向量的时候其距离为 $ y=\frac{2}{||w||}$。而我们寻找的就是使下列条件成立时的$w$和$b$的值，该数值可以使得$y$为最大。那么其约束条件为下式：</p>
+<script type="math/tex; mode=display">
+(4)\max_{w,b}\frac{2}{||w||}</script><script type="math/tex; mode=display">
+(5)s.t.y_i(w^Tx_i+b) \geq 1, i =1,2,3......m.</script><p>而若要求$\frac{1}{||w||}$的最大值，那么就是要求$||w||$的最小值。则就可以将上述的$(4)$式改写为以下形式：</p>
+<script type="math/tex; mode=display">
+(6)\min_{w,b}\frac{1}{2}||w||^2\\</script><p>则5，6式即为支持向量机的基本型，其也为线性可分向量机的基本形态。</p>
 <h4 id="公式求解"><a href="#公式求解" class="headerlink" title="公式求解"></a>公式求解</h4><p>对于以上$(5)(6)$两式，在这里可以使用拉格朗日乘子法对其进行求解，对于$(5)$式的每条约束，我们都可以添加拉格朗日乘子$\alpha_i \geq 0$,那么该问题的拉格朗日函数就可以写成以下式子：</p>
-<p>$$<br>(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))<br>$$</p>
-<p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：<br>$$<br>(8)w = \sum_{i=1}^m\alpha_iy_ix_i<br>$$</p>
-<p>$$<br>(9)0 = \sum_{j=1}^m\alpha_iy_i ;<br>$$</p>
-<p>$$<br>(10)max_\alpha\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j；<br>$$</p>
-<p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
-<p>$$<br>(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b<br>$$</p>
-<p>由以上约束可知，其满足KKT条件即：</p>
-<p>$$<br>(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0<br>$$</p>
-<p>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
+<script type="math/tex; mode=display">
+(7)L(w,b,\alpha) = \frac{1}{2}||w||^2 + \sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))</script><p>接下来用拉格朗日乘子法的套路，使用$L(w,b,\alpha)$对其进行求偏导的过程，即可消去$w$和$b$，可得他的对偶问题$(10)$：</p>
+<script type="math/tex; mode=display">
+(8)w = \sum_{i=1}^m\alpha_iy_ix_i</script><script type="math/tex; mode=display">
+(9)0 = \sum_{j=1}^m\alpha_iy_i ;</script><script type="math/tex; mode=display">
+(10)max\_\alpha\sum\_{i=1}^m\alpha\_i-\frac{1}{2}\sum\_{i=1}^m\sum\_{j=1}^m\alpha\_i\alpha\_jy\_iy\_jx_i^Tx\_j；</script><p>对$\alpha$求解后，即可求出$w$和$b$的模型：</p>
+<script type="math/tex; mode=display">
+(12)f(x) = w^Tx + b = \sum_{i=1}^m\alpha_iy_ix_i^Tx_i＋b</script><p>由以上约束可知，其满足KKT条件即：</p>
+<script type="math/tex; mode=display">
+(13)\alpha_i \geq 0   ; y_if(x_i)-1\geq0; \alpha_i(y_if(x_i)-1)=0</script><p>于是对于所有的点可知，要么满足$\alpha_i$=0或者$y_if(x_i)=1$对于支持向量的点即为$y_if(x_i)=1$，对于其他点就为$\alpha_i$=0。而训练所需的为支持向量点，其余点就可忽略，最终模型仅仅和支持向量有关系。</p>
 <h4 id="求解方法——SMO算法"><a href="#求解方法——SMO算法" class="headerlink" title="求解方法——SMO算法"></a>求解方法——SMO算法</h4><h5 id="确定-alpha-方法"><a href="#确定-alpha-方法" class="headerlink" title="确定$\alpha$方法"></a>确定$\alpha$方法</h5><p>SMO方法的思想在于，除了两个变量$\alpha_i$和$\alpha_j$其余变量全部固定，然后重复下列两部获得更新后的$\alpha_i$和$\alpha_j$:</p>
 <ul>
 <li>选取两个需要更新的$\alpha_i$和$\alpha_j$；</li>
@@ -1123,28 +1454,32 @@
 </ul>
 <p>只要选取的$\alpha_i$和$\alpha_j$有一个不满足KKT条件，那么目标函数就会在迭代后变得更小。一般SMO选取为两个差别很大的变量，对他们进行变化会得到更好的效果。</p>
 <p>对于SMO的方法，由$L(w,b,\alpha)$对$b$求偏导可知$(9)$所以不难得出下式:</p>
-<p>$$<br>(14)\alpha_iy_i+\alpha_jy_j+c = 0 ; c=\sum_{k=0,k!=i,j}^m\alpha_ky_k<br>$$</p>
-<p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
+<script type="math/tex; mode=display">
+(14)\alpha\_iy\_i+\alpha\_jy\_j+c = 0 ; c=\sum\_{k=0,k!=i,j}^m\alpha\_ky\_k</script><p>其中$\alpha_i$和$\alpha_j$可以相互表示，那么假设用$\alpha_i$将$\alpha_j$表示后，带入(10) 后仅有一个参数，因此就很好计算$\alpha_i$</p>
 <h5 id="求解-b-的方法"><a href="#求解-b-的方法" class="headerlink" title="求解$b$的方法"></a>求解$b$的方法</h5><p>对于所有的支持向量都有$,y_sf(x_s)=1$即：</p>
-<p>$$<br>(15)y_s(\sum_{i}\alpha_iy_ix_i^Tx_s+b)=1<br>$$</p>
-<p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
-<p>$$<br>(16)b=\frac{1}{|S|}\sum_{s\epsilon S}(y_s-\sum_{i\epsilon S}\alpha_iy_ix_i^Tx_i)<br>$$</p>
-<h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
+<script type="math/tex; mode=display">
+(15)y\_s(\sum\_{i}\alpha\_iy\_ix\_i^Tx\_s+b)=1</script><p>通过此式子就可以求出b，原则上可以使用任意一个式子来求b，但一般使用的为多个求平均值的方法来做:</p>
+<script type="math/tex; mode=display">
+(16)b=\frac{1}{|S|}\sum\_{s\epsilon S}(y\_s-\sum\_{i\epsilon S}\alpha\_iy\_ix\_i^Tx\_i)</script><h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h4 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h4><p>线性可分支持向量机很容易对两个区别明显且没有样本相交的情况下才能实现，现实生活中这种很理想的情况并不存在。在这些情况下线性可分支持向量机就失效了；即使可以通过线性可分支持向量机对其进行很好的分类，但是他所训练出的模型也很容易产生过拟合，于是这里就要使用线性支持向量机。</p>
 <p>上面说过，线性支持向量机和线性可分支持向量机最大的区别在于线性可分支持向量机所用的为<strong>硬间隔</strong>,线性支持向量机采用的是<strong>软间隔</strong>。软间隔的表示如下图所示：</p>
 <p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%BD%AF%E9%97%B4%E9%9A%94.jpeg" alt=""></p>
 <p>软间隔和硬间隔最最大的区别在于对于软间隔来说，并不需要所有的样本都能划分正确。不一定满足约束条件:</p>
-<p>$$<br>y_i(w^Tx_i+b)\geq 1<br>$$</p>
-<p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
-<p>$$<br>(17)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)<br>$$</p>
-<p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
+<script type="math/tex; mode=display">
+y_i(w^Tx_i+b)\geq 1</script><p>而在能满足的情况下，当然需要不满足的样本尽可能的少。所以对于线性可分支持向量机来说，优化目标为：</p>
+<script type="math/tex; mode=display">
+(17)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)</script><p>其中$C&gt; 0$为一个常数，而$l_{0/1}(z)$为“0/1损失函数”,当$z&lt;0$时为1，其余时候为0。</p>
 <p>由上面的式子可知，如果$C$的值过于大，那么他在每次犯错后所要付出的代价就会很大，而C很小时其每次所需的代价就比较小。于是我们极端来看不难得出当C为无限小为0时，他随便犯错都无所谓，这时候线性支持向量机的作用就失去了。而当$C$为无限大的时候，这时候犯一点错误就会受到很大的惩罚，这时候一点错误都不敢犯。因此当$C$为无限大时，线性支持向量机就变为了线性可分支持向量机。不难看出，线性可分支持向量机是线性支持向量机在$C$为无穷大时的一种特例。</p>
-<p>但是在实际的应用场景中，$l<em>{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：<br>$$<br>(18)l</em>{hinge}(z)=\max(0,1-z);<br>$$<br>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：<br>$$<br>(19)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\max(0,1-y_i(w^Tx_i))<br>$$</p>
-<p>$$<br>(20.1)\min<em>{w,b}\frac{1}{2}||w||^2+C\sum</em>{i=1}^m\xi_i<br>$$</p>
-<p>$$<br>(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3…m.<br>$$</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
+<p>但是在实际的应用场景中，$l_{0/1}(z)$损失的数学性质不好，非凸函数且非连续函数。因此$(17)$式不好求解，这时候在支持向量机中荷叶损失函数(hinge损失)：</p>
+<script type="math/tex; mode=display">
+(18)l_{hinge}(z)=\max(0,1-z);</script><p>当把$l<em>{0/1}(z)$损失函数变成了$l</em>{hinge}(z)$损失函数后，则$(17)$式变为下式$(19)$在引入松弛因子后，就成了$(20)$式：</p>
+<script type="math/tex; mode=display">
+(19)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\max(0,1-y_i(w^Tx_i))</script><script type="math/tex; mode=display">
+(20.1)\min_{w,b}\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i</script><script type="math/tex; mode=display">
+(20.2)s.t. y_i(w^Tx_i+b)\geq 1-\xi_i;\xi_i\geq0,i=1,2,3...m.</script><p><img src="http://ojv0jka0j.bkt.clouddn.com/%E8%8D%B7%E5%8F%B6%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.jpeg" alt=""></p>
 <p>如上图所示，上图分别为hinge函数损失函数，指数损失函数和对率损失函数。这三种损失函数的发展趋势都是一样的，但是在支持向量机中中，由于只要是等于1就算支持向量，原则上在其等于1时不能有损失，而指数损失函数和对率损失函数在等于1甚至是大于1时都有损失。因此在线性支持向量机中使用最多的是hinge损失函数，在有的教材中hinge损失函数也叫做SVM损失函数。</p>
-<h4 id="公式求解-1"><a href="#公式求解-1" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：<br>$$<br>L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi<em>i+\sum</em>{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx<em>i+b))-\sum</em>{i=1}^m\mu_i\xi_i<br>$$</p>
-
+<h4 id="公式求解-1"><a href="#公式求解-1" class="headerlink" title="公式求解"></a>公式求解</h4><p>除了线性可分支持向量机用的是硬间隔，线性支持向量机用的是软间隔外，在其余方面这两个线性支持向量机差别不大，因此对于其公式求解，也使用如同线性可分支持向量机的求解方法，即用拉格朗日乘子法。类比公式$(7)$不难得出线性支持向量机的拉格朗日函数：</p>
+<script type="math/tex; mode=display">
+L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i+\sum_{i=1}^m\alpha_i(1-\xi_i-y_i(w^Tx_i+b))-\sum_{i=1}^m\mu_i\xi_i</script>
           
         
       
@@ -1287,253 +1622,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/15/Linux学习之：vi使用简介/" itemprop="url">
-                  Linux学习之：vi使用简介
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-15T10:47:22+08:00" content="2017-04-15">
-              2017-04-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/15/Linux学习之：vi使用简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/15/Linux学习之：vi使用简介/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 进入vi界面</div><div class="line">$ vi</div></pre></td></tr></table></figure>
-<h3 id="vi命令模式"><a href="#vi命令模式" class="headerlink" title="vi命令模式"></a>vi命令模式</h3><p>点击esc即可进入vi的命令模式</p>
-<p>在这里可以进行一系列命令对vi进行操作 比如说保存，关闭，查找等命令</p>
-<ul>
-<li>:w 保存命令</li>
-<li>L或者右箭头：右移动</li>
-<li>H或者左箭头：左移动</li>
-<li>J或者下箭头：下移动</li>
-<li>K或者上箭头：上移动</li>
-<li>数字0:至本行开头</li>
-<li>Ctrl-F或者page down：下翻一页</li>
-<li>Ctrl-B或者page up：上翻一页</li>
-<li>shift+g：至文件的最后一行</li>
-<li>number＋g：至文件的第number行</li>
-<li>/:对文本进行搜索</li>
-<li>{[%],[1,\$][1,5]}s/A/B/g(其中前面表示从多少行到多少行，%表示从第一到最后，[1,$]表示从1到最后,[1,5]表示从1到5行；s表示命令为替换操作，即搜索和替换；A表示要被替换成的语句；B为要替换的语句；g即为全局搜索)</li>
-<li>使用n切换到下一个文件，使用N切换到上一个文件</li>
-<li>使用buffers展示文件</li>
-<li>r：读入文件</li>
-</ul>
-<h3 id="vi编辑模式"><a href="#vi编辑模式" class="headerlink" title="vi编辑模式"></a>vi编辑模式</h3><h4 id="1-进入插入模式"><a href="#1-进入插入模式" class="headerlink" title="1.进入插入模式"></a>1.进入插入模式</h4><ul>
-<li>点击<strong>i</strong>即进入插入模式</li>
-<li>点击<strong>o</strong>在上方插入</li>
-<li>点击<strong>O</strong>在下方插入</li>
-<li>点击<strong>x</strong>删除当前字符</li>
-<li>点击<strong>“number”+x</strong>删除当前字符和之后number－1个字符</li>
-<li>点击<strong>dd</strong>剪切当前行</li>
-<li>点击<strong>yy</strong>复制当前行</li>
-<li>点击<strong>p</strong>粘贴</li>
-<li>点击<strong>“number”+dd</strong>删除当前行和后面的number－1行</li>
-<li>点击J命令移动合并行</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/17/设计模式之抽象工厂模式/" itemprop="url">
-                  设计模式之抽象工厂模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-17T21:57:18+08:00" content="2017-01-17">
-              2017-01-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/01/17/设计模式之抽象工厂模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/设计模式之抽象工厂模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><h3 id="抽象工厂模式概念"><a href="#抽象工厂模式概念" class="headerlink" title="抽象工厂模式概念"></a>抽象工厂模式概念</h3><p>简单工厂模式和工厂方法模式的本质是给入不同的属性，通过不同的属性调用不同的类从而得到不同的对象。而抽象工厂模式可以将一组具有同样主题的工厂封装起来，在简单工厂模式前加一层抽象的概念。即抽象工厂模式是一个父类工厂，通过该抽象工厂模式产生具体工厂。抽象工厂模式即为<strong>工厂的工厂</strong>。</p>
-<p>抽象工厂模式有四种角色：</p>
-<ul>
-<li>抽象工厂：担任这个角色的是工厂方法模式的核心，它是与应用系统商业逻辑无关的。</li>
-<li>具体工厂：这个角色直接在客户端的调用下创建产品的实例。这个角色含有选择合适的产品对象的逻辑，而这个逻辑是与应用系统的商业逻辑紧密相关的。</li>
-<li>抽象产品：担任这个角色的类是工厂方法模式所创建的对象的父类，或它们共同拥有的接口。</li>
-<li>具体产品：这个角色用以代表具体的产品。</li>
-</ul>
-<h3 id="抽象工厂模式类图"><a href="#抽象工厂模式类图" class="headerlink" title="抽象工厂模式类图"></a>抽象工厂模式类图</h3><p>这里我们定义一个<strong>抽象工厂</strong>为”University”。通过这个抽象工厂生成两个<strong>具体工厂</strong>为”BUPT”和”BNU”。其中BUPT 中男生偏多且毕业生大都为工程师，所以从BUPT中生产的产品为”Boy”和”Engineer”。而BNU中女生偏多且很多毕业生做教师，于是从BNU这个工厂生产的产品为”Girl”和”Teacher”.</p>
-<p><img src="http://ojv0jka0j.bkt.clouddn.com/WechatIMG1.jpeg" alt="image"></p>
-<h3 id="抽象工厂模式代码"><a href="#抽象工厂模式代码" class="headerlink" title="抽象工厂模式代码"></a>抽象工厂模式代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">University</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> Sex <span class="title">getSex</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> Job <span class="title">getJob</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sex</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSexName</span><span class="params">()</span></span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Job</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getJobName</span><span class="params">()</span></span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BUPT</span> <span class="keyword">implements</span> <span class="title">University</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> Sex <span class="title">getSex</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Boy();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> Job <span class="title">getJob</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Engineer();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> <span class="keyword">implements</span> <span class="title">Job</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getJobName</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"engineer"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Boy</span> <span class="keyword">implements</span> <span class="title">Sex</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSexName</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"boy"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">graduate</span><span class="params">(University s)</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"A graduate student is a "</span>+s.getSex().getSexName()+<span class="string">" and he/she get a job of "</span>+s.getJob().getJobName();</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Student s = <span class="keyword">new</span> Student();</div><div class="line">		University u = <span class="keyword">new</span> BUPT();</div><div class="line">		s.graduate(u);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="产品等级结构和产品族"><a href="#产品等级结构和产品族" class="headerlink" title="产品等级结构和产品族"></a>产品等级结构和产品族</h3><h4 id="产品等级结构"><a href="#产品等级结构" class="headerlink" title="产品等级结构"></a>产品等级结构</h4><p><strong>产品等级结构即产品的继承结构</strong>。比如一个抽象类为球类运动，其子类有足球、篮球等；则球类运动和篮球、足球就构成了一个产品等级结构。其中抽象的球类运动为父类，具体的球类运动为子类。</p>
-<h4 id="产品族"><a href="#产品族" class="headerlink" title="产品族"></a>产品族</h4><p>在抽象工厂模式中，产品族是由同一个工厂产生，但位于不同产品等级结构中的一组产品。比如说上面的例子，产品Boy和产品Engineer都是BUPT这个工厂生产出来的。但是Boy这个产品是和Sex这个抽象父类构成一个产品等级结构，Engineer这个产品是和Job这个抽象父类构成一个产品等级结构。Boy和Engineer组成了一个产品族。</p>
-<p>由产品族和产品等级结构就可以唯一的确定一个产品。</p>
-<h4 id="抽象工厂模式和工厂方法模式的区别"><a href="#抽象工厂模式和工厂方法模式的区别" class="headerlink" title="抽象工厂模式和工厂方法模式的区别"></a>抽象工厂模式和工厂方法模式的区别</h4><p>介绍完了产品等级结构和产品族后，抽象工厂模式和工厂方法模式的区别就很明显了。工厂方法模式针对的是<strong>一个产品等级</strong>，而抽象工厂模式是<strong>针对多个产品等级</strong>。当系统所提供的工厂生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构、属于不同类型的具体产品时就可以使用抽象工厂模式。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1579,7 +1667,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1589,7 +1677,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

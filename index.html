@@ -291,6 +291,212 @@
             
               
                 
+                <a class="post-title-link" href="/2017/09/04/python单链表操作汇总/" itemprop="url">
+                  python单链表操作汇总
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-04T17:28:09+08:00" content="2017-09-04">
+              2017-09-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/04/python单链表操作汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/python单链表操作汇总/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python单链表操作汇总"><a href="#python单链表操作汇总" class="headerlink" title="python单链表操作汇总"></a>python单链表操作汇总</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建节点类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data,pnext = None)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self._next = pnext</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> str(self.data)</div><div class="line"><span class="comment">#创建链表类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="comment">#初始化链表类</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line">	<span class="comment">#改写repr魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">    <span class="comment">#改写str魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">	<span class="comment">#改写getitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.getIndex(index)</div><div class="line">	<span class="comment">#改写setitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, index, data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.update(index,data)</div><div class="line">	<span class="comment">#改写len魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.length</div><div class="line">	<span class="comment">#判断链表是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> (self.length == <span class="number">0</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#给链表加入新的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.head:</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            pre = self.head</div><div class="line">            <span class="keyword">while</span>(pre._next):</div><div class="line">                pre = pre._next</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">	<span class="comment">#删除链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">"The linkedlist is empty"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"index error"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            self.head = self.head._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            pre._next = node._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">	<span class="comment">#给链表插入一个元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            self.head = item</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            item._next = self.head</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            item._next = node</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">	<span class="comment">#更新链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span>(node._next <span class="keyword">and</span> j &lt; index):</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            node.data = data</div><div class="line">	<span class="comment">#获取链表的值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> node.data</div><div class="line">	<span class="comment">#清空链表</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line"><span class="comment">#测试数据</span></div><div class="line">list = LinkedList()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    list.append(i)</div><div class="line">print(list)</div><div class="line">print(list.getIndex(<span class="number">5</span>))</div><div class="line">list.update(<span class="number">0</span>,<span class="number">100</span>)</div><div class="line">print(list)</div><div class="line">list.insert(<span class="number">1</span>,<span class="number">1021</span>)</div><div class="line">print(list)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/27/cantor数组/" itemprop="url">
+                  cantor数组
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-27T16:40:19+08:00" content="2017-06-27">
+              2017-06-27
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/27/cantor数组/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/27/cantor数组/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>已知数组A[0…N-1]乱序着前N个正整数，现统计后缀数组A[i+1…N-1]中小于元素A[i]的数目，并存放在数组C[i]中。比如给定数组A={4,6,2,5,3,1}，得到数组C={3,4,1,2,1,0}。</p>
+<p>那么如果现在给定数组C={3,4,1,2,1,0}，如何可以恢复数组A?</p>
+<p>我们称为A为原数组，而C为Cantor数组。</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>通过原始数组产生Cantor数组的代码比较容易。后面小于的++即可代码如下面代码一。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="代码实现1"><a href="#代码实现1" class="headerlink" title="代码实现1"></a>代码实现1</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CantorExpansion</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>*a,<span class="keyword">int</span> *b,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</div><div class="line">        b[i] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span>;j &lt; size;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[j] &lt; a[i]) b[i]++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>&#125;;</div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a) / <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">int</span> *b = <span class="keyword">new</span> <span class="keyword">int</span>[size];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; size ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*****************"</span>&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    CantorExpansion(a,b,size);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; size ;i++)&#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; b[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现代码2"><a href="#实现代码2" class="headerlink" title="实现代码2"></a>实现代码2</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/27/数组的最大间隔问题/" itemprop="url">
                   数组的最大间隔问题
                 </a>
@@ -462,7 +668,7 @@
 <p>即问题转换为给定数组A[0,1,2,….,N-1],元素只能取0、1、2三个值，设计算法，使得数组排列成”00…0011…1122…22”的形式。</p>
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>我们可以定义三个指针，分别是$begin = 0、current = 0、end = N - 1$</p>
 <ul>
-<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end–，cur不变；</li>
+<li>如果A[cur] == 2，那么将A[cur]和A[end]交换位置，然后end—，cur不变；</li>
 <li>如果A[cur] == 1，那么将cur++，begin不变，end不变</li>
 <li>如果A[cur] == 0，则：<ul>
 <li>如果begin == cur,那么begin++,cur++</li>
@@ -1152,222 +1358,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/16/汉诺塔问题/" itemprop="url">
-                  汉诺塔问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-16T10:13:46+08:00" content="2017-06-16">
-              2017-06-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/06/16/汉诺塔问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/16/汉诺塔问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>有三根相邻的柱子，标号为A,B,C,A的柱子按从大到小叠放着n个不同大小的盘子，按要求把所有的盘子每次移动一个，最终都放到C柱子上，移动过程可以借助B柱子，但每次都要保持小盘子在大盘子上面。请给出最少次数的移动方案。</p>
-<h3 id="问题思考"><a href="#问题思考" class="headerlink" title="问题思考"></a>问题思考</h3><p>汉诺塔是一个经典的用于理解递归调用的例子。</p>
-<p>可以将整个n个盘子看成两部分，上面的n-1盘子是一个部分，下面的1个盘子是一个部分。那么完成一次移动就有三步，第一步先将前n-1个盘子移动到中转轴上面，然后再将最下面的盘子移动到目标轴上，之后再将n-1个盘子从中转轴上面移动到目标轴上面。最终完成移动。以上步骤可以通过递归完成。</p>
-<h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>通过以上分析可以利用数学推导知道要移动n个盘子需要$2^n-1$个步骤。<br>$$<br>T(n)=2T(n-1)+1<br>$$</p>
-<p>$$<br>T(n) + 1 = 2(T(n-1)+1)<br>$$</p>
-<p>$$<br>\frac{T(n)+1}{T(n-1)+1}=2<br>$$</p>
-<p>$$<br>T(n)=2^n - 1<br>$$</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    Move(<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="number">4</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</div><div class="line">        MoveOne(from,to);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    Move(from,aux,to,n<span class="number">-1</span>);</div><div class="line">    MoveOne(from,to);</div><div class="line">    Move(aux,to,from,n<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; from &lt;&lt; <span class="string">"-&gt;"</span> &lt;&lt; to &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="进阶问题-汉诺塔的状态"><a href="#进阶问题-汉诺塔的状态" class="headerlink" title="进阶问题:汉诺塔的状态"></a>进阶问题:汉诺塔的状态</h3><p>给定从小到大的N个盘子，它们散乱的位于A,B,C柱上，问这一状态能否将这N个盘子从A借助B移动到C的必经状态？如果是，则返回是第几个状态，如果不是那么返回-1</p>
-<h3 id="问题思考-1"><a href="#问题思考-1" class="headerlink" title="问题思考"></a>问题思考</h3><p>根据以上思考可以知道我们将汉诺塔问题分为三步，那么通过了解最下面盘子的状态就可以知道现在在进行到了哪一步。如果最下面盘子在初始轴上，那么就是在第一步或第二步，如果在目标轴上，那么他就在第三步。在计算的基础上加上$2^n$就可以完成。如果他在中转轴上，则根本不可能是其中的步骤，返回-1.</p>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveOne</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Calc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> size,<span class="keyword">char</span> from,<span class="keyword">char</span> to,<span class="keyword">char</span> aux)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == aux) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">if</span>(str[size - <span class="number">1</span>] == to)&#123;</div><div class="line">        <span class="keyword">int</span> n = Calc(str,size - <span class="number">1</span>,aux,to,from);</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">-1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; (size - <span class="number">1</span>)) + n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Calc(str,size - <span class="number">1</span>,from,aux,to);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">//    Move('A','B','C',4);</span></div><div class="line"><span class="comment">//    return 0;</span></div><div class="line">    <span class="keyword">char</span> str[] = <span class="string">"ABC"</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; Calc(str,<span class="number">3</span>,<span class="string">'A'</span>,<span class="string">'C'</span>,<span class="string">'B'</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/12/eratosthenes筛选法/" itemprop="url">
-                  eratosthenes筛选法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-12T09:34:14+08:00" content="2017-06-12">
-              2017-06-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/06/12/eratosthenes筛选法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/eratosthenes筛选法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>eratosthenes筛选法是一种古老的求解素数的方法，其思想为选取一个数，在1-N中晒掉各个数字的倍数，以此来完成筛选素数的筛选</p>
-<p>步骤如下：</p>
-<p>先筛出掉最小的数字2，再将2的倍数筛去；再筛出次小的数字3，再将3的倍数筛掉，然后再筛除掉5，再将队列中5的倍数筛掉。以此类推，最后得出所有的值。</p>
-<p>值得注意的是，筛选的时候要从p^2开始筛选，因为之前p*(p-1),p*(p-2)……已经被筛除掉了。而且如果筛选的数字大于了$\sqrt p$那么就不用再筛了，比如我们要筛选100以内的素数，筛掉2,3,5,7后就不用再筛了。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">bool</span> a[<span class="number">1000</span>];</div><div class="line">    Eratosthenes(a,<span class="number">200</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; <span class="number">200</span>;i++) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">'\t'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">bool</span> *a,<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    a[<span class="number">1</span>] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; n;i++)&#123;</div><div class="line">        a[i] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> p = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> k = p * p;</div><div class="line">    <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">        <span class="keyword">while</span>(k &lt;= n)&#123;</div><div class="line">            a[k] = <span class="literal">false</span>;</div><div class="line">            k = k + p;</div><div class="line">        &#125;</div><div class="line">        p++;</div><div class="line">        <span class="keyword">while</span>(!a[p])&#123;</div><div class="line">            p++;</div><div class="line">        &#125;</div><div class="line">        k = p * p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1413,7 +1403,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1423,7 +1413,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
