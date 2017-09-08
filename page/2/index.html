@@ -291,6 +291,111 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/18/找假币问题/" itemprop="url">
+                  找假币问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-18T15:55:29+08:00" content="2017-06-18">
+              2017-06-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/18/找假币问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/找假币问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>有12枚假币，其中有且只有一枚是假币，但是不知道是否轻重。现有一个不知道砝码的天平，问至少需要多少次的称量才能确保找到这枚假币。并且给出最少几次分析一定可以得出假币的。</p>
+<h3 id="理论下界"><a href="#理论下界" class="headerlink" title="理论下界"></a>理论下界</h3><p>由于12的轻重未知，那么每枚硬币都有两种可能性，因此一共有24种可能性。而每一次称量会得到左倾，右倾和平三种情况。那么就要$3^n &gt; 24$所以理论上至少需要三次可以得到最终的结论。</p>
+<h3 id="相似问题"><a href="#相似问题" class="headerlink" title="相似问题"></a>相似问题</h3><p>本质上找假币问题就是一种三分类的折半查找问题。</p>
+<p>二分类的折半查找问题的代码如下，基础要好好掌握:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* <span class="built_in">array</span>,<span class="keyword">int</span> size,<span class="keyword">int</span> a)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</div><div class="line">    <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</div><div class="line">    <span class="keyword">int</span> b = Find(a,size,<span class="number">4</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt;  size &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* <span class="built_in">array</span>,<span class="keyword">int</span> size,<span class="keyword">int</span> a)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> nFrom = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> nTo = size - <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> nIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">bool</span> bFind = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">while</span>(nFrom &lt;= nTo)&#123;</div><div class="line">        nIndex = (nFrom + nTo) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>[nIndex] == a)&#123;</div><div class="line">            bFind = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>[nIndex] &gt; a)</div><div class="line">            nTo = nIndex - <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            nFrom = nIndex + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(bFind)</div><div class="line">        <span class="keyword">return</span> nIndex;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/18/绝对众数问题/" itemprop="url">
                   绝对众数问题
                 </a>
@@ -1271,114 +1376,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" itemprop="url">
-                  LeetCode 5.[M] Longest Palindromic Substring 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-14T10:46:51+08:00" content="2017-05-14">
-              2017-05-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div><div class="line"></div><div class="line">Note: &quot;aba&quot; is also a valid answer.</div></pre></td></tr></table></figure>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这道这道题目比较棘手，开始想的是先得到一个字符串的反字符串，然后比较反转后的字符串和原字符串，将相同的地方搞出来。之后看到了LeetCode讨论区第一个解法，发现非常巧妙，不过那个解法是基于java的，于是用c++重写一遍。好好体会这个算法。</p>
-<p>该算法的实现描述是找出开始结点和开始结点后的长度，然后再用substr函数截取该字符串。随即就得到了最终的结果。重点在于寻找开始结点和开始结点后的长度的值。解决这个问题所用的算法是选取中心到两边扩展的算法。然后最后从头到尾遍历整个结点，从而最终得到的也是最长的字串。用这个方法就可以求得这个题目。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkPal</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s,<span class="keyword">int</span> m,<span class="keyword">int</span> n,<span class="keyword">int</span>&amp; pos,<span class="keyword">int</span>&amp; len)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>((m &gt;= <span class="number">0</span>) &amp;&amp; (n &lt; s.size()) &amp;&amp; s[m] == s[n])&#123;</div><div class="line">        m--;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>( n - m - <span class="number">1</span> &gt; len)&#123;</div><div class="line">        len = n - m - <span class="number">1</span>;</div><div class="line">        pos = m + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (s.length() &lt;= <span class="number">1</span>) <span class="keyword">return</span> s;</div><div class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; s.length() - <span class="number">1</span>; i++)&#123;</div><div class="line">        checkPal(s,i,i,pos,len);</div><div class="line">        checkPal(s,i,i+<span class="number">1</span>,pos,len);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s.substr(pos,len);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1424,7 +1421,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

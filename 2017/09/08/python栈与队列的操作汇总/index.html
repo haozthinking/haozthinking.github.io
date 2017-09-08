@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,算法,字符串," />
+  <meta name="keywords" content="python,数据结构," />
 
 
 
@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="题目描述Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-Example:
-12345Input: &amp;quot;babad&amp;quot;Output: &amp;quot;bab&amp;quot;Note: &amp;quot;aba&amp;quo">
+<meta name="description" content="python栈与队列的操作汇总12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 5.[M] Longest Palindromic Substring ">
-<meta property="og:url" content="http://yoursite.com/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/index.html">
+<meta property="og:title" content="python栈与队列的操作汇总">
+<meta property="og:url" content="http://yoursite.com/2017/09/08/python栈与队列的操作汇总/index.html">
 <meta property="og:site_name" content="好Q">
-<meta property="og:description" content="题目描述Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-Example:
-12345Input: &amp;quot;babad&amp;quot;Output: &amp;quot;bab&amp;quot;Note: &amp;quot;aba&amp;quo">
-<meta property="og:updated_time" content="2017-05-15T03:25:27.000Z">
+<meta property="og:description" content="python栈与队列的操作汇总12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+<meta property="og:updated_time" content="2017-09-08T01:39:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 5.[M] Longest Palindromic Substring ">
-<meta name="twitter:description" content="题目描述Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-Example:
-12345Input: &amp;quot;babad&amp;quot;Output: &amp;quot;bab&amp;quot;Note: &amp;quot;aba&amp;quo">
+<meta name="twitter:title" content="python栈与队列的操作汇总">
+<meta name="twitter:description" content="python栈与队列的操作汇总12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
 
 
 
@@ -120,9 +114,9 @@ Example:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/08/python栈与队列的操作汇总/"/>
 
-  <title> LeetCode 5.[M] Longest Palindromic Substring  | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> python栈与队列的操作汇总 | 好Q </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +289,7 @@ Example:
             
             
               
-                LeetCode 5.[M] Longest Palindromic Substring 
+                python栈与队列的操作汇总
               
             
           </h1>
@@ -307,8 +301,8 @@ Example:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-14T10:46:51+08:00" content="2017-05-14">
-              2017-05-14
+            <time itemprop="dateCreated" datetime="2017-09-08T09:39:08+08:00" content="2017-09-08">
+              2017-09-08
             </time>
           </span>
 
@@ -318,8 +312,8 @@ Example:
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/" itemprop="commentsCount"></span>
+                <a href="/2017/09/08/python栈与队列的操作汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/08/python栈与队列的操作汇总/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,14 +336,7 @@ Example:
       
 
       
-        <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;babad&quot;</div><div class="line"></div><div class="line">Output: &quot;bab&quot;</div><div class="line"></div><div class="line">Note: &quot;aba&quot; is also a valid answer.</div></pre></td></tr></table></figure>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: &quot;cbbd&quot;</div><div class="line"></div><div class="line">Output: &quot;bb&quot;</div></pre></td></tr></table></figure>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这道这道题目比较棘手，开始想的是先得到一个字符串的反字符串，然后比较反转后的字符串和原字符串，将相同的地方搞出来。之后看到了LeetCode讨论区第一个解法，发现非常巧妙，不过那个解法是基于java的，于是用c++重写一遍。好好体会这个算法。</p>
-<p>该算法的实现描述是找出开始结点和开始结点后的长度，然后再用substr函数截取该字符串。随即就得到了最终的结果。重点在于寻找开始结点和开始结点后的长度的值。解决这个问题所用的算法是选取中心到两边扩展的算法。然后最后从头到尾遍历整个结点，从而最终得到的也是最长的字串。用这个方法就可以求得这个题目。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkPal</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s,<span class="keyword">int</span> m,<span class="keyword">int</span> n,<span class="keyword">int</span>&amp; pos,<span class="keyword">int</span>&amp; len)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>((m &gt;= <span class="number">0</span>) &amp;&amp; (n &lt; s.size()) &amp;&amp; s[m] == s[n])&#123;</div><div class="line">        m--;</div><div class="line">        n++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>( n - m - <span class="number">1</span> &gt; len)&#123;</div><div class="line">        len = n - m - <span class="number">1</span>;</div><div class="line">        pos = m + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (s.length() &lt;= <span class="number">1</span>) <span class="keyword">return</span> s;</div><div class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; s.length() - <span class="number">1</span>; i++)&#123;</div><div class="line">        checkPal(s,i,i,pos,len);</div><div class="line">        checkPal(s,i,i+<span class="number">1</span>,pos,len);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s.substr(pos,len);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <h2 id="python栈与队列的操作汇总"><a href="#python栈与队列的操作汇总" class="headerlink" title="python栈与队列的操作汇总"></a>python栈与队列的操作汇总</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#构建栈对象</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="comment">#初始化栈</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.items = []</div><div class="line">  <span class="comment">#构建一个栈</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">initiStack</span><span class="params">(self,data)</span>:</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data:</div><div class="line">            self.items.append(i)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i]) +<span class="string">' '</span></div><div class="line">        <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i])</div><div class="line">        <span class="keyword">return</span> list</div><div class="line">	<span class="comment">#查看栈是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> len(self.items) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#进栈操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self,item)</span>:</span></div><div class="line">        self.items.append(item)</div><div class="line">	<span class="comment">#出栈操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.items.pop()</div><div class="line">	<span class="comment">#查看栈顶元素操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> self.items[len(self.items) - <span class="number">1</span>]</div><div class="line">	<span class="comment">#看栈的大小操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> len(self.items)</div><div class="line"><span class="comment">#构建队列对象</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.items = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i]) + <span class="string">' '</span></div><div class="line">        <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i])</div><div class="line">        <span class="keyword">return</span> list</div><div class="line">	<span class="comment">#构建一个队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">initQueue</span><span class="params">(self,data)</span>:</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data:</div><div class="line">            self.items.insert(<span class="number">0</span>,i)</div><div class="line">	<span class="comment">#判断队列是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> len(self.items) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#排入队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self,i)</span>:</span></div><div class="line">        self.items.insert(<span class="number">0</span>,i)</div><div class="line">	<span class="comment">#排出队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></div><div class="line">        self.items.pop()</div><div class="line">	<span class="comment">#输出队列的大小</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> len(self.items)</div><div class="line"></div><div class="line">stack = Stack()</div><div class="line">stack.initiStack([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.push(<span class="number">6</span>)</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.pop()</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.peek()</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">print(<span class="string">'--------------------------------------'</span>)</div><div class="line">queue = Queue()</div><div class="line">queue.initQueue([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div><div class="line">queue.enqueue(<span class="number">6</span>)</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div><div class="line">queue.dequeue()</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -393,11 +380,9 @@ Example:
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
-            <a href="/tags/字符串/" rel="tag">#字符串</a>
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
           
         </div>
       
@@ -406,17 +391,13 @@ Example:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/13/LeetCode-3-[M]-Longest-Substring-Without-Repeating-Characters/" rel="next" title="LeetCode 3.[M] Longest Substring Without Repeating Characters">
-                <i class="fa fa-chevron-left"></i> LeetCode 3.[M] Longest Substring Without Repeating Characters
+              <a href="/2017/09/04/python双向链表操作汇总/" rel="next" title="python双向链表操作汇总">
+                <i class="fa fa-chevron-left"></i> python双向链表操作汇总
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/14/Logistic回归/" rel="prev" title="Logistic回归">
-                Logistic回归 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -465,8 +446,8 @@ Example:
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/"
-           data-title="LeetCode 5.[M] Longest Palindromic Substring " data-url="http://yoursite.com/2017/05/14/LeetCode-5-[M]-Longest-Palindromic-Substring/">
+      <div class="ds-thread" data-thread-key="2017/09/08/python栈与队列的操作汇总/"
+           data-title="python栈与队列的操作汇总" data-url="http://yoursite.com/2017/09/08/python栈与队列的操作汇总/">
       </div>
     
   </div>
@@ -550,7 +531,7 @@ Example:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python栈与队列的操作汇总"><span class="nav-number">1.</span> <span class="nav-text">python栈与队列的操作汇总</span></a></li></ol></div>
             
           </div>
         </section>
