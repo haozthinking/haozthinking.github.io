@@ -291,6 +291,110 @@
             
               
                 
+                <a class="post-title-link" href="/2017/09/09/python循环链表实现约瑟夫问题/" itemprop="url">
+                  python循环链表实现约瑟夫问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-09T16:35:55+08:00" content="2017-09-09">
+              2017-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/09/python循环链表实现约瑟夫问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/09/python循环链表实现约瑟夫问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python循环链表实现约瑟夫问题"><a href="#python循环链表实现约瑟夫问题" class="headerlink" title="python循环链表实现约瑟夫问题"></a>python循环链表实现约瑟夫问题</h2><ul>
+<li>input:人数，报数的值</li>
+<li>output:死亡顺序，最后存活人数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#新建节点类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self.next = <span class="keyword">None</span></div><div class="line"><span class="comment">#新建约瑟夫类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Joseph</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment">#初始化值,包括开始头节点以及循环链表开始值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.start = <span class="keyword">None</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line">	<span class="comment">#获取一共的人数</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_number</span><span class="params">(self,number)</span>:</span></div><div class="line">        data = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(number):</div><div class="line">            data.append(i)</div><div class="line">        <span class="keyword">return</span> data</div><div class="line">	<span class="comment">#创建约瑟夫链表</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_joseph</span><span class="params">(self,data)</span>:</span></div><div class="line">        self.head = Node(data[<span class="number">0</span>])</div><div class="line">        node = self.head</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data[<span class="number">1</span>:]:</div><div class="line">            item = Node(i)</div><div class="line">            node.next = item</div><div class="line">            node = node.next</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">        node.next = self.head</div><div class="line">	<span class="comment">#输入报数的数,开始循环,输出被杀人的编号</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kill_joseph</span><span class="params">(self,k)</span>:</span></div><div class="line">        self.start = self.head</div><div class="line">        <span class="keyword">while</span> self.length != <span class="number">1</span>:</div><div class="line">            j = <span class="number">1</span></div><div class="line">            node = self.start</div><div class="line">            pre = self.start</div><div class="line">            <span class="keyword">while</span> j != k:</div><div class="line">                pre = node</div><div class="line">                node = node.next</div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> j == k:</div><div class="line">                print(str(node.data) + <span class="string">" has been killed"</span>)</div><div class="line">                pre.next = node.next</div><div class="line">                self.length -= <span class="number">1</span></div><div class="line">                self.start = node.next</div><div class="line">    <span class="comment">#运行代码</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run_joseph</span><span class="params">(self,number,k)</span>:</span></div><div class="line">        self.create_joseph(self.get_number(number))</div><div class="line">        self.kill_joseph(k)</div><div class="line">        print(<span class="string">"----------------------------------------"</span>)</div><div class="line">        print(str(self.start.data) + <span class="string">" is the survivor!"</span>)</div><div class="line"></div><div class="line"><span class="comment">#测试数据</span></div><div class="line">j = Joseph()</div><div class="line">j.run_joseph(<span class="number">4</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/08/python栈与队列的操作汇总/" itemprop="url">
                   python栈与队列的操作汇总
                 </a>
@@ -343,6 +447,107 @@
         
           
             <h2 id="python栈与队列的操作汇总"><a href="#python栈与队列的操作汇总" class="headerlink" title="python栈与队列的操作汇总"></a>python栈与队列的操作汇总</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#构建栈对象</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="comment">#初始化栈</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.items = []</div><div class="line">  <span class="comment">#构建一个栈</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">initiStack</span><span class="params">(self,data)</span>:</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data:</div><div class="line">            self.items.append(i)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i]) +<span class="string">' '</span></div><div class="line">        <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i])</div><div class="line">        <span class="keyword">return</span> list</div><div class="line">	<span class="comment">#查看栈是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> len(self.items) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#进栈操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self,item)</span>:</span></div><div class="line">        self.items.append(item)</div><div class="line">	<span class="comment">#出栈操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.items.pop()</div><div class="line">	<span class="comment">#查看栈顶元素操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> self.items[len(self.items) - <span class="number">1</span>]</div><div class="line">	<span class="comment">#看栈的大小操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> len(self.items)</div><div class="line"><span class="comment">#构建队列对象</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.items = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i]) + <span class="string">' '</span></div><div class="line">        <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">'empty!'</span></div><div class="line">        list = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.items)):</div><div class="line">            list += str(self.items[i])</div><div class="line">        <span class="keyword">return</span> list</div><div class="line">	<span class="comment">#构建一个队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">initQueue</span><span class="params">(self,data)</span>:</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data:</div><div class="line">            self.items.insert(<span class="number">0</span>,i)</div><div class="line">	<span class="comment">#判断队列是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> len(self.items) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#排入队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self,i)</span>:</span></div><div class="line">        self.items.insert(<span class="number">0</span>,i)</div><div class="line">	<span class="comment">#排出队列</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></div><div class="line">        self.items.pop()</div><div class="line">	<span class="comment">#输出队列的大小</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> len(self.items)</div><div class="line"></div><div class="line">stack = Stack()</div><div class="line">stack.initiStack([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.push(<span class="number">6</span>)</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.pop()</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">stack.peek()</div><div class="line">print(<span class="string">'the stack is:'</span>)</div><div class="line">print(stack)</div><div class="line">print(<span class="string">'--------------------------------------'</span>)</div><div class="line">queue = Queue()</div><div class="line">queue.initQueue([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div><div class="line">queue.enqueue(<span class="number">6</span>)</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div><div class="line">queue.dequeue()</div><div class="line">print(<span class="string">'the queue is:'</span>)</div><div class="line">print(queue)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/04/python单链表操作汇总/" itemprop="url">
+                  python单链表操作汇总
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-04T17:28:09+08:00" content="2017-09-04">
+              2017-09-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/04/python单链表操作汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/python单链表操作汇总/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python单链表操作汇总"><a href="#python单链表操作汇总" class="headerlink" title="python单链表操作汇总"></a>python单链表操作汇总</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建节点类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data,pnext = None)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self._next = pnext</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> str(self.data)</div><div class="line"><span class="comment">#创建链表类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="comment">#初始化链表类</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line">	<span class="comment">#改写repr魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">    <span class="comment">#改写str魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">	<span class="comment">#改写getitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.getIndex(index)</div><div class="line">	<span class="comment">#改写setitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, index, data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.update(index,data)</div><div class="line">	<span class="comment">#改写len魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.length</div><div class="line">	<span class="comment">#判断链表是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> (self.length == <span class="number">0</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#给链表加入新的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.head:</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            pre = self.head</div><div class="line">            <span class="keyword">while</span>(pre._next):</div><div class="line">                pre = pre._next</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">	<span class="comment">#删除链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">"The linkedlist is empty"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"index error"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            self.head = self.head._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            pre._next = node._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">	<span class="comment">#给链表插入一个元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            self.head = item</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            item._next = self.head</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            item._next = node</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">	<span class="comment">#更新链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span>(node._next <span class="keyword">and</span> j &lt; index):</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            node.data = data</div><div class="line">	<span class="comment">#获取链表的值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> node.data</div><div class="line">	<span class="comment">#清空链表</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line"><span class="comment">#测试数据</span></div><div class="line">list = LinkedList()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    list.append(i)</div><div class="line">print(list)</div><div class="line">print(list.getIndex(<span class="number">5</span>))</div><div class="line">list.update(<span class="number">0</span>,<span class="number">100</span>)</div><div class="line">print(list)</div><div class="line">list.insert(<span class="number">1</span>,<span class="number">1021</span>)</div><div class="line">print(list)</div></pre></td></tr></table></figure>
 
           
         
@@ -445,107 +650,6 @@
           
             <h2 id="python双向链表操作汇总"><a href="#python双向链表操作汇总" class="headerlink" title="python双向链表操作汇总"></a>python双向链表操作汇总</h2><p>双向链表和单向链表相比，不一样的地方在于他有一个前驱节点，所以每次都需要对于前驱节点进行指向。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建节点类</span></div><div class="line"><span class="comment">#注意这里和单链表的区别就是要加上一个人self.prev</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self.next = <span class="keyword">None</span></div><div class="line">        self.prev = <span class="keyword">None</span></div><div class="line"><span class="comment">#定义一个双向链表 其中头节点为空 长度为0</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoubleLinkList</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            node = self.head</div><div class="line">            list = <span class="string">''</span></div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                list += str(node.data) + <span class="string">' '</span></div><div class="line">                node = node.next</div><div class="line">            <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">"empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            node = self.head</div><div class="line">            list = <span class="string">''</span></div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                list += str(node.data)</div><div class="line">                node = node.next</div><div class="line">            <span class="keyword">return</span> list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">'empty!'</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">elif</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt; self.length:</div><div class="line">            print(<span class="string">'index error!'</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> self.getIndex(index)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, index, data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">'empty!'</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">elif</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt; self.length:</div><div class="line">            print(<span class="string">'index error!'</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> self.updata(index,data)</div><div class="line"><span class="comment">#初始化双向链表 其中给他传入的参数为一个list</span></div><div class="line"><span class="comment">#在输出的时候要记得还得定义一个前向指针</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">initlist</span><span class="params">(self,data)</span>:</span></div><div class="line">        self.head = Node(data[<span class="number">0</span>])</div><div class="line">        p = self.head</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> data[<span class="number">1</span>:]:</div><div class="line">            node = Node(i)</div><div class="line">            p.next = node</div><div class="line">            node.prev = p</div><div class="line">            p = p.next</div><div class="line">            self.length += <span class="number">1</span></div><div class="line"><span class="comment">#判断是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.length == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"><span class="comment">#清空列表</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line"><span class="comment">#给列表添加一个元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">            self.head = item</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            j = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> pre.next:</div><div class="line">                pre = pre.next</div><div class="line">            pre.next = item</div><div class="line">            item.prev = pre</div><div class="line">            self.length += <span class="number">1</span></div><div class="line"><span class="comment">#获取某一个索引的值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">"empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">elif</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt; self.length:</div><div class="line">            print(<span class="string">"index error!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            j = <span class="number">0</span></div><div class="line">            node = self.head</div><div class="line">            <span class="keyword">while</span> node.next <span class="keyword">and</span> j &lt; index:</div><div class="line">                node = node.next</div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> j == index:</div><div class="line">                <span class="keyword">return</span> node.data</div><div class="line"><span class="comment">#更新某一索引的列表值              </span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">updata</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        node = self.head</div><div class="line">        j = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> node.next <span class="keyword">and</span> j &lt; index:</div><div class="line">            node = node.next</div><div class="line">            j += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            node.data = data</div><div class="line"><span class="comment">#在某一索引处插入某一索引值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">and</span> index &gt; self.length:</div><div class="line">            print(<span class="string">"index error"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            item.next = node</div><div class="line">            node.prev = item</div><div class="line">            self.head = item</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            j = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> node.next <span class="keyword">and</span> j &lt; index:</div><div class="line">                pre = node</div><div class="line">                node = node.next</div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> j == index:</div><div class="line">                pre.next = item</div><div class="line">                item.prev = pre</div><div class="line">                item.next = node</div><div class="line">                node.prev = item</div><div class="line">                self.length += <span class="number">1</span></div><div class="line"><span class="comment">#删除某一索引值的索引的值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,index)</span>:</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt; self.length:</div><div class="line">            print(<span class="string">"index error!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            self.head = node.next</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            j = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> node.next <span class="keyword">and</span> j &lt; index:</div><div class="line">                pre = node</div><div class="line">                node = node.next</div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> j == index:</div><div class="line">                pre.next = node.next</div><div class="line">                node.next.prev = pre.next</div><div class="line">                self.length -= <span class="number">1</span></div><div class="line"></div><div class="line"></div><div class="line">l = DoubleLinkList()</div><div class="line">print(l)</div><div class="line">l.initlist([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">print(l)</div><div class="line">print(l.getIndex(<span class="number">4</span>))</div><div class="line">l.append(<span class="number">6</span>)</div><div class="line">print(l.getIndex(<span class="number">5</span>))</div><div class="line"></div><div class="line">l.insert(<span class="number">4</span>,<span class="number">40</span>)</div><div class="line">print(l.getIndex(<span class="number">3</span>))</div><div class="line">print(l.getIndex(<span class="number">4</span>))</div><div class="line">print(l.getIndex(<span class="number">5</span>))</div><div class="line"></div><div class="line">l.delete(<span class="number">5</span>)</div><div class="line">print(l.getIndex(<span class="number">5</span>))</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/04/python单链表操作汇总/" itemprop="url">
-                  python单链表操作汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-04T17:28:09+08:00" content="2017-09-04">
-              2017-09-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/09/04/python单链表操作汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/python单链表操作汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="python单链表操作汇总"><a href="#python单链表操作汇总" class="headerlink" title="python单链表操作汇总"></a>python单链表操作汇总</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建节点类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data,pnext = None)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self._next = pnext</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> str(self.data)</div><div class="line"><span class="comment">#创建链表类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="comment">#初始化链表类</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line">	<span class="comment">#改写repr魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">    <span class="comment">#改写str魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            <span class="keyword">return</span> <span class="string">"empty!"</span></div><div class="line">        node = self.head</div><div class="line">        nlist = <span class="string">''</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            nlist += str(node.data)+<span class="string">" "</span></div><div class="line">            node = node._next</div><div class="line">        <span class="keyword">return</span> nlist</div><div class="line">	<span class="comment">#改写getitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.getIndex(index)</div><div class="line">	<span class="comment">#改写setitem魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, index, data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index or empty!"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">return</span> self.update(index,data)</div><div class="line">	<span class="comment">#改写len魔法方法</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.length</div><div class="line">	<span class="comment">#判断链表是否为空</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> (self.length == <span class="number">0</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">	<span class="comment">#给链表加入新的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.head:</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            pre = self.head</div><div class="line">            <span class="keyword">while</span>(pre._next):</div><div class="line">                pre = pre._next</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">	<span class="comment">#删除链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            print(<span class="string">"The linkedlist is empty"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"index error"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            self.head = self.head._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            pre._next = node._next</div><div class="line">            self.length -= <span class="number">1</span></div><div class="line">	<span class="comment">#给链表插入一个元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        item = Node(data)</div><div class="line">        <span class="keyword">if</span> self.isEmpty():</div><div class="line">            self.head = item</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index &lt; <span class="number">0</span> <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</div><div class="line">            item._next = self.head</div><div class="line">            self.head = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            item._next = node</div><div class="line">            pre._next = item</div><div class="line">            self.length += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span></div><div class="line">	<span class="comment">#更新链表的元素</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self,index,data)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        pre = self.head</div><div class="line">        <span class="keyword">if</span>(node._next <span class="keyword">and</span> j &lt; index):</div><div class="line">            pre = node</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> j == index:</div><div class="line">            node.data = data</div><div class="line">	<span class="comment">#获取链表的值</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(self,index)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.isEmpty() <span class="keyword">or</span> index &gt;= self.length:</div><div class="line">            print(<span class="string">"error index"</span>)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        j = <span class="number">0</span></div><div class="line">        node = self.head</div><div class="line">        <span class="keyword">while</span> node._next <span class="keyword">and</span> j &lt; index:</div><div class="line">            node = node._next</div><div class="line">            j += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> node.data</div><div class="line">	<span class="comment">#清空链表</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = <span class="keyword">None</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line"><span class="comment">#测试数据</span></div><div class="line">list = LinkedList()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    list.append(i)</div><div class="line">print(list)</div><div class="line">print(list.getIndex(<span class="number">5</span>))</div><div class="line">list.update(<span class="number">0</span>,<span class="number">100</span>)</div><div class="line">print(list)</div><div class="line">list.insert(<span class="number">1</span>,<span class="number">1021</span>)</div><div class="line">print(list)</div></pre></td></tr></table></figure>
 
           
         
@@ -1227,110 +1331,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/20/寻找第一个缺失的整数/" itemprop="url">
-                  寻找第一个缺失的整数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-20T09:17:40+08:00" content="2017-06-20">
-              2017-06-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/06/20/寻找第一个缺失的整数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/20/寻找第一个缺失的整数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个数组A[0,1,2….N-1],找到从1开始,第一个不在数组中的正整数。</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这道题有很多种算法，比如用暴力求解从1-N中一个个遍历，即可得到最终的结果。可是这样的时间复杂度为$O(N^2)$,还可以先将N个数进行排序，然后再将排序后的结果进行遍历，此时时间复杂度为$O(N  \log N)$,或者再构建一个有N个序列的表，然后将数据依次填入，之后再遍历构建的表，将第一个false的值输出。这种方法的时间复杂度为$O(N)$空间复杂度也为$O(N)$。</p>
-<p>这里介绍一种使用循环不变式的方法来解决这个问题。使用的时间复杂度为$O(N)$，空间复杂度为$O(1)$。本题的思路是将找到的元素放到正确的位置上，如果最终发现某个元素一直没有被找到，那么这个元素就为所求元素。</p>
-<h4 id="循环不变式"><a href="#循环不变式" class="headerlink" title="循环不变式"></a>循环不变式</h4><p>如果某命题初始为真，且每次更改后仍然保持该命题为真，那么若干次更改后命题仍然为真。之前我们所求的<strong>局部极大值</strong>的题目也是用的这个思路。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstMissNum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">9</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">74</span>,<span class="number">54</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">-1</span>&#125;;</div><div class="line">    <span class="keyword">int</span> m = FirstMissNum(a, <span class="keyword">sizeof</span>(a)/ <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; m &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">FirstMissNum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> size)</span></span>&#123;</div><div class="line">    a--;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(i &lt;= size) &#123;</div><div class="line">        <span class="keyword">if</span> (a[i] == i) i++;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((a[i] &lt; i) || (a[i] &gt; size) || a[i] == a[a[i]]) &#123;</div><div class="line">            a[i] = a[size];</div><div class="line">            size--; <span class="comment">//把该元素删除掉，删除的方法就是将最后一个元素值赋予给他，然后删掉最后一个元素</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            swap(a[i], a[a[i]]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1376,7 +1376,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

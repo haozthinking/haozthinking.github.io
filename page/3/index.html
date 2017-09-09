@@ -291,6 +291,111 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" itemprop="url">
+                  LeetCode 32.[H] Longest Valid Parentheses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-15T11:24:32+08:00" content="2017-05-15">
+              2017-05-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/15/LeetCode-32-H-Longest-Valid-Parentheses/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###题目描述</p>
+<p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, find the length of the longest valid (well-formed) parentheses substring.</p>
+<p>For <code>&quot;(()&quot;</code>, the longest valid parentheses substring is <code>&quot;()&quot;</code>, which has length = 2.</p>
+<p>Another example is <code>&quot;)()())&quot;</code>, where the longest valid parentheses substring is <code>&quot;()()&quot;</code>, which has length = 4.</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这是第一道用到栈这种数据结构。这道题很巧妙的用压栈压入序号数字的手段进行压栈,并对之后的所有符号进行遍历，如果右括号左边没有左括号的情况下就把该右括号当作开始值。而如果右括号左边还有左括号的情况下就用现在的值减去栈顶值最后就得到了想要的值。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> size = s.length();</div><div class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; a;</div><div class="line">    <span class="keyword">int</span> answer = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> start = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; size ;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) a.push(i);</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(a.empty())&#123;</div><div class="line">                start = i;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                a.pop();</div><div class="line">                <span class="keyword">if</span>(a.empty()) answer = max(answer,i - start);</div><div class="line">                <span class="keyword">else</span> answer = max(answer,i - a.top());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> answer;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/14/Logistic回归/" itemprop="url">
                   Logistic回归
                 </a>
@@ -1288,110 +1393,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/09/LeetCode-14-E-Longest-Common-Prefix/" itemprop="url">
-                  LeetCode 14.[E]Longest Common Prefix 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-09T14:40:55+08:00" content="2017-05-09">
-              2017-05-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/09/LeetCode-14-E-Longest-Common-Prefix/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/LeetCode-14-E-Longest-Common-Prefix/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
-<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>这个题是要给出一个string类型的vector，这个string的vector中有很多个string，我们要找出这些string的最长前缀。具体算法既从第一个字母开始，将他和下面的每一个字符串的该位上的字母进行比较，如果下面所有的字符串的该位上面的数字都一样，那么这个字母就是一个公共前缀。如果找到一个字母，他不是其中一个字符串中的一个，那么他就不属于公共前缀，我们在此就结束遍历，输出公共前缀即可。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> min = INT_MAX;</div><div class="line">    <span class="keyword">if</span>(strs.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.size() ;i++)&#123;</div><div class="line">        <span class="keyword">if</span> (strs[i].length() &lt; min)  min = strs[i].length();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (min == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">string</span> result;</div><div class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">        count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; strs.size(); j++) &#123;</div><div class="line">            <span class="keyword">if</span> (strs[<span class="number">0</span>][i] == strs[j][i]) &#123;</div><div class="line">                count++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (count == j) result += strs[<span class="number">0</span>][i];</div><div class="line">        <span class="keyword">if</span> (count != j) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>在做题时，要充分考虑输入的所有情况，对其中一些比如说输入为空或者输入为0的情况也要做充分的考虑。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1437,7 +1438,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

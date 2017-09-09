@@ -291,6 +291,198 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/20/hello/" itemprop="url">
+                  Linux学习之软件包管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-20T17:29:27+08:00" content="2017-04-20">
+              2017-04-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/20/hello/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/hello/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="软件包系统"><a href="#软件包系统" class="headerlink" title="软件包系统"></a>软件包系统</h3><p>linux系统主流软件包系统类，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">软件包系统</th>
+<th style="text-align:center">发行版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian类(.deb技术)</td>
+<td style="text-align:center">Debian、Ubuntu等</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat类(.rpm技术)</td>
+<td style="text-align:center">Red Hat、CentOS等</td>
+</tr>
+<tr>
+<td style="text-align:center">其他</td>
+<td style="text-align:center">其他</td>
+</tr>
+</tbody>
+</table>
+<h3 id="软件包系统工具"><a href="#软件包系统工具" class="headerlink" title="软件包系统工具"></a>软件包系统工具</h3><p>低级下载工具和高级下载工具的区别，对于低级下载工具来说。他并不是从库源下载来的，所以他并不会处理依赖问题，当dpkg过程中发现缺少依赖包的情况，那么就会报错。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">发行版本</th>
+<th style="text-align:center">低级下载工具</th>
+<th style="text-align:center">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian类</td>
+<td style="text-align:center">dpkg</td>
+<td style="text-align:center">apt-get、aptitude</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat类</td>
+<td style="text-align:center">rpm</td>
+<td style="text-align:center">yum</td>
+</tr>
+</tbody>
+</table>
+<p>软件包常用命令(以Debian类为例，因为常使用的版本为ubuntu)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">查找软件包</td>
+<td style="text-align:center">apt-cache search search_string</td>
+</tr>
+<tr>
+<td style="text-align:center">安装软件包</td>
+<td style="text-align:center">apt-get install package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">安装软件包文件中的软件包</td>
+<td style="text-align:center">dpkg —install package_file</td>
+</tr>
+<tr>
+<td style="text-align:center">删除软件包</td>
+<td style="text-align:center">apt-get remove package_name;</td>
+</tr>
+<tr>
+<td style="text-align:center">移除软件包(比删除更加彻底)</td>
+<td style="text-align:center">apt-get purge package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">更新软件包</td>
+<td style="text-align:center">apt-get update(upgrade)</td>
+</tr>
+<tr>
+<td style="text-align:center">列出软件包命令</td>
+<td style="text-align:center">dpkg —list</td>
+</tr>
+<tr>
+<td style="text-align:center">判断是否安装命令</td>
+<td style="text-align:center">dpkg —status package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">显示安装包相关信息</td>
+<td style="text-align:center">apt-cache show package_name`</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/20/利用python把几个词语的某一位变为大写/" itemprop="url">
                   利用python把几个词语的某一位变为大写
                 </a>
@@ -1050,7 +1242,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
