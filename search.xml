@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[python实现逆波兰表达式的运算]]></title>
+      <url>%2F2017%2F09%2F16%2F%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%BF%90%E7%AE%97%2F</url>
+      <content type="text"><![CDATA[此代码为逆波兰表达式的运用，根据该代码可以计算出后缀表达式的值 出栈两个，计算然后再入栈 1234567891011121314151617181920212223import stacks = stack.Stack()def reverse_polish(data): for i in data[:]: print(s.top()) if i.isdigit(): s.push(i) else: a = s.pop() print('a = '+str(a)) b = s.pop() print('b = '+str(b) ) if(i == '+'): s.push(int(a) + int(b)) elif(i == '-'): s.push(int(b) - int(a)) elif(i == '*'): s.push(int(a) * int(b)) else: s.push(int(b) // int(a)) return s.top()print(reverse_polish(data = ['1','2','3','-','4','*','+','10','5','/','+']))]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[python实现中缀表达式到后缀表达式的转换]]></title>
+      <url>%2F2017%2F09%2F16%2F%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%B0%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%2F</url>
+      <content type="text"><![CDATA[计算机在计算表达式的时候，往往无法按照中缀表达式对算式进行很好的运算。计算机是将中缀表达式转换成为后缀表达式后，再对后缀表达式进行运算，进而输出最后的结果。此程序实现的是把中缀表达式转换成为后缀表达式的过程。在后面的一个程序中实现的是对后缀表达式进行运算。 123456789101112131415161718192021222324252627282930313233343536#此stack见前面stack实现的代码from stack import Stacks = Stack()#定义中缀实现后缀的函数def nifix_to_postfix(data): result = [] for i in data[:]: print("i = " + str(i)) #如果输出只是数字，那么直接输出即可 if i.isdigit(): result.append(i) else: #如果是乘号,除号或者左括号直接入栈 if i == "*" or i == "/" or i == "(": s.push(i) #如果是右括号,则对括号内的内容进行出栈 elif i == ")": while s.top() != "(" and s.length != 0: result.append(s.pop()) #再将右括号进行出栈 s.pop() #如果是加减号,那么除非遇到了右括号则进行出栈。之后再将这个加减号进行入栈 elif i == "+" or i == "-": if s.length != 0 : while s.top() != "(" and s.length != 0: result.append(s.pop()) s.push(i) else: s.push(i) for i in range(s.length): result.append(s.pop()) for j in result[:]: print(j,end=' ')#测试数据nifix_to_postfix(["1","+","(","2","-","3",")","*","4","+","10","/","5"])]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[python实现二进制转换为十进制,八进制,十六进制]]></title>
       <url>%2F2017%2F09%2F14%2F%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E8%BF%9B%E5%88%B6-%E5%85%AB%E8%BF%9B%E5%88%B6-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%2F</url>
       <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465import stacks = stack.Stack()s.initiStack([1,0,1,0,1])def Binary_to_Decimal(s): data = 0 for i in range(s.length): a = s.pop() * (2 ** i) data += a return datadef Binary_to_Octonary(s): result = [] string = '0' while(s.length &gt; 3): list = [] for i in range(3): list.append(s.pop(s.length - 1)) a = stack.Stack() a.initiStack(list) result.append(Binary_to_Decimal(a)) else: list = [] for i in range(s.length): list.append(s.pop(s.length - 1)) a = stack.Stack() a.initiStack(list) result.insert(0,Binary_to_Decimal(a)) for i in result[:]: string += str(i) return stringdef Binary_to_Hexadecimal(s): result = [] string = '0x' while (s.length &gt; 4): list = [] for i in range(4): list.append(s.pop(s.length - 1)) a = stack.Stack() a.initiStack(list) result.append(Binary_to_Decimal(a)) else: list = [] for i in range(s.length): list.append(s.pop(s.length - 1)) a = stack.Stack() a.initiStack(list) result.insert(0, Binary_to_Decimal(a)) for i in result[:]: if i == 10: i = 'A' elif i == 11: i = 'B' elif i == 12: i = 'C' elif i == 13: i = 'D' elif i == 14: i = 'E' elif i == 15: i = 'F' string += str(i) return stringprint(Binary_to_Hexadecimal(s))]]></content>
